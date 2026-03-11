@@ -6,4 +6,10 @@ numpy
 selenium
 beautifulsoup4
 
-# Recuerda usar 'pip install -r requirements.txt' para instalarlas
+# Recuerda usar un Virtual Environment:
+# 1. python3 -m venv .venv
+# 2. source .venv/bin/activate
+# 3. pip install -r requirements.txt
+
+# Recuerda tener instalado el driver de Chrome en /usr/local/bin/chromedriver, usado por Selenium
+# Verifica con: chromedriver --version
