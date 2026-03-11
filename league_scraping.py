@@ -66,10 +66,20 @@ for comp in competiciones:
                 # 1. Extraer nombre del equipo local
                 elemento_local = fila.find('p', class_=lambda c: c and 'styles_teamNameLeft' in c)
                 equipo_local = elemento_local.text.strip() if elemento_local else "Desconocido"
+                
+                # 1.1 Extraer el logo local
+                container_local = fila.find('div', class_=lambda c: c and 'styles_teamContainerLeft' in c)
+                img_local = container_local.find('img', class_=lambda c: c and 'styles_teamLogo' in c) if container_local else None
+                escudo_local = img_local['src'] if img_local and 'src' in img_local.attrs else ""
 
                 # 2. Extraer nombre del equipo visitante
                 elemento_visitante = fila.find('p', class_=lambda c: c and 'styles_teamNameRight' in c)
                 equipo_visitante = elemento_visitante.text.strip() if elemento_visitante else "Desconocido"
+
+                # 2.1 Extraer el logo visitante
+                container_visitante = fila.find('div', class_=lambda c: c and 'styles_teamContainerRight' in c)
+                img_visitante = container_visitante.find('img', class_=lambda c: c and 'styles_teamLogo' in c) if container_visitante else None
+                escudo_visitante = img_visitante['src'] if img_visitante and 'src' in img_visitante.attrs else ""
 
                 # 3. Extraer el resultado
                 elemento_resultado = fila.find('p', class_=lambda c: c and 'styles_text' in c)
@@ -88,7 +98,9 @@ for comp in competiciones:
                     partido = {
                         "jornada": jornada + 1,
                         "equipo_local": equipo_local.title(),
+                        "escudo_local": escudo_local,
                         "equipo_visitante": equipo_visitante.title(),
+                        "escudo_visitante": escudo_visitante,
                         "goles_local": goles_local,
                         "goles_visitante": goles_visitante
                     }

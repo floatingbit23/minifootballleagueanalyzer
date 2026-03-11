@@ -11,6 +11,9 @@ print("Cargando resultados y calculando el Power Ranking (Elo)...")
 
 rankings_globales = {}
 
+# Diccionario global para guardar el escudo de cada equipo
+escudos_equipos = {}
+
 # Patrón para encontrar todos los archivos de ligas en formato json
 archivos_json = glob.glob(os.path.join('jsons', '*.json'))
 
@@ -26,6 +29,12 @@ for archivo in archivos_json:
             partidos = json.load(f)
 
             for partido in partidos:
+                # Guardar escudos
+                if "escudo_local" in partido and partido["escudo_local"]:
+                    escudos_equipos[partido['equipo_local']] = partido['escudo_local']
+                if "escudo_visitante" in partido and partido["escudo_visitante"]:
+                    escudos_equipos[partido['equipo_visitante']] = partido['escudo_visitante']
+
                 # Si algún partido no tuviera todos los datos o estuviera pospuesto, 
                 # lo saltamos amablemente.
                 if "goles_local" not in partido or "goles_visitante" not in partido:
@@ -43,13 +52,14 @@ for archivo in archivos_json:
         ranking_ordenado = sorted(elo_liga.ratings.items(), key=lambda x: x[1], reverse=True)
         
         # Guardamos los resultados bajo el ID de esta liga
-        # Formato: {"nombre_equipo": puntos_elo, ...}
+        # Formato: {"nombre_equipo": puntos_elo, "logo": url_logo, ...}
         RANKING_LISTA = []
         for i, (equipo, rating) in enumerate(ranking_ordenado):
             RANKING_LISTA.append({
                 "posicion": i + 1,
                 "equipo": equipo,
-                "puntos": round(rating)
+                "puntos": round(rating),
+                "logo": escudos_equipos.get(equipo, "")
             })
             
         rankings_globales[liga_id] = RANKING_LISTA

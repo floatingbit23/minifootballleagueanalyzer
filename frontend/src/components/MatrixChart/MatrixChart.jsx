@@ -15,7 +15,7 @@ const poissonProbability = (xg, k) => {
   return (Math.exp(-xg) * Math.pow(xg, k)) / factorial(k);
 };
 
-const MatrixChart = ({ equipoHome, equipoAway, probHome, probAway }) => {
+const MatrixChart = ({ equipoHome, logoHome, equipoAway, logoAway, probHome, probAway }) => {
   // Asumimos 5.0 goles por partido como media (la misma lógica que tenías en Python)
   const xgHome = 5.0 * probHome;
   const xgAway = 5.0 * probAway;
@@ -117,6 +117,7 @@ const MatrixChart = ({ equipoHome, equipoAway, probHome, probAway }) => {
           <div className="panel-box panel-home">
             <span className="panel-prob">{matrixData.homeWinProb.toFixed(1)}%</span>
             <span className="panel-title">VICTORIA LOCAL</span>
+            {logoHome && <img src={logoHome} alt={equipoHome} className="panel-logo" />}
             <span className="panel-team">{equipoHome?.substring(0, 15)}</span>
             <span className="panel-xg">{matrixData.xgHome.toFixed(2)} xG</span>
           </div>
@@ -129,6 +130,7 @@ const MatrixChart = ({ equipoHome, equipoAway, probHome, probAway }) => {
           <div className="panel-box panel-away">
             <span className="panel-prob">{matrixData.awayWinProb.toFixed(1)}%</span>
             <span className="panel-title">VICTORIA VISITANTE</span>
+            {logoAway && <img src={logoAway} alt={equipoAway} className="panel-logo" />}
             <span className="panel-team">{equipoAway?.substring(0, 15)}</span>
             <span className="panel-xg">{matrixData.xgAway.toFixed(2)} xG</span>
           </div>

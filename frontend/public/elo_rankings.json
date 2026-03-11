@@ -3,312 +3,372 @@
         {
             "posicion": 1,
             "equipo": "Chanetis Fc",
-            "puntos": 1752
+            "puntos": 1752,
+            "logo": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png"
         },
         {
             "posicion": 2,
             "equipo": "Atlético Barqueros",
-            "puntos": 1659
+            "puntos": 1659,
+            "logo": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg"
         },
         {
             "posicion": 3,
             "equipo": "San Miguel",
-            "puntos": 1578
+            "puntos": 1578,
+            "logo": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg"
         },
         {
             "posicion": 4,
             "equipo": "Trufa Team",
-            "puntos": 1533
+            "puntos": 1533,
+            "logo": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png"
         },
         {
             "posicion": 5,
             "equipo": "Gravesinha Fc",
-            "puntos": 1482
+            "puntos": 1482,
+            "logo": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg"
         },
         {
             "posicion": 6,
             "equipo": "Guerreros Fc",
-            "puntos": 1477
+            "puntos": 1477,
+            "logo": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png"
         },
         {
             "posicion": 7,
             "equipo": "Inter Aljucer Fc",
-            "puntos": 1476
+            "puntos": 1476,
+            "logo": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png"
         },
         {
             "posicion": 8,
             "equipo": "La Magia Ad",
-            "puntos": 1417
+            "puntos": 1417,
+            "logo": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg"
         },
         {
             "posicion": 9,
             "equipo": "Inter De Molina",
-            "puntos": 1405
+            "puntos": 1405,
+            "logo": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg"
         },
         {
             "posicion": 10,
             "equipo": "Atlético Luisenburgo",
-            "puntos": 1220
+            "puntos": 1220,
+            "logo": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg"
         }
     ],
     "seg_div_murB": [
         {
             "posicion": 1,
             "equipo": "Niupi",
-            "puntos": 1592
+            "puntos": 1592,
+            "logo": "https://minifootballleagues.com/upload/D9/AD/t2wbu3ur.jpeg"
         },
         {
             "posicion": 2,
             "equipo": "Fc La Yanka",
-            "puntos": 1573
+            "puntos": 1573,
+            "logo": "https://minifootballleagues.com/upload/CD/BD/u13gousq.jpg"
         },
         {
             "posicion": 3,
             "equipo": "Los Trakas",
-            "puntos": 1568
+            "puntos": 1568,
+            "logo": "https://minifootballleagues.com/upload/56/A4/vp0k0dtu.jpg"
         },
         {
             "posicion": 4,
             "equipo": "Patriot",
-            "puntos": 1558
+            "puntos": 1558,
+            "logo": "https://minifootballleagues.com/upload/3D/F0/cwcf5fiw.jpeg"
         },
         {
             "posicion": 5,
             "equipo": "Sabomur Stars",
-            "puntos": 1553
+            "puntos": 1553,
+            "logo": "https://minifootballleagues.com/upload/D5/BC/mcozlixp.jpg"
         },
         {
             "posicion": 6,
             "equipo": "Raal Murcia",
-            "puntos": 1524
+            "puntos": 1524,
+            "logo": "https://minifootballleagues.com/upload/82/20/ncvi30wt.png"
         },
         {
             "posicion": 7,
             "equipo": "Llamas Barber Studio",
-            "puntos": 1486
+            "puntos": 1486,
+            "logo": "/static/team/default5.png"
         },
         {
             "posicion": 8,
             "equipo": "Blackout Fc",
-            "puntos": 1398
+            "puntos": 1398,
+            "logo": "https://minifootballleagues.com/upload/B1/40/e4q3nk14.png"
         },
         {
             "posicion": 9,
             "equipo": "Federicos Team",
-            "puntos": 1382
+            "puntos": 1382,
+            "logo": "https://minifootballleagues.com/upload/D7/C4/wlxyezba.png"
         },
         {
             "posicion": 10,
             "equipo": "Distrito Internazionale  Fc",
-            "puntos": 1365
+            "puntos": 1365,
+            "logo": "https://minifootballleagues.com/upload/5A/8C/fm3wnzw2.png"
         }
     ],
     "ter_div_murA": [
         {
             "posicion": 1,
             "equipo": "30835 Fc",
-            "puntos": 1625
+            "puntos": 1625,
+            "logo": "https://minifootballleagues.com/upload/C9/7E/5p11g402.jpeg"
         },
         {
             "posicion": 2,
             "equipo": "Mambas Fc",
-            "puntos": 1578
+            "puntos": 1578,
+            "logo": "https://minifootballleagues.com/upload/77/F9/11xeiges.png"
         },
         {
             "posicion": 3,
             "equipo": "Pulso Cf",
-            "puntos": 1571
+            "puntos": 1571,
+            "logo": "https://minifootballleagues.com/upload/1C/1C/hdubsr4v.jpg"
         },
         {
             "posicion": 4,
             "equipo": "Ribereño Fc",
-            "puntos": 1527
+            "puntos": 1527,
+            "logo": "https://minifootballleagues.com/upload/8A/EA/pznwwh4l.png"
         },
         {
             "posicion": 5,
             "equipo": "Perumur Fc",
-            "puntos": 1520
+            "puntos": 1520,
+            "logo": "https://minifootballleagues.com/upload/21/05/qlxxo5ik.jpeg"
         },
         {
             "posicion": 6,
             "equipo": "La Tubería De Oro",
-            "puntos": 1518
+            "puntos": 1518,
+            "logo": "https://minifootballleagues.com/upload/52/49/ytria2j4.JPG"
         },
         {
             "posicion": 7,
             "equipo": "Lc Return",
-            "puntos": 1498
+            "puntos": 1498,
+            "logo": "https://minifootballleagues.com/upload/98/65/mxaaovbp.jpg"
         },
         {
             "posicion": 8,
             "equipo": "Titanes Fc",
-            "puntos": 1416
+            "puntos": 1416,
+            "logo": "https://minifootballleagues.com/upload/imagesv2/teams/TeamShield22.png"
         },
         {
             "posicion": 9,
             "equipo": "Recreativo Murcia Fc",
-            "puntos": 1396
+            "puntos": 1396,
+            "logo": "https://minifootballleagues.com/upload/A8/C7/x4ihbyv5.png"
         },
         {
             "posicion": 10,
             "equipo": "Recreativo De Juerga",
-            "puntos": 1350
+            "puntos": 1350,
+            "logo": "https://minifootballleagues.com/upload/3A/35/snoee1ht.PNG"
         }
     ],
     "seg_div_murA": [
         {
             "posicion": 1,
             "equipo": "El Palmar City",
-            "puntos": 1654
+            "puntos": 1654,
+            "logo": "https://minifootballleagues.com/upload/5C/A8/xjdn330p.jpg"
         },
         {
             "posicion": 2,
             "equipo": "Billie'S Ballers",
-            "puntos": 1576
+            "puntos": 1576,
+            "logo": "https://minifootballleagues.com/upload/A3/DB/zhl12wou.png"
         },
         {
             "posicion": 3,
             "equipo": "Nakamas Fc",
-            "puntos": 1554
+            "puntos": 1554,
+            "logo": "https://minifootballleagues.com/upload/C8/31/2rjg4mj0.png"
         },
         {
             "posicion": 4,
             "equipo": "Tiki Taka",
-            "puntos": 1514
+            "puntos": 1514,
+            "logo": "https://minifootballleagues.com/upload/03/C8/1scz4v3r.jpg"
         },
         {
             "posicion": 5,
             "equipo": "Payicos Fc",
-            "puntos": 1490
+            "puntos": 1490,
+            "logo": "https://minifootballleagues.com/upload/14/60/rzxl032j.png"
         },
         {
             "posicion": 6,
             "equipo": "La Élite Fc",
-            "puntos": 1478
+            "puntos": 1478,
+            "logo": "https://minifootballleagues.com/upload/C8/0D/oufnhoen.png"
         },
         {
             "posicion": 7,
             "equipo": "Samba Fc",
-            "puntos": 1475
+            "puntos": 1475,
+            "logo": "https://minifootballleagues.com/upload/EC/E2/nknlvbn3.png"
         },
         {
             "posicion": 8,
             "equipo": "Perikles",
-            "puntos": 1462
+            "puntos": 1462,
+            "logo": "https://minifootballleagues.com/upload/10/8B/2havbwtc.jpg"
         },
         {
             "posicion": 9,
             "equipo": "Cvstodia Fc",
-            "puntos": 1411
+            "puntos": 1411,
+            "logo": "https://minifootballleagues.com/upload/6D/E6/ujurv0tz.jpeg"
         },
         {
             "posicion": 10,
             "equipo": "Reventaos Fc",
-            "puntos": 1387
+            "puntos": 1387,
+            "logo": "https://minifootballleagues.com/upload/F3/58/avlpiigu.png"
         }
     ],
     "ter_div_murB": [
         {
             "posicion": 1,
             "equipo": "Afed Fc",
-            "puntos": 1597
+            "puntos": 1579,
+            "logo": "https://minifootballleagues.com/upload/2B/25/0zv3u4cj.jpg"
         },
         {
             "posicion": 2,
             "equipo": "C.D Tocapelotas",
-            "puntos": 1575
+            "puntos": 1562,
+            "logo": "https://minifootballleagues.com/upload/C0/E4/kewgfvgu.png"
         },
         {
             "posicion": 3,
             "equipo": "Los Gallos Fc",
-            "puntos": 1571
+            "puntos": 1556,
+            "logo": "https://minifootballleagues.com/upload/64/26/epwi4iye.png"
         },
         {
             "posicion": 4,
-            "equipo": "Ud Las Piscinas",
-            "puntos": 1536
+            "equipo": "Riomar Fc",
+            "puntos": 1532,
+            "logo": "https://minifootballleagues.com/upload/1C/27/pndil2vb.jfif"
         },
         {
             "posicion": 5,
-            "equipo": "Riomar Fc",
-            "puntos": 1515
+            "equipo": "Ud Las Piscinas",
+            "puntos": 1520,
+            "logo": "https://minifootballleagues.com/upload/55/5F/q5kkxhqe.png"
         },
         {
             "posicion": 6,
             "equipo": "Blackrock Fc",
-            "puntos": 1495
+            "puntos": 1509,
+            "logo": "https://minifootballleagues.com/upload/B3/D3/mufmrmmp.png"
         },
         {
             "posicion": 7,
             "equipo": "Freemium",
-            "puntos": 1468
+            "puntos": 1488,
+            "logo": "https://minifootballleagues.com/upload/7B/8C/cd2lyxu0.jpeg"
         },
         {
             "posicion": 8,
-            "equipo": "Champagne Fc",
-            "puntos": 1437
+            "equipo": "Levante La Birra",
+            "puntos": 1434,
+            "logo": "https://minifootballleagues.com/upload/7A/74/ny4jkyqt.png"
         },
         {
             "posicion": 9,
-            "equipo": "Levante La Birra",
-            "puntos": 1420
+            "equipo": "Champagne Fc",
+            "puntos": 1421,
+            "logo": "https://minifootballleagues.com/upload/1B/45/mqj34j4r.jpeg"
         },
         {
             "posicion": 10,
             "equipo": "Inazuma Cabezo Fc",
-            "puntos": 1385
+            "puntos": 1399,
+            "logo": "https://minifootballleagues.com/upload/A3/65/xgx1b3pi.PNG"
         }
     ],
     "cuar_div_mur": [
         {
             "posicion": 1,
             "equipo": "Fc Esparragal",
-            "puntos": 1598
+            "puntos": 1598,
+            "logo": "https://minifootballleagues.com/upload/D5/9F/q2kcyn0v.jpg"
         },
         {
             "posicion": 2,
             "equipo": "Junta Fc",
-            "puntos": 1561
+            "puntos": 1561,
+            "logo": "https://minifootballleagues.com/upload/E9/BC/qj4p42lq.png"
         },
         {
             "posicion": 3,
             "equipo": "Charca",
-            "puntos": 1556
+            "puntos": 1556,
+            "logo": "https://minifootballleagues.com/upload/32/11/fmfga4wr.png"
         },
         {
             "posicion": 4,
             "equipo": "Ultimate City",
-            "puntos": 1545
+            "puntos": 1545,
+            "logo": "https://minifootballleagues.com/upload/6E/87/teuovuet.png"
         },
         {
             "posicion": 5,
             "equipo": "Real Suciedad",
-            "puntos": 1533
+            "puntos": 1533,
+            "logo": "https://minifootballleagues.com/upload/90/FE/vinvgek2.png"
         },
         {
             "posicion": 6,
             "equipo": "Victory Road",
-            "puntos": 1532
+            "puntos": 1532,
+            "logo": "https://minifootballleagues.com/upload/8E/D1/jwhmabnz.png"
         },
         {
             "posicion": 7,
             "equipo": "Nottingham Miedo",
-            "puntos": 1491
+            "puntos": 1491,
+            "logo": "https://minifootballleagues.com/upload/7A/95/4a1fvz2h.jpeg"
         },
         {
             "posicion": 8,
             "equipo": "Los Ramos",
-            "puntos": 1446
+            "puntos": 1446,
+            "logo": "https://minifootballleagues.com/upload/60/07/cabdfk3k.jpeg"
         },
         {
             "posicion": 9,
             "equipo": "Iluminaos Fc",
-            "puntos": 1373
+            "puntos": 1373,
+            "logo": "https://minifootballleagues.com/upload/75/EC/yvm4wvet.jpeg"
         },
         {
             "posicion": 10,
             "equipo": "Hefame Fc",
-            "puntos": 1366
+            "puntos": 1366,
+            "logo": "https://minifootballleagues.com/upload/95/4F/ihbxa514.jpeg"
         }
     ]
 }

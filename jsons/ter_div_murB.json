@@ -2,315 +2,360 @@
     {
         "jornada": 1,
         "equipo_local": "Afed Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/2B/25/0zv3u4cj.jpg",
         "equipo_visitante": "C.D Tocapelotas",
+        "escudo_visitante": "https://minifootballleagues.com/upload/C0/E4/kewgfvgu.png",
         "goles_local": 2,
         "goles_visitante": 4
     },
     {
         "jornada": 1,
         "equipo_local": "Inazuma Cabezo Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/A3/65/xgx1b3pi.PNG",
         "equipo_visitante": "Levante La Birra",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7A/74/ny4jkyqt.png",
         "goles_local": 3,
         "goles_visitante": 4
     },
     {
         "jornada": 1,
         "equipo_local": "Los Gallos Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/64/26/epwi4iye.png",
         "equipo_visitante": "Freemium",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7B/8C/cd2lyxu0.jpeg",
         "goles_local": 2,
         "goles_visitante": 0
     },
     {
         "jornada": 1,
         "equipo_local": "Champagne Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/1B/45/mqj34j4r.jpeg",
         "equipo_visitante": "Riomar Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/1C/27/pndil2vb.jfif",
         "goles_local": 1,
         "goles_visitante": 6
     },
     {
         "jornada": 1,
         "equipo_local": "Ud Las Piscinas",
+        "escudo_local": "https://minifootballleagues.com/upload/55/5F/q5kkxhqe.png",
         "equipo_visitante": "Blackrock Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/B3/D3/mufmrmmp.png",
         "goles_local": 2,
         "goles_visitante": 5
     },
     {
         "jornada": 2,
         "equipo_local": "Freemium",
+        "escudo_local": "https://minifootballleagues.com/upload/7B/8C/cd2lyxu0.jpeg",
         "equipo_visitante": "Afed Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/2B/25/0zv3u4cj.jpg",
         "goles_local": 4,
         "goles_visitante": 6
     },
     {
         "jornada": 2,
         "equipo_local": "C.D Tocapelotas",
+        "escudo_local": "https://minifootballleagues.com/upload/C0/E4/kewgfvgu.png",
         "equipo_visitante": "Ud Las Piscinas",
+        "escudo_visitante": "https://minifootballleagues.com/upload/55/5F/q5kkxhqe.png",
         "goles_local": 4,
         "goles_visitante": 4
     },
     {
         "jornada": 2,
         "equipo_local": "Riomar Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/1C/27/pndil2vb.jfif",
         "equipo_visitante": "Inazuma Cabezo Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/A3/65/xgx1b3pi.PNG",
         "goles_local": 4,
         "goles_visitante": 1
     },
     {
         "jornada": 2,
         "equipo_local": "Blackrock Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/B3/D3/mufmrmmp.png",
         "equipo_visitante": "Champagne Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/1B/45/mqj34j4r.jpeg",
         "goles_local": 7,
         "goles_visitante": 4
     },
     {
         "jornada": 2,
         "equipo_local": "Levante La Birra",
+        "escudo_local": "https://minifootballleagues.com/upload/7A/74/ny4jkyqt.png",
         "equipo_visitante": "Los Gallos Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/64/26/epwi4iye.png",
         "goles_local": 2,
         "goles_visitante": 3
     },
     {
         "jornada": 3,
         "equipo_local": "C.D Tocapelotas",
+        "escudo_local": "https://minifootballleagues.com/upload/C0/E4/kewgfvgu.png",
         "equipo_visitante": "Freemium",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7B/8C/cd2lyxu0.jpeg",
         "goles_local": 2,
         "goles_visitante": 3
     },
     {
         "jornada": 3,
         "equipo_local": "Los Gallos Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/64/26/epwi4iye.png",
         "equipo_visitante": "Riomar Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/1C/27/pndil2vb.jfif",
         "goles_local": 2,
         "goles_visitante": 2
     },
     {
         "jornada": 3,
         "equipo_local": "Afed Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/2B/25/0zv3u4cj.jpg",
         "equipo_visitante": "Levante La Birra",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7A/74/ny4jkyqt.png",
         "goles_local": 5,
         "goles_visitante": 1
     },
     {
         "jornada": 3,
         "equipo_local": "Ud Las Piscinas",
+        "escudo_local": "https://minifootballleagues.com/upload/55/5F/q5kkxhqe.png",
         "equipo_visitante": "Champagne Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/1B/45/mqj34j4r.jpeg",
         "goles_local": 4,
         "goles_visitante": 3
     },
     {
         "jornada": 3,
         "equipo_local": "Inazuma Cabezo Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/A3/65/xgx1b3pi.PNG",
         "equipo_visitante": "Blackrock Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/B3/D3/mufmrmmp.png",
         "goles_local": 4,
         "goles_visitante": 4
     },
     {
-        "jornada": 4,
-        "equipo_local": "Levante La Birra",
-        "equipo_visitante": "C.D Tocapelotas",
-        "goles_local": 3,
-        "goles_visitante": 5
-    },
-    {
-        "jornada": 4,
-        "equipo_local": "Blackrock Fc",
-        "equipo_visitante": "Los Gallos Fc",
-        "goles_local": 1,
-        "goles_visitante": 2
-    },
-    {
-        "jornada": 4,
-        "equipo_local": "Riomar Fc",
-        "equipo_visitante": "Afed Fc",
-        "goles_local": 2,
-        "goles_visitante": 5
-    },
-    {
-        "jornada": 4,
-        "equipo_local": "Champagne Fc",
-        "equipo_visitante": "Inazuma Cabezo Fc",
-        "goles_local": 8,
-        "goles_visitante": 5
-    },
-    {
-        "jornada": 4,
-        "equipo_local": "Freemium",
-        "equipo_visitante": "Ud Las Piscinas",
-        "goles_local": 0,
-        "goles_visitante": 6
-    },
-    {
         "jornada": 5,
         "equipo_local": "Freemium",
+        "escudo_local": "https://minifootballleagues.com/upload/7B/8C/cd2lyxu0.jpeg",
         "equipo_visitante": "Levante La Birra",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7A/74/ny4jkyqt.png",
         "goles_local": 4,
         "goles_visitante": 4
     },
     {
         "jornada": 5,
         "equipo_local": "Afed Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/2B/25/0zv3u4cj.jpg",
         "equipo_visitante": "Blackrock Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/B3/D3/mufmrmmp.png",
         "goles_local": 4,
         "goles_visitante": 0
     },
     {
         "jornada": 5,
         "equipo_local": "C.D Tocapelotas",
+        "escudo_local": "https://minifootballleagues.com/upload/C0/E4/kewgfvgu.png",
         "equipo_visitante": "Riomar Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/1C/27/pndil2vb.jfif",
         "goles_local": 5,
         "goles_visitante": 3
     },
     {
         "jornada": 5,
         "equipo_local": "Ud Las Piscinas",
+        "escudo_local": "https://minifootballleagues.com/upload/55/5F/q5kkxhqe.png",
         "equipo_visitante": "Inazuma Cabezo Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/A3/65/xgx1b3pi.PNG",
         "goles_local": 4,
         "goles_visitante": 5
     },
     {
         "jornada": 5,
         "equipo_local": "Los Gallos Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/64/26/epwi4iye.png",
         "equipo_visitante": "Champagne Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/1B/45/mqj34j4r.jpeg",
         "goles_local": 3,
         "goles_visitante": 3
     },
     {
         "jornada": 6,
         "equipo_local": "Champagne Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/1B/45/mqj34j4r.jpeg",
         "equipo_visitante": "Afed Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/2B/25/0zv3u4cj.jpg",
         "goles_local": 4,
         "goles_visitante": 5
     },
     {
         "jornada": 6,
         "equipo_local": "Inazuma Cabezo Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/A3/65/xgx1b3pi.PNG",
         "equipo_visitante": "Los Gallos Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/64/26/epwi4iye.png",
         "goles_local": 4,
         "goles_visitante": 9
     },
     {
         "jornada": 6,
         "equipo_local": "Riomar Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/1C/27/pndil2vb.jfif",
         "equipo_visitante": "Freemium",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7B/8C/cd2lyxu0.jpeg",
         "goles_local": 2,
         "goles_visitante": 1
     },
     {
         "jornada": 6,
         "equipo_local": "Blackrock Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/B3/D3/mufmrmmp.png",
         "equipo_visitante": "C.D Tocapelotas",
+        "escudo_visitante": "https://minifootballleagues.com/upload/C0/E4/kewgfvgu.png",
         "goles_local": 1,
         "goles_visitante": 8
     },
     {
         "jornada": 6,
         "equipo_local": "Levante La Birra",
+        "escudo_local": "https://minifootballleagues.com/upload/7A/74/ny4jkyqt.png",
         "equipo_visitante": "Ud Las Piscinas",
+        "escudo_visitante": "https://minifootballleagues.com/upload/55/5F/q5kkxhqe.png",
         "goles_local": 1,
         "goles_visitante": 6
     },
     {
         "jornada": 7,
         "equipo_local": "Freemium",
+        "escudo_local": "https://minifootballleagues.com/upload/7B/8C/cd2lyxu0.jpeg",
         "equipo_visitante": "Blackrock Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/B3/D3/mufmrmmp.png",
         "goles_local": 3,
         "goles_visitante": 0
     },
     {
         "jornada": 7,
         "equipo_local": "C.D Tocapelotas",
+        "escudo_local": "https://minifootballleagues.com/upload/C0/E4/kewgfvgu.png",
         "equipo_visitante": "Champagne Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/1B/45/mqj34j4r.jpeg",
         "goles_local": 6,
         "goles_visitante": 2
     },
     {
         "jornada": 7,
         "equipo_local": "Afed Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/2B/25/0zv3u4cj.jpg",
         "equipo_visitante": "Inazuma Cabezo Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/A3/65/xgx1b3pi.PNG",
         "goles_local": 7,
         "goles_visitante": 4
     },
     {
         "jornada": 7,
         "equipo_local": "Ud Las Piscinas",
+        "escudo_local": "https://minifootballleagues.com/upload/55/5F/q5kkxhqe.png",
         "equipo_visitante": "Los Gallos Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/64/26/epwi4iye.png",
         "goles_local": 3,
         "goles_visitante": 0
     },
     {
         "jornada": 7,
         "equipo_local": "Levante La Birra",
+        "escudo_local": "https://minifootballleagues.com/upload/7A/74/ny4jkyqt.png",
         "equipo_visitante": "Riomar Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/1C/27/pndil2vb.jfif",
         "goles_local": 1,
         "goles_visitante": 3
     },
     {
         "jornada": 8,
         "equipo_local": "Ud Las Piscinas",
+        "escudo_local": "https://minifootballleagues.com/upload/55/5F/q5kkxhqe.png",
         "equipo_visitante": "Riomar Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/1C/27/pndil2vb.jfif",
         "goles_local": 1,
         "goles_visitante": 2
     },
     {
         "jornada": 8,
         "equipo_local": "Inazuma Cabezo Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/A3/65/xgx1b3pi.PNG",
         "equipo_visitante": "C.D Tocapelotas",
+        "escudo_visitante": "https://minifootballleagues.com/upload/C0/E4/kewgfvgu.png",
         "goles_local": 2,
         "goles_visitante": 6
     },
     {
         "jornada": 8,
         "equipo_local": "Blackrock Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/B3/D3/mufmrmmp.png",
         "equipo_visitante": "Levante La Birra",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7A/74/ny4jkyqt.png",
         "goles_local": 6,
         "goles_visitante": 5
     },
     {
         "jornada": 8,
         "equipo_local": "Champagne Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/1B/45/mqj34j4r.jpeg",
         "equipo_visitante": "Freemium",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7B/8C/cd2lyxu0.jpeg",
         "goles_local": 4,
         "goles_visitante": 2
     },
     {
         "jornada": 8,
         "equipo_local": "Los Gallos Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/64/26/epwi4iye.png",
         "equipo_visitante": "Afed Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/2B/25/0zv3u4cj.jpg",
         "goles_local": 2,
         "goles_visitante": 2
     },
     {
         "jornada": 9,
         "equipo_local": "Riomar Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/1C/27/pndil2vb.jfif",
         "equipo_visitante": "Blackrock Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/B3/D3/mufmrmmp.png",
         "goles_local": 3,
         "goles_visitante": 6
     },
     {
         "jornada": 9,
         "equipo_local": "Freemium",
+        "escudo_local": "https://minifootballleagues.com/upload/7B/8C/cd2lyxu0.jpeg",
         "equipo_visitante": "Inazuma Cabezo Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/A3/65/xgx1b3pi.PNG",
         "goles_local": 5,
         "goles_visitante": 3
     },
     {
         "jornada": 9,
         "equipo_local": "Levante La Birra",
+        "escudo_local": "https://minifootballleagues.com/upload/7A/74/ny4jkyqt.png",
         "equipo_visitante": "Champagne Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/1B/45/mqj34j4r.jpeg",
         "goles_local": 3,
         "goles_visitante": 2
     },
     {
         "jornada": 9,
         "equipo_local": "C.D Tocapelotas",
+        "escudo_local": "https://minifootballleagues.com/upload/C0/E4/kewgfvgu.png",
         "equipo_visitante": "Los Gallos Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/64/26/epwi4iye.png",
         "goles_local": 2,
         "goles_visitante": 3
     },
     {
         "jornada": 9,
         "equipo_local": "Afed Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/2B/25/0zv3u4cj.jpg",
         "equipo_visitante": "Ud Las Piscinas",
+        "escudo_visitante": "https://minifootballleagues.com/upload/55/5F/q5kkxhqe.png",
         "goles_local": 2,
         "goles_visitante": 2
     }

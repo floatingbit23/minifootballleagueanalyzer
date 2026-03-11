@@ -99,12 +99,15 @@
   padding-left: 1rem;
 }
 
-.team-logo-placeholder {
+.team-logo-placeholder, .team-logo-image {
   width: 40px;
   height: 40px;
   min-width: 40px;
-  background-color: #333;
   border-radius: 8px; /* Slightly rounded square instead of circle */
+}
+
+.team-logo-placeholder {
+  background-color: #333;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,6 +115,11 @@
   font-weight: 700;
   font-size: 0.8rem;
   border: 1px solid #444;
+}
+
+.team-logo-image {
+  object-fit: cover;
+  background-color: #fff;
 }
 
 .team-name {

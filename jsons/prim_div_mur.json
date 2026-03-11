@@ -2,630 +2,810 @@
     {
         "jornada": 1,
         "equipo_local": "Inter Aljucer Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "equipo_visitante": "Trufa Team",
+        "escudo_visitante": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "goles_local": 6,
         "goles_visitante": 2
     },
     {
         "jornada": 1,
         "equipo_local": "San Miguel",
+        "escudo_local": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "equipo_visitante": "Inter De Molina",
+        "escudo_visitante": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "goles_local": 4,
         "goles_visitante": 4
     },
     {
         "jornada": 1,
         "equipo_local": "La Magia Ad",
+        "escudo_local": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "equipo_visitante": "Atlético Luisenburgo",
+        "escudo_visitante": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "goles_local": 8,
         "goles_visitante": 1
     },
     {
         "jornada": 1,
         "equipo_local": "Chanetis Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "equipo_visitante": "Atlético Barqueros",
+        "escudo_visitante": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "goles_local": 2,
         "goles_visitante": 3
     },
     {
         "jornada": 1,
         "equipo_local": "Gravesinha Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "equipo_visitante": "Guerreros Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "goles_local": 1,
         "goles_visitante": 2
     },
     {
         "jornada": 2,
         "equipo_local": "Atlético Luisenburgo",
+        "escudo_local": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "equipo_visitante": "San Miguel",
+        "escudo_visitante": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "goles_local": 5,
         "goles_visitante": 5
     },
     {
         "jornada": 2,
         "equipo_local": "Inter De Molina",
+        "escudo_local": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "equipo_visitante": "Chanetis Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "goles_local": 2,
         "goles_visitante": 4
     },
     {
         "jornada": 2,
         "equipo_local": "Guerreros Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "equipo_visitante": "Inter Aljucer Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "goles_local": 2,
         "goles_visitante": 8
     },
     {
         "jornada": 2,
         "equipo_local": "Atlético Barqueros",
+        "escudo_local": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "equipo_visitante": "Gravesinha Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "goles_local": 0,
         "goles_visitante": 3
     },
     {
         "jornada": 2,
         "equipo_local": "Trufa Team",
+        "escudo_local": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "equipo_visitante": "La Magia Ad",
+        "escudo_visitante": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "goles_local": 3,
         "goles_visitante": 5
     },
     {
         "jornada": 3,
         "equipo_local": "Atlético Luisenburgo",
+        "escudo_local": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "equipo_visitante": "Trufa Team",
+        "escudo_visitante": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "goles_local": 6,
         "goles_visitante": 5
     },
     {
         "jornada": 3,
         "equipo_local": "Gravesinha Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "equipo_visitante": "Inter De Molina",
+        "escudo_visitante": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "goles_local": 2,
         "goles_visitante": 6
     },
     {
         "jornada": 3,
         "equipo_local": "Inter Aljucer Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "equipo_visitante": "Atlético Barqueros",
+        "escudo_visitante": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "goles_local": 3,
         "goles_visitante": 3
     },
     {
         "jornada": 3,
         "equipo_local": "La Magia Ad",
+        "escudo_local": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "equipo_visitante": "Guerreros Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "goles_local": 5,
         "goles_visitante": 3
     },
     {
         "jornada": 3,
         "equipo_local": "San Miguel",
+        "escudo_local": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "equipo_visitante": "Chanetis Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "goles_local": 2,
         "goles_visitante": 6
     },
     {
         "jornada": 4,
         "equipo_local": "Inter De Molina",
+        "escudo_local": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "equipo_visitante": "Inter Aljucer Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "goles_local": 1,
         "goles_visitante": 7
     },
     {
         "jornada": 4,
         "equipo_local": "Trufa Team",
+        "escudo_local": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "equipo_visitante": "San Miguel",
+        "escudo_visitante": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "goles_local": 3,
         "goles_visitante": 10
     },
     {
         "jornada": 4,
         "equipo_local": "Guerreros Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "equipo_visitante": "Atlético Luisenburgo",
+        "escudo_visitante": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "goles_local": 5,
         "goles_visitante": 5
     },
     {
         "jornada": 4,
         "equipo_local": "Atlético Barqueros",
+        "escudo_local": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "equipo_visitante": "La Magia Ad",
+        "escudo_visitante": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "goles_local": 3,
         "goles_visitante": 2
     },
     {
         "jornada": 4,
         "equipo_local": "Chanetis Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "equipo_visitante": "Gravesinha Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "goles_local": 3,
         "goles_visitante": 2
     },
     {
         "jornada": 5,
         "equipo_local": "La Magia Ad",
+        "escudo_local": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "equipo_visitante": "Inter De Molina",
+        "escudo_visitante": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "goles_local": 2,
         "goles_visitante": 3
     },
     {
         "jornada": 5,
         "equipo_local": "Atlético Luisenburgo",
+        "escudo_local": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "equipo_visitante": "Atlético Barqueros",
+        "escudo_visitante": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "goles_local": 9,
         "goles_visitante": 6
     },
     {
         "jornada": 5,
         "equipo_local": "Trufa Team",
+        "escudo_local": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "equipo_visitante": "Guerreros Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "goles_local": 6,
         "goles_visitante": 3
     },
     {
         "jornada": 5,
         "equipo_local": "Inter Aljucer Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "equipo_visitante": "Chanetis Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "goles_local": 1,
         "goles_visitante": 4
     },
     {
         "jornada": 5,
         "equipo_local": "San Miguel",
+        "escudo_local": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "equipo_visitante": "Gravesinha Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "goles_local": 2,
         "goles_visitante": 4
     },
     {
         "jornada": 6,
         "equipo_local": "Guerreros Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "equipo_visitante": "San Miguel",
+        "escudo_visitante": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "goles_local": 7,
         "goles_visitante": 7
     },
     {
         "jornada": 6,
         "equipo_local": "Atlético Barqueros",
+        "escudo_local": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "equipo_visitante": "Trufa Team",
+        "escudo_visitante": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "goles_local": 4,
         "goles_visitante": 0
     },
     {
         "jornada": 6,
         "equipo_local": "Inter De Molina",
+        "escudo_local": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "equipo_visitante": "Atlético Luisenburgo",
+        "escudo_visitante": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "goles_local": 6,
         "goles_visitante": 5
     },
     {
         "jornada": 6,
         "equipo_local": "Chanetis Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "equipo_visitante": "La Magia Ad",
+        "escudo_visitante": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "goles_local": 6,
         "goles_visitante": 3
     },
     {
         "jornada": 6,
         "equipo_local": "Gravesinha Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "equipo_visitante": "Inter Aljucer Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "goles_local": 3,
         "goles_visitante": 5
     },
     {
         "jornada": 7,
         "equipo_local": "Guerreros Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "equipo_visitante": "Atlético Barqueros",
+        "escudo_visitante": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "goles_local": 4,
         "goles_visitante": 7
     },
     {
         "jornada": 7,
         "equipo_local": "Trufa Team",
+        "escudo_local": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "equipo_visitante": "Inter De Molina",
+        "escudo_visitante": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "goles_local": 4,
         "goles_visitante": 3
     },
     {
         "jornada": 7,
         "equipo_local": "Atlético Luisenburgo",
+        "escudo_local": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "equipo_visitante": "Chanetis Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "goles_local": 4,
         "goles_visitante": 7
     },
     {
         "jornada": 7,
         "equipo_local": "La Magia Ad",
+        "escudo_local": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "equipo_visitante": "Gravesinha Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "goles_local": 2,
         "goles_visitante": 2
     },
     {
         "jornada": 7,
         "equipo_local": "San Miguel",
+        "escudo_local": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "equipo_visitante": "Inter Aljucer Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "goles_local": 7,
         "goles_visitante": 9
     },
     {
         "jornada": 8,
         "equipo_local": "Inter De Molina",
+        "escudo_local": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "equipo_visitante": "Guerreros Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "goles_local": 1,
         "goles_visitante": 4
     },
     {
         "jornada": 8,
         "equipo_local": "San Miguel",
+        "escudo_local": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "equipo_visitante": "Atlético Barqueros",
+        "escudo_visitante": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "goles_local": 3,
         "goles_visitante": 7
     },
     {
         "jornada": 8,
         "equipo_local": "Chanetis Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "equipo_visitante": "Trufa Team",
+        "escudo_visitante": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "goles_local": 3,
         "goles_visitante": 0
     },
     {
         "jornada": 8,
         "equipo_local": "Gravesinha Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "equipo_visitante": "Atlético Luisenburgo",
+        "escudo_visitante": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "goles_local": 4,
         "goles_visitante": 3
     },
     {
         "jornada": 8,
         "equipo_local": "Inter Aljucer Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "equipo_visitante": "La Magia Ad",
+        "escudo_visitante": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "goles_local": 5,
         "goles_visitante": 1
     },
     {
         "jornada": 9,
         "equipo_local": "Guerreros Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "equipo_visitante": "Chanetis Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "goles_local": 2,
         "goles_visitante": 6
     },
     {
         "jornada": 9,
         "equipo_local": "Atlético Barqueros",
+        "escudo_local": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "equipo_visitante": "Inter De Molina",
+        "escudo_visitante": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "goles_local": 3,
         "goles_visitante": 1
     },
     {
         "jornada": 9,
         "equipo_local": "Trufa Team",
+        "escudo_local": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "equipo_visitante": "Gravesinha Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "goles_local": 3,
         "goles_visitante": 4
     },
     {
         "jornada": 9,
         "equipo_local": "Atlético Luisenburgo",
+        "escudo_local": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "equipo_visitante": "Inter Aljucer Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "goles_local": 0,
         "goles_visitante": 3
     },
     {
         "jornada": 9,
         "equipo_local": "La Magia Ad",
+        "escudo_local": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "equipo_visitante": "San Miguel",
+        "escudo_visitante": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "goles_local": 7,
         "goles_visitante": 11
     },
     {
         "jornada": 10,
         "equipo_local": "Atlético Luisenburgo",
+        "escudo_local": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "equipo_visitante": "La Magia Ad",
+        "escudo_visitante": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "goles_local": 1,
         "goles_visitante": 3
     },
     {
         "jornada": 10,
         "equipo_local": "Atlético Barqueros",
+        "escudo_local": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "equipo_visitante": "Chanetis Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "goles_local": 1,
         "goles_visitante": 2
     },
     {
         "jornada": 10,
         "equipo_local": "Inter De Molina",
+        "escudo_local": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "equipo_visitante": "San Miguel",
+        "escudo_visitante": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "goles_local": 6,
         "goles_visitante": 8
     },
     {
         "jornada": 10,
         "equipo_local": "Guerreros Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "equipo_visitante": "Gravesinha Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "goles_local": 3,
         "goles_visitante": 4
     },
     {
         "jornada": 10,
         "equipo_local": "Trufa Team",
+        "escudo_local": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "equipo_visitante": "Inter Aljucer Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "goles_local": 5,
         "goles_visitante": 2
     },
     {
         "jornada": 11,
         "equipo_local": "Chanetis Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "equipo_visitante": "Inter De Molina",
+        "escudo_visitante": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "goles_local": 6,
         "goles_visitante": 4
     },
     {
         "jornada": 11,
         "equipo_local": "Gravesinha Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "equipo_visitante": "Atlético Barqueros",
+        "escudo_visitante": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "goles_local": 2,
         "goles_visitante": 2
     },
     {
         "jornada": 11,
         "equipo_local": "Inter Aljucer Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "equipo_visitante": "Guerreros Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "goles_local": 6,
         "goles_visitante": 3
     },
     {
         "jornada": 11,
         "equipo_local": "La Magia Ad",
+        "escudo_local": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "equipo_visitante": "Trufa Team",
+        "escudo_visitante": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "goles_local": 6,
         "goles_visitante": 7
     },
     {
         "jornada": 11,
         "equipo_local": "San Miguel",
+        "escudo_local": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "equipo_visitante": "Atlético Luisenburgo",
+        "escudo_visitante": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "goles_local": 3,
         "goles_visitante": 1
     },
     {
         "jornada": 12,
         "equipo_local": "Inter De Molina",
+        "escudo_local": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "equipo_visitante": "Gravesinha Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "goles_local": 3,
         "goles_visitante": 4
     },
     {
         "jornada": 12,
         "equipo_local": "Atlético Barqueros",
+        "escudo_local": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "equipo_visitante": "Inter Aljucer Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "goles_local": 2,
         "goles_visitante": 3
     },
     {
         "jornada": 12,
         "equipo_local": "Chanetis Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "equipo_visitante": "San Miguel",
+        "escudo_visitante": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "goles_local": 4,
         "goles_visitante": 5
     },
     {
         "jornada": 12,
         "equipo_local": "Trufa Team",
+        "escudo_local": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "equipo_visitante": "Atlético Luisenburgo",
+        "escudo_visitante": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "goles_local": 5,
         "goles_visitante": 3
     },
     {
         "jornada": 12,
         "equipo_local": "Guerreros Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "equipo_visitante": "La Magia Ad",
+        "escudo_visitante": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "goles_local": 3,
         "goles_visitante": 8
     },
     {
         "jornada": 13,
         "equipo_local": "San Miguel",
+        "escudo_local": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "equipo_visitante": "Trufa Team",
+        "escudo_visitante": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "goles_local": 6,
         "goles_visitante": 2
     },
     {
         "jornada": 13,
         "equipo_local": "La Magia Ad",
+        "escudo_local": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "equipo_visitante": "Atlético Barqueros",
+        "escudo_visitante": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "goles_local": 3,
         "goles_visitante": 8
     },
     {
         "jornada": 13,
         "equipo_local": "Inter Aljucer Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "equipo_visitante": "Inter De Molina",
+        "escudo_visitante": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "goles_local": 1,
         "goles_visitante": 7
     },
     {
         "jornada": 13,
         "equipo_local": "Atlético Luisenburgo",
+        "escudo_local": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "equipo_visitante": "Guerreros Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "goles_local": 6,
         "goles_visitante": 12
     },
     {
         "jornada": 13,
         "equipo_local": "Gravesinha Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "equipo_visitante": "Chanetis Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "goles_local": 1,
         "goles_visitante": 6
     },
     {
         "jornada": 14,
         "equipo_local": "Guerreros Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "equipo_visitante": "Trufa Team",
+        "escudo_visitante": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "goles_local": 5,
         "goles_visitante": 5
     },
     {
         "jornada": 14,
         "equipo_local": "Atlético Barqueros",
+        "escudo_local": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "equipo_visitante": "Atlético Luisenburgo",
+        "escudo_visitante": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "goles_local": 5,
         "goles_visitante": 1
     },
     {
         "jornada": 14,
         "equipo_local": "Inter De Molina",
+        "escudo_local": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "equipo_visitante": "La Magia Ad",
+        "escudo_visitante": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "goles_local": 0,
         "goles_visitante": 0
     },
     {
         "jornada": 14,
         "equipo_local": "Chanetis Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "equipo_visitante": "Inter Aljucer Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "goles_local": 5,
         "goles_visitante": 4
     },
     {
         "jornada": 14,
         "equipo_local": "Gravesinha Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "equipo_visitante": "San Miguel",
+        "escudo_visitante": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "goles_local": 2,
         "goles_visitante": 2
     },
     {
         "jornada": 15,
         "equipo_local": "San Miguel",
+        "escudo_local": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "equipo_visitante": "Guerreros Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "goles_local": 8,
         "goles_visitante": 9
     },
     {
         "jornada": 15,
         "equipo_local": "Atlético Luisenburgo",
+        "escudo_local": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "equipo_visitante": "Inter De Molina",
+        "escudo_visitante": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "goles_local": 3,
         "goles_visitante": 6
     },
     {
         "jornada": 15,
         "equipo_local": "Trufa Team",
+        "escudo_local": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "equipo_visitante": "Atlético Barqueros",
+        "escudo_visitante": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "goles_local": 2,
         "goles_visitante": 5
     },
     {
         "jornada": 15,
         "equipo_local": "La Magia Ad",
+        "escudo_local": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "equipo_visitante": "Chanetis Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "goles_local": 2,
         "goles_visitante": 4
     },
     {
         "jornada": 15,
         "equipo_local": "Inter Aljucer Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "equipo_visitante": "Gravesinha Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "goles_local": 5,
         "goles_visitante": 4
     },
     {
         "jornada": 16,
         "equipo_local": "Inter De Molina",
+        "escudo_local": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "equipo_visitante": "Trufa Team",
+        "escudo_visitante": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "goles_local": 4,
         "goles_visitante": 5
     },
     {
         "jornada": 16,
         "equipo_local": "Atlético Barqueros",
+        "escudo_local": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "equipo_visitante": "Guerreros Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "goles_local": 5,
         "goles_visitante": 4
     },
     {
         "jornada": 16,
         "equipo_local": "Chanetis Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "equipo_visitante": "Atlético Luisenburgo",
+        "escudo_visitante": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "goles_local": 9,
         "goles_visitante": 2
     },
     {
         "jornada": 16,
         "equipo_local": "Gravesinha Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "equipo_visitante": "La Magia Ad",
+        "escudo_visitante": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "goles_local": 4,
         "goles_visitante": 2
     },
     {
         "jornada": 16,
         "equipo_local": "Inter Aljucer Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "equipo_visitante": "San Miguel",
+        "escudo_visitante": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "goles_local": 0,
         "goles_visitante": 3
     },
     {
         "jornada": 17,
         "equipo_local": "Guerreros Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "equipo_visitante": "Inter De Molina",
+        "escudo_visitante": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "goles_local": 6,
         "goles_visitante": 1
     },
     {
         "jornada": 17,
         "equipo_local": "Atlético Luisenburgo",
+        "escudo_local": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "equipo_visitante": "Gravesinha Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "goles_local": 1,
         "goles_visitante": 6
     },
     {
         "jornada": 17,
         "equipo_local": "Atlético Barqueros",
+        "escudo_local": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "equipo_visitante": "San Miguel",
+        "escudo_visitante": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "goles_local": 3,
         "goles_visitante": 0
     },
     {
         "jornada": 17,
         "equipo_local": "La Magia Ad",
+        "escudo_local": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "equipo_visitante": "Inter Aljucer Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "goles_local": 4,
         "goles_visitante": 2
     },
     {
         "jornada": 17,
         "equipo_local": "Trufa Team",
+        "escudo_local": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "equipo_visitante": "Chanetis Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "goles_local": 2,
         "goles_visitante": 4
     },
     {
         "jornada": 18,
         "equipo_local": "Inter Aljucer Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/8E/20/p1xjeetn.png",
         "equipo_visitante": "Atlético Luisenburgo",
+        "escudo_visitante": "https://minifootballleagues.com/upload/DB/A4/qnqpet0e.jpg",
         "goles_local": 3,
         "goles_visitante": 0
     },
     {
         "jornada": 18,
         "equipo_local": "Inter De Molina",
+        "escudo_local": "https://minifootballleagues.com/upload/78/DF/cz5p3uzi.jpeg",
         "equipo_visitante": "Atlético Barqueros",
+        "escudo_visitante": "https://minifootballleagues.com/upload/F3/FD/0nsqufjn.jpg",
         "goles_local": 3,
         "goles_visitante": 3
     },
     {
         "jornada": 18,
         "equipo_local": "Gravesinha Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/7E/75/b4j2crzq.jpeg",
         "equipo_visitante": "Trufa Team",
+        "escudo_visitante": "https://minifootballleagues.com/upload/B5/82/rk2ko4oz.png",
         "goles_local": 2,
         "goles_visitante": 6
     },
     {
         "jornada": 18,
         "equipo_local": "San Miguel",
+        "escudo_local": "https://minifootballleagues.com/upload/32/4B/23yumg0n.jpg",
         "equipo_visitante": "La Magia Ad",
+        "escudo_visitante": "https://minifootballleagues.com/upload/D6/F7/wx0zb33s.jpeg",
         "goles_local": 5,
         "goles_visitante": 4
     },
     {
         "jornada": 18,
         "equipo_local": "Chanetis Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/3C/E1/r5li43w3.png",
         "equipo_visitante": "Guerreros Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/5B/DC/qmtaibo1.png",
         "goles_local": 6,
         "goles_visitante": 4
     }

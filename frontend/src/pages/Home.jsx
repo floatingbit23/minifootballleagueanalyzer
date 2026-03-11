@@ -96,7 +96,8 @@ const Home = () => {
     return rankingsData[selectedLeague].map(team => ({
       id: team.equipo,
       name: team.equipo,
-      puntos: team.puntos
+      puntos: team.puntos,
+      logo: team.logo
     })).sort((a, b) => a.name.localeCompare(b.name));
   }, [selectedLeague, rankingsData]);
 
@@ -115,7 +116,9 @@ const Home = () => {
 
     return {
       equipoHome: teamA.name,
+      logoHome: teamA.logo,
       equipoAway: teamB.name,
+      logoAway: teamB.logo,
       probHome,
       probAway
     };
@@ -196,7 +199,9 @@ const Home = () => {
             >
               <MatrixChart 
                 equipoHome={matchData.equipoHome}
+                logoHome={matchData.logoHome}
                 equipoAway={matchData.equipoAway}
+                logoAway={matchData.logoAway}
                 probHome={matchData.probHome}
                 probAway={matchData.probAway}
               />

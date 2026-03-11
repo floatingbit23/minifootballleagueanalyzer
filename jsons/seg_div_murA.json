@@ -2,273 +2,351 @@
     {
         "jornada": 1,
         "equipo_local": "Tiki Taka",
+        "escudo_local": "https://minifootballleagues.com/upload/03/C8/1scz4v3r.jpg",
         "equipo_visitante": "El Palmar City",
+        "escudo_visitante": "https://minifootballleagues.com/upload/5C/A8/xjdn330p.jpg",
         "goles_local": 4,
         "goles_visitante": 9
     },
     {
         "jornada": 1,
         "equipo_local": "Reventaos Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/F3/58/avlpiigu.png",
         "equipo_visitante": "Billie'S Ballers",
+        "escudo_visitante": "https://minifootballleagues.com/upload/A3/DB/zhl12wou.png",
         "goles_local": 4,
         "goles_visitante": 5
     },
     {
         "jornada": 1,
         "equipo_local": "La Élite Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/C8/0D/oufnhoen.png",
         "equipo_visitante": "Samba Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/EC/E2/nknlvbn3.png",
         "goles_local": 6,
         "goles_visitante": 0
     },
     {
         "jornada": 1,
         "equipo_local": "Perikles",
+        "escudo_local": "https://minifootballleagues.com/upload/10/8B/2havbwtc.jpg",
         "equipo_visitante": "Payicos Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/14/60/rzxl032j.png",
         "goles_local": 4,
         "goles_visitante": 2
     },
     {
         "jornada": 1,
         "equipo_local": "Nakamas Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/C8/31/2rjg4mj0.png",
         "equipo_visitante": "Cvstodia Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/6D/E6/ujurv0tz.jpeg",
         "goles_local": 8,
         "goles_visitante": 3
     },
     {
         "jornada": 2,
         "equipo_local": "Samba Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/EC/E2/nknlvbn3.png",
         "equipo_visitante": "Perikles",
+        "escudo_visitante": "https://minifootballleagues.com/upload/10/8B/2havbwtc.jpg",
         "goles_local": 6,
         "goles_visitante": 5
     },
     {
         "jornada": 2,
         "equipo_local": "Cvstodia Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/6D/E6/ujurv0tz.jpeg",
         "equipo_visitante": "La Élite Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/C8/0D/oufnhoen.png",
         "goles_local": 4,
         "goles_visitante": 1
     },
     {
         "jornada": 2,
         "equipo_local": "Payicos Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/14/60/rzxl032j.png",
         "equipo_visitante": "Reventaos Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/F3/58/avlpiigu.png",
         "goles_local": 4,
         "goles_visitante": 2
     },
     {
         "jornada": 2,
         "equipo_local": "Billie'S Ballers",
+        "escudo_local": "https://minifootballleagues.com/upload/A3/DB/zhl12wou.png",
         "equipo_visitante": "Tiki Taka",
+        "escudo_visitante": "https://minifootballleagues.com/upload/03/C8/1scz4v3r.jpg",
         "goles_local": 7,
         "goles_visitante": 0
     },
     {
         "jornada": 2,
         "equipo_local": "El Palmar City",
+        "escudo_local": "https://minifootballleagues.com/upload/5C/A8/xjdn330p.jpg",
         "equipo_visitante": "Nakamas Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/C8/31/2rjg4mj0.png",
         "goles_local": 7,
         "goles_visitante": 4
     },
     {
         "jornada": 3,
         "equipo_local": "Reventaos Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/F3/58/avlpiigu.png",
         "equipo_visitante": "Samba Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/EC/E2/nknlvbn3.png",
         "goles_local": 4,
         "goles_visitante": 7
     },
     {
         "jornada": 3,
         "equipo_local": "Nakamas Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/C8/31/2rjg4mj0.png",
         "equipo_visitante": "La Élite Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/C8/0D/oufnhoen.png",
         "goles_local": 5,
         "goles_visitante": 2
     },
     {
         "jornada": 3,
         "equipo_local": "Perikles",
+        "escudo_local": "https://minifootballleagues.com/upload/10/8B/2havbwtc.jpg",
         "equipo_visitante": "Cvstodia Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/6D/E6/ujurv0tz.jpeg",
         "goles_local": 3,
         "goles_visitante": 7
     },
     {
         "jornada": 3,
         "equipo_local": "El Palmar City",
+        "escudo_local": "https://minifootballleagues.com/upload/5C/A8/xjdn330p.jpg",
         "equipo_visitante": "Billie'S Ballers",
+        "escudo_visitante": "https://minifootballleagues.com/upload/A3/DB/zhl12wou.png",
         "goles_local": 7,
         "goles_visitante": 3
     },
     {
         "jornada": 3,
         "equipo_local": "Tiki Taka",
+        "escudo_local": "https://minifootballleagues.com/upload/03/C8/1scz4v3r.jpg",
         "equipo_visitante": "Payicos Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/14/60/rzxl032j.png",
         "goles_local": 0,
         "goles_visitante": 3
     },
     {
         "jornada": 4,
         "equipo_local": "Billie'S Ballers",
+        "escudo_local": "https://minifootballleagues.com/upload/A3/DB/zhl12wou.png",
         "equipo_visitante": "Nakamas Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/C8/31/2rjg4mj0.png",
         "goles_local": 3,
         "goles_visitante": 4
     },
     {
         "jornada": 4,
         "equipo_local": "Samba Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/EC/E2/nknlvbn3.png",
         "equipo_visitante": "Tiki Taka",
+        "escudo_visitante": "https://minifootballleagues.com/upload/03/C8/1scz4v3r.jpg",
         "goles_local": 3,
         "goles_visitante": 3
     },
     {
         "jornada": 4,
         "equipo_local": "Payicos Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/14/60/rzxl032j.png",
         "equipo_visitante": "El Palmar City",
+        "escudo_visitante": "https://minifootballleagues.com/upload/5C/A8/xjdn330p.jpg",
         "goles_local": 1,
         "goles_visitante": 3
     },
     {
         "jornada": 4,
         "equipo_local": "Cvstodia Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/6D/E6/ujurv0tz.jpeg",
         "equipo_visitante": "Reventaos Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/F3/58/avlpiigu.png",
         "goles_local": 1,
         "goles_visitante": 2
     },
     {
         "jornada": 4,
         "equipo_local": "La Élite Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/C8/0D/oufnhoen.png",
         "equipo_visitante": "Perikles",
+        "escudo_visitante": "https://minifootballleagues.com/upload/10/8B/2havbwtc.jpg",
         "goles_local": 0,
         "goles_visitante": 3
     },
     {
         "jornada": 5,
         "equipo_local": "Tiki Taka",
+        "escudo_local": "https://minifootballleagues.com/upload/03/C8/1scz4v3r.jpg",
         "equipo_visitante": "Cvstodia Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/6D/E6/ujurv0tz.jpeg",
         "goles_local": 6,
         "goles_visitante": 2
     },
     {
         "jornada": 5,
         "equipo_local": "El Palmar City",
+        "escudo_local": "https://minifootballleagues.com/upload/5C/A8/xjdn330p.jpg",
         "equipo_visitante": "Samba Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/EC/E2/nknlvbn3.png",
         "goles_local": 8,
         "goles_visitante": 1
     },
     {
         "jornada": 5,
         "equipo_local": "Nakamas Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/C8/31/2rjg4mj0.png",
         "equipo_visitante": "Perikles",
+        "escudo_visitante": "https://minifootballleagues.com/upload/10/8B/2havbwtc.jpg",
         "goles_local": 8,
         "goles_visitante": 4
     },
     {
         "jornada": 5,
         "equipo_local": "Billie'S Ballers",
+        "escudo_local": "https://minifootballleagues.com/upload/A3/DB/zhl12wou.png",
         "equipo_visitante": "Payicos Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/14/60/rzxl032j.png",
         "goles_local": 7,
         "goles_visitante": 0
     },
     {
         "jornada": 5,
         "equipo_local": "Reventaos Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/F3/58/avlpiigu.png",
         "equipo_visitante": "La Élite Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/C8/0D/oufnhoen.png",
         "goles_local": 3,
         "goles_visitante": 6
     },
     {
         "jornada": 7,
         "equipo_local": "Payicos Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/14/60/rzxl032j.png",
         "equipo_visitante": "Samba Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/EC/E2/nknlvbn3.png",
         "goles_local": 3,
         "goles_visitante": 0
     },
     {
         "jornada": 7,
         "equipo_local": "Nakamas Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/C8/31/2rjg4mj0.png",
         "equipo_visitante": "Reventaos Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/F3/58/avlpiigu.png",
         "goles_local": 6,
         "goles_visitante": 3
     },
     {
         "jornada": 7,
         "equipo_local": "Tiki Taka",
+        "escudo_local": "https://minifootballleagues.com/upload/03/C8/1scz4v3r.jpg",
         "equipo_visitante": "Perikles",
+        "escudo_visitante": "https://minifootballleagues.com/upload/10/8B/2havbwtc.jpg",
         "goles_local": 4,
         "goles_visitante": 9
     },
     {
         "jornada": 7,
         "equipo_local": "El Palmar City",
+        "escudo_local": "https://minifootballleagues.com/upload/5C/A8/xjdn330p.jpg",
         "equipo_visitante": "La Élite Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/C8/0D/oufnhoen.png",
         "goles_local": 3,
         "goles_visitante": 0
     },
     {
         "jornada": 8,
         "equipo_local": "Nakamas Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/C8/31/2rjg4mj0.png",
         "equipo_visitante": "Samba Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/EC/E2/nknlvbn3.png",
         "goles_local": 3,
         "goles_visitante": 2
     },
     {
         "jornada": 8,
         "equipo_local": "La Élite Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/C8/0D/oufnhoen.png",
         "equipo_visitante": "Billie'S Ballers",
+        "escudo_visitante": "https://minifootballleagues.com/upload/A3/DB/zhl12wou.png",
         "goles_local": 0,
         "goles_visitante": 3
     },
     {
         "jornada": 8,
         "equipo_local": "Perikles",
+        "escudo_local": "https://minifootballleagues.com/upload/10/8B/2havbwtc.jpg",
         "equipo_visitante": "El Palmar City",
+        "escudo_visitante": "https://minifootballleagues.com/upload/5C/A8/xjdn330p.jpg",
         "goles_local": 5,
         "goles_visitante": 8
     },
     {
         "jornada": 8,
         "equipo_local": "Reventaos Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/F3/58/avlpiigu.png",
         "equipo_visitante": "Tiki Taka",
+        "escudo_visitante": "https://minifootballleagues.com/upload/03/C8/1scz4v3r.jpg",
         "goles_local": 0,
         "goles_visitante": 3
     },
     {
         "jornada": 8,
         "equipo_local": "Cvstodia Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/6D/E6/ujurv0tz.jpeg",
         "equipo_visitante": "Payicos Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/14/60/rzxl032j.png",
         "goles_local": 2,
         "goles_visitante": 6
     },
     {
         "jornada": 9,
         "equipo_local": "Samba Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/EC/E2/nknlvbn3.png",
         "equipo_visitante": "Cvstodia Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/6D/E6/ujurv0tz.jpeg",
         "goles_local": 3,
         "goles_visitante": 0
     },
     {
         "jornada": 9,
         "equipo_local": "Payicos Fc",
+        "escudo_local": "https://minifootballleagues.com/upload/14/60/rzxl032j.png",
         "equipo_visitante": "La Élite Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/C8/0D/oufnhoen.png",
         "goles_local": 0,
         "goles_visitante": 3
     },
     {
         "jornada": 9,
         "equipo_local": "El Palmar City",
+        "escudo_local": "https://minifootballleagues.com/upload/5C/A8/xjdn330p.jpg",
         "equipo_visitante": "Reventaos Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/F3/58/avlpiigu.png",
         "goles_local": 3,
         "goles_visitante": 0
     },
     {
         "jornada": 9,
         "equipo_local": "Tiki Taka",
+        "escudo_local": "https://minifootballleagues.com/upload/03/C8/1scz4v3r.jpg",
         "equipo_visitante": "Nakamas Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/C8/31/2rjg4mj0.png",
         "goles_local": 3,
         "goles_visitante": 0
     },
     {
         "jornada": 9,
         "equipo_local": "Billie'S Ballers",
+        "escudo_local": "https://minifootballleagues.com/upload/A3/DB/zhl12wou.png",
         "equipo_visitante": "Perikles",
+        "escudo_visitante": "https://minifootballleagues.com/upload/10/8B/2havbwtc.jpg",
         "goles_local": 5,
         "goles_visitante": 2
     }

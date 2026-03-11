@@ -28,10 +28,13 @@ const Leaderboard = ({ rankings = [] }) => {
             </div>
             
             <div className="col-team">
-              {/* Fallback to initials if we don't have a logo */}
-              <div className="team-logo-placeholder">
-                {team.equipo.substring(0, 2).toUpperCase()}
-              </div>
+              {team.logo ? (
+                <img src={team.logo} alt={team.equipo} className="team-logo-image" />
+              ) : (
+                <div className="team-logo-placeholder">
+                  {team.equipo.substring(0, 2).toUpperCase()}
+                </div>
+              )}
               <span className="team-name">{team.equipo}</span>
             </div>
             
