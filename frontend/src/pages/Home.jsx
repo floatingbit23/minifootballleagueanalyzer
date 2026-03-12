@@ -31,6 +31,7 @@ const CustomSelect = ({ label, options, value, onChange, placeholder }) => {
   const displayValue = selectedOption ? (
     <div className="select-value-with-icon">
       {selectedOption.flag && <img src={selectedOption.flag} alt="" className="select-flag" />}
+      {selectedOption.logo && <img src={selectedOption.logo} alt="" className="select-logo" />}
       <span>{selectedOption.name}</span>
     </div>
   ) : (
@@ -66,6 +67,7 @@ const CustomSelect = ({ label, options, value, onChange, placeholder }) => {
                 }}
               >
                 {opt.flag && <img src={opt.flag} alt="" className="select-flag" />}
+                {opt.logo && <img src={opt.logo} alt="" className="select-logo" />}
                 <span>{opt.name}</span>
               </div>
             ))}
@@ -155,7 +157,7 @@ const Home = () => {
               <div className="teams-grid">
                 <CustomSelect 
                   label="Equipo Local"
-                  options={leagueTeams}
+                  options={leagueTeams.filter(team => team.id !== selectedTeamB)}
                   value={selectedTeamA}
                   onChange={setSelectedTeamA}
                   placeholder="Selecciona el 1º equipo..."
@@ -163,7 +165,7 @@ const Home = () => {
                 <div className="vs-badge">VS</div>
                 <CustomSelect 
                   label="Equipo Visitante"
-                  options={leagueTeams}
+                  options={leagueTeams.filter(team => team.id !== selectedTeamA)}
                   value={selectedTeamB}
                   onChange={setSelectedTeamB}
                   placeholder="Selecciona el 2º equipo..."

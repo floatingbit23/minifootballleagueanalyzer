@@ -2,10 +2,11 @@ import React from 'react';
 import './Leaderboard.css';
 
 const Leaderboard = ({ rankings = [] }) => {
+
   if (!rankings || rankings.length === 0) {
     return (
       <div className="leaderboard-empty">
-        <p>Selecciona una competición para ver la clasificación ELO.</p>
+        <p>Selecciona una competición para ver el Power Ranking.</p>
       </div>
     );
   }
@@ -17,7 +18,7 @@ const Leaderboard = ({ rankings = [] }) => {
         <span className="header-col-team">Equipo</span>
         <span className="header-col-pts">Pts</span>
       </div>
-      
+
       <div className="leaderboard-body">
         {rankings.map((team, index) => (
           <div key={team.equipo} className="leaderboard-row">
@@ -26,7 +27,7 @@ const Leaderboard = ({ rankings = [] }) => {
                 #{team.posicion}
               </div>
             </div>
-            
+
             <div className="col-team">
               {team.logo ? (
                 <img src={team.logo} alt={team.equipo} className="team-logo-image" />
@@ -37,7 +38,7 @@ const Leaderboard = ({ rankings = [] }) => {
               )}
               <span className="team-name">{team.equipo}</span>
             </div>
-            
+
             <div className="col-pts">
               <span className="pts-value">{team.puntos}</span>
             </div>

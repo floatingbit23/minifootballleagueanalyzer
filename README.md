@@ -53,6 +53,9 @@ Los JSONs son inyectados dentro del algoritmo y se exporta un ranking global en 
 
 #### H2H (Enfrentamientos directos)
 
+#### Automatización
+Los datos se actualizan diariamente mediante GitHub Actions.   
+
 ### Frontend
 
 - Funciona con **Vite y React**, garantizando tiempos de carga muy rápidos.
