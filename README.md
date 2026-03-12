@@ -13,12 +13,12 @@ La web muestra un menú desplegable permitiendo escoger la competición. Cada co
 2. Tabla de cuotas de los encuentros de la próxima jornada 
 
 Se incluyen las siguientes competiciones de F7:
-- Primera División Murcia (prim_div_mur.json)
-- Segunda División A Murcia (seg_div_murA.json)
-- Segunda División B Murcia (seg_div_murB.json)
-- Tercera División A Murcia (ter_div_murA.json)
-- Tercera División B Murcia (ter_div_murB.json)
-- Cuarta División Murcia (cuar_div_mur.json)
+- Primera División Murcia
+- Segunda División A Murcia
+- Segunda División B Murcia
+- Tercera División A Murcia
+- Tercera División B Murcia
+- Cuarta División Murcia
 
 La web también muestra un menú desplegable permitiendo escoger dos equipo dentro de cada competición. Para cada pareja de equipos se incluirá:
 
@@ -37,6 +37,8 @@ La web también muestra un menú desplegable permitiendo escoger dos equipo dent
 
 Se divide principalmente en dos grandes bloques: un motor de recolección y cálculo de datos (Backend en Python) y una interfaz gráfica moderna para visualización de estadísticas (Frontend hecho en React + Vite).
 
+Más info en [AGENTS.md](AGENTS.md).
+
 ### Backend
 
 #### Recolección de datos
@@ -54,12 +56,13 @@ Los JSONs son inyectados dentro del algoritmo y se exporta un ranking global en 
 #### H2H (Enfrentamientos directos)
 
 #### Automatización
-Los datos se actualizan diariamente mediante GitHub Actions.   
+Los datos se actualizan diariamente mediante CI / GitHub Actions.   
 
 ### Frontend
 
 - Funciona con **Vite y React**, garantizando tiempos de carga muy rápidos.
 - Incluye herramientas como **Chart.js y React-Chartjs-2** para las visualizaciones y gráficos con datos estadísticos complejos (como el Gráfico de Radar)
+
 
 
 
