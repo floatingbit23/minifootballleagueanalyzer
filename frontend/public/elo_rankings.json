@@ -133,7 +133,7 @@
         {
             "posicion": 2,
             "equipo": "Billie'S Ballers",
-            "puntos": 1576,
+            "puntos": 1601,
             "logo": "https://minifootballleagues.com/upload/A3/DB/zhl12wou.png"
         },
         {
@@ -151,38 +151,38 @@
         {
             "posicion": 5,
             "equipo": "Payicos Fc",
-            "puntos": 1490,
+            "puntos": 1488,
             "logo": "https://minifootballleagues.com/upload/14/60/rzxl032j.png"
         },
         {
             "posicion": 6,
             "equipo": "La Élite Fc",
-            "puntos": 1478,
+            "puntos": 1480,
             "logo": "https://minifootballleagues.com/upload/C8/0D/oufnhoen.png"
         },
         {
             "posicion": 7,
             "equipo": "Samba Fc",
-            "puntos": 1475,
+            "puntos": 1472,
             "logo": "https://minifootballleagues.com/upload/EC/E2/nknlvbn3.png"
         },
         {
             "posicion": 8,
             "equipo": "Perikles",
-            "puntos": 1462,
+            "puntos": 1464,
             "logo": "https://minifootballleagues.com/upload/10/8B/2havbwtc.jpg"
         },
         {
             "posicion": 9,
-            "equipo": "Cvstodia Fc",
-            "puntos": 1411,
-            "logo": "https://minifootballleagues.com/upload/6D/E6/ujurv0tz.jpeg"
-        },
-        {
-            "posicion": 10,
             "equipo": "Reventaos Fc",
             "puntos": 1387,
             "logo": "https://minifootballleagues.com/upload/F3/58/avlpiigu.png"
+        },
+        {
+            "posicion": 10,
+            "equipo": "Cvstodia Fc",
+            "puntos": 1386,
+            "logo": "https://minifootballleagues.com/upload/6D/E6/ujurv0tz.jpeg"
         }
     ],
     "ter_div_murA": [

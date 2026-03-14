@@ -261,6 +261,15 @@
         "goles_visitante": 0
     },
     {
+        "jornada": 7,
+        "equipo_local": "Billie'S Ballers",
+        "escudo_local": "https://minifootballleagues.com/upload/A3/DB/zhl12wou.png",
+        "equipo_visitante": "Cvstodia Fc",
+        "escudo_visitante": "https://minifootballleagues.com/upload/6D/E6/ujurv0tz.jpeg",
+        "goles_local": 9,
+        "goles_visitante": 2
+    },
+    {
         "jornada": 8,
         "equipo_local": "Nakamas Fc",
         "escudo_local": "https://minifootballleagues.com/upload/C8/31/2rjg4mj0.png",
