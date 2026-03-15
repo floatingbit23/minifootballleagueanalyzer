@@ -60,8 +60,12 @@ Los datos se actualizan diariamente mediante CI / GitHub Actions.
 
 ### Frontend
 
-- Funciona con **Vite y React**, garantizando tiempos de carga muy rápidos.
+- Funciona con **Astro y React**, garantizando tiempos de carga muy rápidos.
 - Incluye herramientas como **Chart.js y React-Chartjs-2** para las visualizaciones y gráficos con datos estadísticos complejos (como el Gráfico de Radar)
+
+### Chatbot 
+
+Chatbot con IA de la familia Gemini que permite consultar información sobre los equipos y las competiciones. Se puede acceder a él mediante un botón en la esquina inferior derecha de la web. 
 
 
 
