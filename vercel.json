@@ -1,7 +1,6 @@
 {
+  "version": 2,
   "framework": "astro",
-  "rootDirectory": "frontend",
   "buildCommand": "npm run build",
-  "devCommand": "npm run dev -- --port $PORT",
   "installCommand": "npm install"
 }
