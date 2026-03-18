@@ -1,0 +1,44 @@
+.progression-container {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+.progression-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.progression-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.progression-shape-text {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.chart-container-evolution {
+  height: 350px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .chart-container-evolution {
+    height: 250px;
+  }
+  
+  .progression-container {
+    padding: 1rem;
+  }
+}

@@ -8,6 +8,7 @@ import granadaFlag from '../../assets/granada_flag.png';
 import Leaderboard from '../Leaderboard/Leaderboard';
 import MatrixChart from '../MatrixChart/MatrixChart';
 import TeamScorers from '../TeamScorers/TeamScorers';
+import PointsEvolution from '../PointsEvolution/PointsEvolution';
 
 const LEAGUES = [
   { id: 'prim_div_mur', name: 'Primera División Murcia', flag: murciaFlag },
@@ -138,7 +139,8 @@ const Home = ({ rankingsData: initialRankingsData }) => {
       id: team.equipo,
       name: team.equipo,
       puntos: team.puntos,
-      logo: team.logo
+      logo: team.logo,
+      evolucion: team.evolucion || []
     })).sort((a, b) => a.name.localeCompare(b.name));
   }, [selectedLeague, rankingsData]);
 
@@ -161,7 +163,9 @@ const Home = ({ rankingsData: initialRankingsData }) => {
       equipoAway: teamB.name,
       logoAway: teamB.logo,
       probHome,
-      probAway
+      probAway,
+      evolucionHome: teamA.evolucion,
+      evolucionAway: teamB.evolucion
     };
   }, [selectedTeamA, selectedTeamB, leagueTeams]);
 
@@ -249,6 +253,19 @@ const Home = ({ rankingsData: initialRankingsData }) => {
               >
                 <TeamScorers teamName={matchData.equipoHome} scorersData={statsData} />
                 <TeamScorers teamName={matchData.equipoAway} scorersData={statsData} />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+              >
+                <PointsEvolution 
+                  teamA={matchData.equipoHome} 
+                  teamB={matchData.equipoAway} 
+                  evolutionA={matchData.evolucionHome}
+                  evolutionB={matchData.evolucionAway}
+                />
               </motion.div>
             </motion.div>
         )}

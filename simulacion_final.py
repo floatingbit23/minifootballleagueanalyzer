@@ -31,40 +31,56 @@ for archivo in archivos_json:
             # Ordenar partidos por jornada para calcular tendencia correctamente
             partidos.sort(key=lambda x: x.get('jornada', 0))
             
-            # Encontrar la jornada máxima
-            max_jornada = max([p.get('jornada', 0) for p in partidos]) if partidos else 0
+            # Encontrar la jornada máxima y lista de equipos
+            todos_equipos = set()
+            max_jornada = 0
+            for p in partidos:
+                todos_equipos.add(p['equipo_local'])
+                todos_equipos.add(p['equipo_visitante'])
+                if p.get('jornada', 0) > max_jornada:
+                    max_jornada = p.get('jornada', 0)
+            
             jornada_corte = max_jornada - 5
             
             
             ratings_antes_tendencia = {}
+            # Diccionario para historial de cada jornada (empiezan con 1500 en la Jornada 0)
+            evolucion_elo = { eq: [1500] for eq in todos_equipos }
 
-            for partido in partidos:
-                # Guardar escudos
-                def corregir_url(url):
-                    if url and url.startswith('/'):
-                        return f"https://minifootballleagues.com{url}"
-                    return url
+            for j in range(1, max_jornada + 1):
+                partidos_jornada = [p for p in partidos if p.get('jornada') == j]
+                
+                for partido in partidos_jornada:
+                    # Guardar escudos
+                    def corregir_url(url):
+                        if url and url.startswith('/'):
+                            return f"https://minifootballleagues.com{url}"
+                        return url
 
-                if "escudo_local" in partido and partido["escudo_local"]:
-                    escudos_equipos[partido['equipo_local']] = corregir_url(partido['escudo_local'])
-                if "escudo_visitante" in partido and partido["escudo_visitante"]:
-                    escudos_equipos[partido['equipo_visitante']] = corregir_url(partido['escudo_visitante'])
+                    if "escudo_local" in partido and partido["escudo_local"]:
+                        escudos_equipos[partido['equipo_local']] = corregir_url(partido['escudo_local'])
+                    if "escudo_visitante" in partido and partido["escudo_visitante"]:
+                        escudos_equipos[partido['equipo_visitante']] = corregir_url(partido['escudo_visitante'])
 
-                # Capturar snapshot para tendencia antes de procesar la jornada de corte
-                if partido.get('jornada', 0) > jornada_corte and not ratings_antes_tendencia:
-                    # Hacemos una copia de los ratings actuales
-                    ratings_antes_tendencia = elo_liga.ratings.copy()
+                    # Capturar snapshot para tendencia antes de procesar la jornada de corte
+                    if j > jornada_corte and not ratings_antes_tendencia:
+                        ratings_antes_tendencia = elo_liga.ratings.copy()
 
-                if "goles_local" not in partido or "goles_visitante" not in partido:
-                    continue
-                    
-                elo_liga.actualizar_ratings(
-                    partido['equipo_local'],
-                    partido['equipo_visitante'],
-                    partido['goles_local'],
-                    partido['goles_visitante'],
-                    partido['jornada']
-                )
+                    if "goles_local" not in partido or "goles_visitante" not in partido:
+                        continue
+                        
+                    elo_liga.actualizar_ratings(
+                        partido['equipo_local'],
+                        partido['equipo_visitante'],
+                        partido['goles_local'],
+                        partido['goles_visitante'],
+                        partido['jornada']
+                    )
+                
+                # Snapshot ELO al final de la jornada para todos los equipos
+                for eq in todos_equipos:
+                    evolucion_elo[eq].append(round(elo_liga.obtener_elo(eq)))
+
 
         # Generamos el ranking ordenado para esta liga específica
         ranking_ordenado = sorted(elo_liga.ratings.items(), key=lambda x: x[1], reverse=True)
@@ -81,7 +97,8 @@ for archivo in archivos_json:
                 "equipo": equipo,
                 "puntos": elo_actual,
                 "tendencia": tendencia,
-                "logo": escudos_equipos.get(equipo, "")
+                "logo": escudos_equipos.get(equipo, ""),
+                "evolucion": evolucion_elo.get(equipo, [])
             })
             
         rankings_globales[liga_id] = RANKING_LISTA

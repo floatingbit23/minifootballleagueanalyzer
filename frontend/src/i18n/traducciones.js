@@ -23,6 +23,10 @@ export const ui = {
     'scorers.title': 'Top 5 Goleadores',
     'scorers.goals': 'Goles',
     'scorers.empty': 'No hay datos de goleadores disponibles para este equipo.',
+    'progression.title': 'Progresión ELO',
+    'progression.matchday': 'Jornada',
+    'progression.better_shape': 'El {team} llega en mejor forma tras los últimos encuentros.',
+    'progression.equal_shape': 'Ambos equipos llegan con una dinámica similar en las últimas jornadas.',
   },
   en: {
     'header.subtitle': 'Murcia, Almeria and Granada',
@@ -48,5 +52,9 @@ export const ui = {
     'scorers.title': 'Top 5 Scorers',
     'scorers.goals': 'Goals',
     'scorers.empty': 'No scorer data available for this team.',
+    'progression.title': 'ELO Progression',
+    'progression.matchday': 'Matchday',
+    'progression.better_shape': '{team} is in better shape following recent matches.',
+    'progression.equal_shape': 'Both teams arrive with a similar dynamic in the last few matchdays.',
   },
 };
