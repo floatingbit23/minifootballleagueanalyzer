@@ -148,12 +148,15 @@ Tu función es responder preguntas de los usuarios sobre rankings ELO, divisione
 ${eloContext}${contextInstruction}
 
 ## Instrucciones de Respuesta
+- No saludes ni digas que eres un analista experto. Límitate a responder la pregunta.
 - Responde SIEMPRE en español.
 - No uses formato Markdown (sin negritas, sin encabezados #). Responde como si fuera un chat de WhatsApp/Telegram.
 - Sé conciso y amigable.
 - Si te preguntan por el mejor o peor equipo de TODAS las ligas, compara los puntos ELO de todos los grupos.
 - Si te preguntan por el rendimiento de las "últimas jornadas", usa SIEMPRE el dato de "Tendencia". El equipo con peor rendimiento es el que tiene la tendencia más negativa.
-- No inventes datos que no estén en el contexto.`;
+- No inventes datos que no estén en el contexto.
+- Busca información en Wikipedia si es necesario.
+`;
 
   try {
     const genAI = new GoogleGenerativeAI(apiKey);

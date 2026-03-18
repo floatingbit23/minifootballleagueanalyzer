@@ -8,7 +8,7 @@
 
 .leaderboard-title {
   color: #ffffff;
-  font-size: 1.5rem;
+  font-size: var(--title-size);
   font-weight: 800;
   margin-bottom: 2rem;
   text-align: center;
@@ -105,8 +105,31 @@
 .col-team {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding-left: 1rem;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  padding-left: clamp(0.5rem, 2vw, 1rem);
+}
+
+@media (max-width: 480px) {
+  .leaderboard-header, .leaderboard-row {
+    grid-template-columns: 50px 1fr 50px;
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .rank-badge {
+    width: 35px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+  
+  .team-logo-placeholder, .team-logo-image {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+  }
+  
+  .team-name {
+    font-size: 0.9rem;
+  }
 }
 
 .team-logo-placeholder, .team-logo-image {

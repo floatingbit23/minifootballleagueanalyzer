@@ -9,6 +9,11 @@
   --accent-color: #00d26a; /* Green from the MFL logo */
   --border-color: #333333;
   --hover-overlay: rgba(255, 255, 255, 0.05);
+  
+  /* Fluid scaling variables */
+  --fluid-padding: clamp(1rem, 5vw, 2.5rem);
+  --fluid-gap: clamp(1rem, 3vw, 2rem);
+  --title-size: clamp(1.1rem, 4vw, 1.5rem);
 }
 
 * {
@@ -32,10 +37,16 @@ body {
 
 .main-content {
   flex: 1;
-  padding: 2rem;
+  padding: var(--fluid-padding);
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding: 1rem 0.75rem;
+  }
 }
 
 button {

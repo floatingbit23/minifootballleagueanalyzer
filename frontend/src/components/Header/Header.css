@@ -10,7 +10,7 @@
 .header-left {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
 }
 
 .logo-container {
@@ -96,17 +96,32 @@
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
-    gap: 1.5rem;
-    padding: 1.5rem 1rem;
+    gap: 1rem;
+    padding: 1rem;
+    text-align: center;
   }
   
   .header-left {
     flex-direction: column;
-    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .header-titles {
+    gap: 0;
+  }
+
+  .title-main {
+    font-size: 1.2rem;
+  }
+
+  .title-sub {
+    font-size: 0.8rem;
   }
 
   .header-right {
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
   }
 }

@@ -89,7 +89,6 @@ const MatrixChart = ({ equipoHome, logoHome, equipoAway, logoAway, probHome, pro
     <div className="matrix-chart-wrapper">
       <div className="matrix-header">
         <h3>{t('matrix.title')}</h3>
-        <p>{t('matrix.desc')}</p>
       </div>
 
       <div className="matrix-content">

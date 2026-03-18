@@ -159,7 +159,7 @@ export default function ChatbotWidget() {
         {/* Selector de contexto de liga */}
         <div className="chatbot-context">
           <p className="chatbot-presets__label">
-            Elige liga
+            Elige liga para preguntar por ella
             {activeContext && (
               <span className="chatbot-context__active-label">
                 {' '}· {LEAGUE_CONTEXTS.find(l => l.key === activeContext)?.label}
