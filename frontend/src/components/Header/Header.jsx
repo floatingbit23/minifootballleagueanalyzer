@@ -3,6 +3,7 @@ import './Header.css';
 import { Instagram, Youtube } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
 import { toggleLanguage } from '../../store/languageStore';
+import AuthWidget from '../Auth/AuthWidget';
 
 import logoImage from '../../assets/main_logo.jpg';
 
@@ -37,6 +38,7 @@ const Header = () => {
         >
           {language === 'es' ? 'ES' : 'EN'}
         </button>
+        <AuthWidget />
       </div>
     </header>
   );

@@ -36,6 +36,7 @@ pnpm-debug.log*
 .antigravity/
 .memories/
 logs/agent.log
+skills-lock.json
 
 # --- TESTSPRITE ---
 .testsprite/
@@ -45,3 +46,6 @@ testsprite-mcp-report.md
 # --- SISTEMA ---
 .DS_Store
 Thumbs.db
+
+# --- SUPABASE ---
+.agents/
