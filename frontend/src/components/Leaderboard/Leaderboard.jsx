@@ -5,10 +5,11 @@ import granadaFlag from '../../assets/granada_flag.png';
 import { useTranslation } from '../../hooks/useTranslation';
 import { useStore } from '@nanostores/react';
 import { favoritesStore, toggleFavorite, isFavoritesLoading } from '../../stores/favoritesStore';
-import { Star } from 'lucide-react';
+import { Star, ChevronUp, ChevronDown } from 'lucide-react';
 
 // Este componente se encarga de mostrar la tabla clasificatoria de la liga seleccionada
-const Leaderboard = ({ rankings = [], leagueId = '' }) => {
+// Ahora también recibe los equipos seleccionados en el H2H para filtrarlos y resaltarlos
+const Leaderboard = ({ rankings = [], leagueId = '', selectedTeamA = '', selectedTeamB = '' }) => {
   const { t } = useTranslation();
   // Uso Nanostores para acceder al estado de mis equipos favoritos de forma global y reactiva
   const favorites = useStore(favoritesStore);
@@ -39,49 +40,103 @@ const Leaderboard = ({ rankings = [], leagueId = '' }) => {
         <span className="header-col-rank">{t('leaderboard.col_rank')}</span>
         <span className="header-col-team">{t('leaderboard.col_team')}</span>
         <span className="header-col-pts">{t('leaderboard.col_pts')}</span>
+        <span className="header-col-pts">{t('leaderboard.col_real_pts')}</span>
       </div>
 
       <div className="leaderboard-body">
-        {rankings.map((team, index) => (
-          <div key={team.equipo} className="leaderboard-row">
-            {/* Columna de Posición con medallas visuales para el Top 3 */}
-            <div className="col-rank">
-              <div className={`rank-badge ${index === 0 ? 'rank-first' : index === 1 ? 'rank-second' : index === 2 ? 'rank-third' : ''}`}>
-                #{team.posicion}
+        {rankings.map((team, index) => {
+          // Compruebo si este equipo es uno de los elegidos para el H2H
+          // Solo lo resalto si AMBOS están seleccionados para que tenga sentido visualmente
+          const isH2H = (team.equipo === selectedTeamA || team.equipo === selectedTeamB) && selectedTeamA && selectedTeamB;
+
+          return (
+            <div 
+              key={team.equipo} 
+              className={`leaderboard-row ${isH2H ? 'h2h-highlight' : ''}`}
+            >
+              {/* Columna de Posición con medallas visuales para el Top 3 */}
+              <div className="col-rank">
+                <div className={`rank-badge ${index === 0 ? 'rank-first' : index === 1 ? 'rank-second' : index === 2 ? 'rank-third' : ''}`}>
+                  #{team.posicion}
+                </div>
+              </div>
+
+              {/* Columna de Equipo con nombre, logo y botón de favoritos */}
+              <div className="col-team">
+                <span 
+                  className={`favorite-star ${isFav(team.equipo) ? 'active' : ''}`}
+                  // Al hacer clic, guardo o quito el equipo de mis favoritos (Supabase + Nanostores)
+                  onClick={() => !isLoading && toggleFavorite(team.equipo, leagueId)}
+                  title={isFav(team.equipo) ? "Quitar de Mis favoritos" : "Añadir a Mis favoritos"}
+                >
+                  <Star 
+                    size={18} 
+                    fill={isFav(team.equipo) ? "#000" : "transparent"} 
+                    stroke={isFav(team.equipo) ? "#eab308" : "#9ca3af"} 
+                    strokeWidth={2}
+                  />
+                </span>
+                <img
+                  // Si el equipo no tiene logo, "pinto" la bandera de su provincia por defecto
+                  src={team.logo || flagSrc}
+                  alt={team.equipo}
+                  className="team-logo-image"
+                  onError={(e) => { e.target.src = flagSrc; }}
+                />
+                <span className="team-name">
+                  {team.equipo}
+                  {/* Comparo mi Power Ranking (ELO) con la clasificación real */}
+                  {team.posicion < team.posicion_real && (
+                    <ChevronUp 
+                      size={18} 
+                      className="rank-icon better" 
+                      title={`Mejor en ELO que en liga: #${team.posicion_real} real`}
+                    />
+                  )}
+                  {team.posicion > team.posicion_real && (
+                    <ChevronDown 
+                      size={18} 
+                      className="rank-icon worse" 
+                      title={`Peor en ELO que en liga: #${team.posicion_real} real`}
+                    />
+                  )}
+                  {team.posicion === team.posicion_real && (
+                    <span 
+                      className="rank-icon equal" 
+                      title="Misma posición en ELO y liga"
+                    >
+                      🟰
+                    </span>
+                  )}
+                </span>
+              </div>
+
+              {/* Columna de Puntos ELO: el valor que calcula mi sistema en Python */}
+              <div className="col-pts">
+                <span className="pts-value">{team.puntos}</span>
+              </div>
+
+              {/* Columna de Puntos Reales de la Clasificación */}
+              <div className="col-pts col-real-pts">
+                <span className="real-pts-value">{team.puntos_reales}</span>
               </div>
             </div>
-
-            {/* Columna de Equipo con nombre, logo y botón de favoritos */}
-            <div className="col-team">
-              <span 
-                className={`favorite-star ${isFav(team.equipo) ? 'active' : ''}`}
-                // Al hacer clic, guardo o quito el equipo de mis favoritos (Supabase + Nanostores)
-                onClick={() => !isLoading && toggleFavorite(team.equipo, leagueId)}
-                title={isFav(team.equipo) ? "Quitar de Mis favoritos" : "Añadir a Mis favoritos"}
-              >
-                <Star 
-                  size={18} 
-                  fill={isFav(team.equipo) ? "#000" : "transparent"} 
-                  stroke={isFav(team.equipo) ? "#eab308" : "#9ca3af"} 
-                  strokeWidth={2}
-                />
-              </span>
-              <img
-                // Si el equipo no tiene logo, "pinto" la bandera de su provincia por defecto
-                src={team.logo || flagSrc}
-                alt={team.equipo}
-                className="team-logo-image"
-                onError={(e) => { e.target.src = flagSrc; }}
-              />
-              <span className="team-name">{team.equipo}</span>
-            </div>
-
-            {/* Columna de Puntos ELO: el valor que calcula mi sistema en Python */}
-            <div className="col-pts">
-              <span className="pts-value">{team.puntos}</span>
-            </div>
-          </div>
-        ))}
+          );
+        })}
+      </div>
+      <div className="leaderboard-legend">
+        <div className="legend-item">
+          <ChevronUp size={14} className="rank-icon better" />
+          <span>{t('leaderboard.legend_over')}</span>
+        </div>
+        <div className="legend-item">
+          <ChevronDown size={14} className="rank-icon worse" />
+          <span>{t('leaderboard.legend_under')}</span>
+        </div>
+        <div className="legend-item">
+          <span className="rank-icon equal">🟰</span>
+          <span>{t('leaderboard.legend_equal')}</span>
+        </div>
       </div>
     </div>
   );

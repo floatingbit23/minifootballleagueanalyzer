@@ -113,11 +113,22 @@ for archivo in archivos_json:
                     evolucion_elo[equipo].append(round(elo_liga.obtener_elo(equipo))) # Añade el Elo actual (integer) al historial del equipo
 
         # Ordeno los equipos de esta liga de mayor a menor (reverse=True) puntuación Elo final obtenida (items(), x[1] es el Elo).
-        ranking_ordenado = sorted(elo_liga.ratings.items(), key=lambda x: x[1], reverse=True) # 
+        ranking_ordenado = sorted(elo_liga.ratings.items(), key=lambda x: x[1], reverse=True) 
 
-        
         # Preparo la estructura final de datos (la lista de ránkings) para ser consumida por el frontend.
         RANKING_LISTA = []
+
+        # Intento cargar los puntos reales escrapeados de la clasificación oficial
+        ruta_class = os.path.join('jsons', 'classification', f"{liga_id}_class.json")
+        puntos_reales_dict = {}
+        real_rank_map = {} # Mapa para guardar la posición real de cada equipo
+
+        if os.path.exists(ruta_class):
+            with open(ruta_class, 'r', encoding='utf-8') as f_class:
+                puntos_reales_dict = json.load(f_class)
+                # La posición real es el orden en el que aparecen en el JSON (ya viene ordenado de la web)
+                for index, team_name in enumerate(puntos_reales_dict.keys()):
+                    real_rank_map[team_name] = index + 1
 
         for i, (equipo, rating) in enumerate(ranking_ordenado):
 
@@ -133,7 +144,9 @@ for archivo in archivos_json:
             RANKING_LISTA.append({
                 "posicion": i + 1,
                 "equipo": equipo,
-                "puntos": elo_actual,
+                "puntos": elo_actual, # Estos son mis puntos ELO
+                "puntos_reales": puntos_reales_dict.get(equipo, 0), # Puntos de la tabla de clasificación real
+                "posicion_real": real_rank_map.get(equipo, i + 1), # Su puesto en la tabla real (si no está, asumo el mismo)
                 "tendencia": tendencia,
                 "logo": escudos_equipos.get(equipo, ""),
                 "evolucion": evolucion_elo.get(equipo, [])

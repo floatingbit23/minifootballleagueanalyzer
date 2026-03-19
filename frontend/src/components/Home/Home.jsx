@@ -303,7 +303,13 @@ const Home = ({ rankingsData: initialRankingsData }) => {
             transition={{ duration: 0.4 }}
           >
             {/* Finalmente, renderizo el Leaderboard (Clasificación ELO) de la liga seleccionada */}
-            <Leaderboard rankings={rankingsData[selectedLeague]} leagueId={selectedLeague} />
+            {/* Paso los equipos seleccionados para que el Leaderboard pueda resaltarlos y filtrarlos */}
+            <Leaderboard 
+              rankings={rankingsData[selectedLeague]} 
+              leagueId={selectedLeague} 
+              selectedTeamA={selectedTeamA}
+              selectedTeamB={selectedTeamB}
+            />
           </motion.div>
         )}
       </AnimatePresence>

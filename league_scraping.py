@@ -325,6 +325,53 @@ for comp in competiciones:
     print(f"Goleadores de {comp['nombre']} completados! ({len(goleadores)} encontrados)")
 
 
+    # --- SCRAPING DE LA CLASIFICACIÓN (PUNTOS REALES) ---
+
+    print(f"Scrapeando clasificación para {comp['nombre']}...")
+    url_class = f"https://minifootballleagues.com/tournaments/{comp['id']}?tab=classification&stage=0"
+    driver.get(url_class)
+
+    puntos_reales = {}
+
+    try:
+        # Espero a que cargue la tabla de clasificación usando XPATH para evitar problemas con CSS Modules
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, "//*[contains(@class, 'DataTable_dataTableRow')]"))
+        )
+
+        soup_class = BeautifulSoup(driver.page_source, 'html.parser')
+        filas_class = soup_class.find_all('tr', class_=lambda c: c and 'DataTable_dataTableRow' in c)
+
+        for fila in filas_class:
+            tds = fila.find_all('td')
+            # Aseguro que la fila tiene suficientes columnas para buscar equipo y puntos
+            if len(tds) >= 8:
+                # Busco el nombre del equipo, normalmente está en la columna 2 o 3 dependiendo del layout
+                equipo_elem = tds[1].find('p', class_=lambda c: c and 'Ranking_text' in c) or tds[2].find('p', class_=lambda c: c and 'Ranking_text' in c)
+                
+                if not equipo_elem:
+                   equipo_elem = tds[2].find('p') or tds[1].find('p')
+
+                # Los puntos (PTS) es la tercera columna (índice 2). 
+                puntos_val = tds[2].get_text(strip=True)
+
+                if equipo_elem and puntos_val.isdigit():
+                    eq_nombre = equipo_elem.get_text(strip=True).title()
+                    puntos_reales[eq_nombre] = int(puntos_val)
+
+    except Exception as e:
+        print(f"  Aviso: No se pudo extraer la clasificación: {e}")
+
+    # Guardo los puntos reales en otra carpeta de JSons
+    os.makedirs(os.path.join('jsons', 'classification'), exist_ok=True)
+    nombre_class = comp["archivo"].replace(".json", "_class.json")
+    ruta_class = os.path.join('jsons', 'classification', nombre_class)
+
+    with open(ruta_class, 'w', encoding='utf-8') as f_class:
+        json.dump(puntos_reales, f_class, ensure_ascii=False, indent=4)
+
+    print(f"Clasificación de {comp['nombre']} completados! ({len(puntos_reales)} encontrados)")
+
 # Una vez terminadas todas las ligas, cierro el navegador para liberar recursos del sistema.
 driver.quit()
 print("\n¡Todo el scraping completado con éxito!")

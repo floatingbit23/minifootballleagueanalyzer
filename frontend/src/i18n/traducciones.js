@@ -19,7 +19,8 @@ export const ui = { // Exporto el diccionario 'ui'
     'leaderboard.empty': 'Selecciona una competición para ver el Power Ranking.',
     'leaderboard.col_rank': 'Ranking',
     'leaderboard.col_team': 'Equipo',
-    'leaderboard.col_pts': 'Pts',
+    'leaderboard.col_pts': 'ELO',
+    'leaderboard.col_real_pts': 'Pts',
     'matrix.title': 'Probabilidad de Resultados Exactos',
     'matrix.win_home': 'VICTORIA LOCAL',
     'matrix.draw': 'EMPATE',
@@ -31,6 +32,9 @@ export const ui = { // Exporto el diccionario 'ui'
     'progression.matchday': 'Jornada',
     'progression.better_shape': 'El {team} llega en mejor forma tras los últimos encuentros.',
     'progression.equal_shape': 'Ambos equipos llegan con una dinámica similar en las últimas jornadas.',
+    'leaderboard.legend_over': 'Clasificación ELO > Clasificación Real',
+    'leaderboard.legend_under': 'Clasificación ELO < Clasificación Real',
+    'leaderboard.legend_equal': 'Clasificación ELO = Clasificación Real',
   },
 
   // Configuro todos los textos en INGLÉS
@@ -49,7 +53,8 @@ export const ui = { // Exporto el diccionario 'ui'
     'leaderboard.empty': 'Select a competition to view the Power Ranking.',
     'leaderboard.col_rank': 'Rank',
     'leaderboard.col_team': 'Team',
-    'leaderboard.col_pts': 'Pts',
+    'leaderboard.col_pts': 'ELO',
+    'leaderboard.col_real_pts': 'Pts',
     'matrix.title': 'Exact Results Probability',
     'matrix.win_home': 'HOME WIN',
     'matrix.draw': 'DRAW',
@@ -61,5 +66,8 @@ export const ui = { // Exporto el diccionario 'ui'
     'progression.matchday': 'Matchday',
     'progression.better_shape': '{team} is in better shape following recent matches.',
     'progression.equal_shape': 'Both teams arrive with a similar dynamic in the last few matchdays.',
+    'leaderboard.legend_over': 'ELO > Real Rank',
+    'leaderboard.legend_under': 'ELO < Real Rank',
+    'leaderboard.legend_equal': 'ELO = Real Rank',
   },
 };
