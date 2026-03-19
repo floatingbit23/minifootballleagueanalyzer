@@ -56,8 +56,11 @@ for archivo in archivos_json:
                 if p.get('jornada', 0) > max_jornada: # Si la jornada del partido es mayor que la máxima actual
                     max_jornada = p.get('jornada', 0) # Actualizo la máxima jornada
             
-            # Defino una "jornada de corte" de hace 5 jornadas atrás para calcular la tendencia reciente.
-            jornada_corte = max_jornada - 5
+            # Calculo la "jornada de corte" de forma dinámica para que sea proporcional a la duración de cada liga.
+            # Tomo aproximadamente el último 40% de la competición para calcular la tendencia de forma justa.
+            # Por ejemplo, en una liga de 9 jornadas, esto me da las últimas 4 jornadas; y en una liga de 18 jornadas, me da las últimas 7.
+            ventana_tendencia = round(max_jornada * 0.4)
+            jornada_corte = max_jornada - ventana_tendencia
             
             # Inicializo diccionarios para guardar los ratings antiguos (tendencia) e históricos de cada equipo.
             ratings_antes_tendencia = {}
@@ -117,12 +120,16 @@ for archivo in archivos_json:
         RANKING_LISTA = []
 
         for i, (equipo, rating) in enumerate(ranking_ordenado):
-            elo_actual = round(rating)
-            # Recupero el Elo que tenía tras la jornada de corte (o 1500 si es reciente) para ver su tendencia.
-            elo_anterior = round(ratings_antes_tendencia.get(equipo, 1500))
-            tendencia = elo_actual - elo_anterior
-            
-            # Estructuro el objeto del equipo con su posición, puntos, logo y la gráfica de su evolución histórica.
+
+            elo_actual = round(rating) # Redondeo el Elo actual a un número entero.
+           
+            # Recupero el Elo que tenía tras la jornada de corte (o 1500 si es reciente) para ver su tendencia
+            elo_anterior = round(ratings_antes_tendencia.get(equipo, 1500)) # Obtengo el Elo anterior del equipo
+
+            tendencia = elo_actual - elo_anterior # Calculo la diferencia entre el Elo actual y el anterior
+            # Si la tendencia es positiva, el equipo sube en el gráfico, si es negativa, baja en el gráfico.
+
+            # Estructuro el objeto del equipo con su posición, puntos, logo y la gráfica de su evolución histórica
             RANKING_LISTA.append({
                 "posicion": i + 1,
                 "equipo": equipo,
@@ -132,44 +139,53 @@ for archivo in archivos_json:
                 "evolucion": evolucion_elo.get(equipo, [])
             })
             
-        # Almaceno la lista terminada en el diccionario global bajo el ID de su liga.
+        # Almaceno la lista terminada en el diccionario global bajo el ID de su liga
         rankings_globales[liga_id] = RANKING_LISTA
+
         print(f"✅ Calculado ELO y tendencia para: {liga_id}")
 
     except Exception as e:
-        # Si algo falla al procesar el archivo JSON, muestro un error informativo para poder depurarlo.
+        # Si algo falla al procesar el archivo JSON, muestro un error informativo para poder depurarlo
         print(f"Error procesando {archivo}: {e}")
 
 # --- GUARDAR EL RESULTADO FINAL PARA EL FRONTEND ---
 
-# Defino la ruta de salida en la carpeta pública de mi aplicación web (Astro).
+# Defino la ruta de salida en la carpeta pública de mi web (/frontend/public)
 ruta_frontend = os.path.join('frontend', 'public', 'elo_rankings.json')
-# Me aseguro de que el directorio de salida existan físicamente en el disco.
-os.makedirs(os.path.dirname(ruta_frontend), exist_ok=True)
 
-# Guardo el JSON final con todos los ránkings globales listos para ser visualizados en la web.
-with open(ruta_frontend, 'w', encoding='utf-8') as f:
-    json.dump(rankings_globales, f, ensure_ascii=False, indent=4)
+# Me aseguro de que el directorio de salida existan físicamente en el disco
+os.makedirs(os.path.dirname(ruta_frontend), exist_ok=True) # Si no existe el directorio, lo crea
 
-# --- 2. COPIAR ESTADÍSTICAS DE GOLEADORES ---
-# Defino las rutas de origen (jsons/stats) y destino (frontend) para las estadísticas de los goleadores.
+# Guardo el JSON final con todos los ránkings globales listos para ser visualizados en la web
+with open(ruta_frontend, 'w', encoding='utf-8') as f: 
+    json.dump(rankings_globales, f, ensure_ascii=False, indent=4) 
+
+# --- COPIAR ESTADÍSTICAS DE GOLEADORES ---
+
+# Defino las rutas de origen (jsons/stats) y destino (frontend/public/stats) para las estadísticas de los goleadores
 ruta_stats_source = os.path.join('jsons', 'stats')
 ruta_stats_dest = os.path.join('frontend', 'public', 'stats')
 
-# Si la carpeta de estadísticas de origen existe, procedo a copiarlas al frontend.
+# Si la carpeta de estadísticas de origen ya existe, procedo a copiarlas al frontend
 if os.path.exists(ruta_stats_source):
-    os.makedirs(ruta_stats_dest, exist_ok=True)
+    os.makedirs(ruta_stats_dest, exist_ok=True) # Si no existe el directorio, lo crea
+
     # Busco todos los archivos de goleadores (_stats.json).
     archivos_stats = glob.glob(os.path.join(ruta_stats_source, '*_stats.json'))
 
     # Itero sobre cada archivo de goleadores y lo copio a la carpeta pública del frontend.
     for archivo in archivos_stats:
-        nombre_archivo = os.path.basename(archivo)
-        with open(archivo, 'r', encoding='utf-8') as f_src:
-            data = json.load(f_src)
-            with open(os.path.join(ruta_stats_dest, nombre_archivo), 'w', encoding='utf-8') as f_dest:
-                json.dump(data, f_dest, ensure_ascii=False, indent=4)
-    print(f"✅ Copiados {len(archivos_stats)} archivos de estadísticas a {ruta_stats_dest}")
 
-# Muestro un mensaje final indicando que todo el proceso ha terminado con éxito.
+        nombre_archivo = os.path.basename(archivo) # Obtengo el nombre del archivo
+
+        with open(archivo, 'r', encoding='utf-8') as f_src: # Abro el archivo de goleadores en modo lectura
+            data = json.load(f_src) # Cargo los datos del archivo
+
+            with open(os.path.join(ruta_stats_dest, nombre_archivo), 'w', encoding='utf-8') as f_dest: # Abro el archivo de goleadores en modo escritura
+                json.dump(data, f_dest, ensure_ascii=False, indent=4) # Guardo los datos del archivo
+
+    print(f"✅ Copiados {len(archivos_stats)} archivos de estadísticas a {ruta_stats_dest}") # Muestro un mensaje indicando que se han copiado correctamente los archivos de estadísticas
+
+
+# Muestro un mensaje final indicando al usuario que todo el proceso ha terminado con éxito
 print(f"\n¡Todos los rankings calculados y exportados!")

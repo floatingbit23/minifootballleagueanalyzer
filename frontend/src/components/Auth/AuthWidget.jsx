@@ -6,11 +6,14 @@ import { LogIn, LogOut, User, X } from 'lucide-react';
 import './AuthWidget.css';
 import { useTranslation } from '../../hooks/useTranslation';
 
+// Este componente es mi centro de mandos para la autenticación de usuarios
 const AuthWidget = () => {
+  // Accedo al estado global del usuario y de carga mediante Nanostores
   const user = useStore(userStore);
   const loading = useStore(authLoadingStore);
   const { t } = useTranslation();
   
+  // Gestiono los estados locales del modal, el formulario y los posibles errores
   const [showModal, setShowModal] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
@@ -18,10 +21,12 @@ const AuthWidget = () => {
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState(false);
 
+  // Al cargar el widget, inicializo la sesión para ver si el usuario ya estaba logueado
   useEffect(() => {
     initAuth();
   }, []);
 
+  // Función principal para manejar el envío del formulario (Login o Registro)
   const handleAuth = async (e) => {
     e.preventDefault();
     setProcessing(true);
@@ -29,15 +34,19 @@ const AuthWidget = () => {
 
     try {
       if (isLogin) {
+        // Intento iniciar sesión con email y contraseña usando el SDK de Supabase
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
       } else {
+        // Si no es login, registro una nueva cuenta
         const { error } = await supabase.auth.signUp({ email, password });
         if (error) throw error;
         alert("¡Revisa tu correo electrónico para confirmar la cuenta!");
       }
+      // Cierro el modal si todo ha ido bien
       setShowModal(false);
     } catch (err) {
+      // Manejo los errores más comunes para dar feedback claro al usuario
       if (err.message.includes('Invalid login credentials')) {
         setError('Credenciales inválidas');
       } else if (err.message.includes('User already registered')) {
@@ -50,10 +59,12 @@ const AuthWidget = () => {
     }
   };
 
+  // Función para cerrar la sesión actual
   const handleLogout = async () => {
     await supabase.auth.signOut();
   };
 
+  // Permito también el registro/login rápido mediante Google (OAuth)
   const handleGoogleAuth = async () => {
     setProcessing(true);
     setError(null);
@@ -62,19 +73,21 @@ const AuthWidget = () => {
         provider: 'google',
       });
       if (error) throw error;
-      // No cerramos el modal porque hay redirección a Google
+      // No cierro el modal aquí porque Supabase redirigirá la página a Google
     } catch (err) {
       setError(err.message);
       setProcessing(false);
     }
   };
 
+  // Si el sistema todavía está comprobando la sesión, no muestro nada aún
   if (loading) return <div className="auth-widget-loading"></div>;
 
   return (
     <>
       <div className="auth-widget">
         {user ? (
+          // Si el usuario está logueado, muestro su avatar/email y el botón de Salir
           <div className="auth-user-menu">
             <span className="user-email" title={user.email}>
               <User size={18} />
@@ -85,6 +98,7 @@ const AuthWidget = () => {
             </button>
           </div>
         ) : (
+          // Si no hay usuario, muestro el botón de Login para abrir el modal
           <button onClick={() => setShowModal(true)} className="auth-btn login-btn">
             <LogIn size={18} />
             <span className="login-text">Login</span>
@@ -92,14 +106,17 @@ const AuthWidget = () => {
         )}
       </div>
 
+      {/* Ventana Modal de Autenticación */}
       {showModal && (
         <div className="auth-modal-overlay">
           <div className="auth-modal">
+            {/* Botón para cerrar el modal */}
             <button className="close-btn" onClick={() => setShowModal(false)}>
               <X size={20} />
             </button>
             <h2>{isLogin ? 'Iniciar Sesión' : 'Registrarse'}</h2>
             
+            {/* Acceso rápido con Google */}
             <button 
               type="button" 
               className="google-auth-btn" 
@@ -119,6 +136,7 @@ const AuthWidget = () => {
               <span>{isLogin ? 'o usa tu correo' : 'o regístrate con correo'}</span>
             </div>
 
+            {/* Formulario clásico de email y password */}
             <form onSubmit={handleAuth}>
               <div className="form-group">
                 <label>Email</label>
@@ -139,6 +157,7 @@ const AuthWidget = () => {
                 />
               </div>
               
+              {/* Muestro errores de Supabase si ocurren */}
               {error && <div className="error-message">{error}</div>}
               
               <button 
@@ -150,6 +169,7 @@ const AuthWidget = () => {
               </button>
             </form>
             
+            {/* Alternar entre modo Login y modo Registro */}
             <div className="auth-switch">
               {isLogin ? '¿No tienes cuenta? ' : '¿Ya tienes cuenta? '}
               <button type="button" onClick={() => setIsLogin(!isLogin)}>

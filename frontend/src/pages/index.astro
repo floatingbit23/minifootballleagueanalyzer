@@ -1,10 +1,21 @@
 ---
+# COMPONENT SCRIPT (El Frontmatter)
+
+# Importo el layout (plantilla base) que servirá de "chasis" para toda la página
 import Layout from '../layouts/Layout.astro';
+# Traigo mi componente principal de React para gestionar la interactividad de la Home
 import HomeReact from '../components/Home/Home.jsx';
 
+# Cargo directamente el archivo JSON que genero previamente con mis scripts de Python
+# De esta forma, los datos ya están disponibles en tiempo de construcción (SSG)
 import rankingsData from '../../public/elo_rankings.json';
 ---
 
+<!-- Plantilla del Componente -->
+
+<!-- Envuelvo toda la página con mi Layout y le asigno un título personalizado -->
 <Layout title="MFL Analyzer - Inicio">
+    <!-- Renderizo el componente HomeReact y le paso todos los ránkings de las ligas como Prop -->
+    <!-- Uso 'client:load' para que el JavaScript se descargue e hidrate tan pronto como cargue la página -->
     <HomeReact client:load rankingsData={rankingsData} />
 </Layout>

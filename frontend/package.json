@@ -17,6 +17,7 @@
     "@nanostores/react": "^1.1.0",
     "@supabase/supabase-js": "^2.99.2",
     "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "astro": "^5.4.1",
     "chart.js": "^4.5.1",
     "framer-motion": "^12.35.2",

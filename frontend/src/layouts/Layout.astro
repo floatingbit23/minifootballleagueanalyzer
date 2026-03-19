@@ -1,35 +1,58 @@
 ---
+# PLANTILLA MAESTRA (BASE DE LA WEB)
+
+# Importo los componentes principales que siempre estarán presentes en mi web
 import Header from '../components/Header/Header';
 import ChatbotWidget from '../components/ChatbotWidget/ChatbotWidget';
-import '../index.css';
-// IMPORTO el componente de analíticas de Vercel para registrar las visitas a la web
-import Analytics from '@vercel/analytics/astro';
 
+# Traigo mi archivo de CSS centralizado para que todos los estilos básicos se carguen en el layout
+import '../index.css';
+
+// IMPORTO las herramientas de Vercel para monitorizar el tráfico y el rendimiento desde el primer segundo
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+
+# Defino que este Layout puede recibir un 'title' como propiedad
 const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="es" suppressHydrationWarning>
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Uso el título que me pasan o uno por defecto para el SEO -->
     <title>{title || 'Mini Football League Analyzer'}</title>
+    <!-- Configuro mi Favicon y mi descripción de página para que se vea bien en Google -->
     <link rel="icon" type="image/png" href="/MyGol_favicon.png" />
     <meta name="description" content="Análisis de ELO y estadísticas de la Mini Football League" />
 </head>
+
 <body>
+
     <div class="app-container">
-        <!-- RENDERIZO el componente de Analytics de Vercel para que empiece a medir el tráfico del sitio -->
+
+        <!-- RENDERIZO las analíticas y el medidor de velocidad de Vercel en el cuerpo de la página -->
         <Analytics />
+        <SpeedInsights />
+        
+        <!-- Renderizo mi Header de React, forzando la hidratación inmediata ya que es la navegación -->
         <Header client:load />
+
         <main class="main-content">
+            <!-- AQUÍ es donde Astro inyectará el contenido específico de cada página (como el index.astro) -->
             <slot />
         </main>
+
+        <!-- Añado el widget de mi Chatbot de inteligencia artificial para que esté siempre disponible -->
         <ChatbotWidget client:load />
     </div>
+
 </body>
+
 </html>
 
 <style is:global>
-    /* Estilos globales si son necesarios, o importar el index.css arriba */
+    /* Defino los estilos globales adicionales que se aplicarán a toda mi aplicación sin excepción */
 </style>

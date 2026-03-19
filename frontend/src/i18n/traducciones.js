@@ -1,5 +1,10 @@
-export const ui = {
-  es: {
+// Este es mi diccionario centralizado de textos para toda la aplicación
+// He organizado las claves de forma jerárquica (ej. 'home.', 'matrix.') para que sea fácil de mantener
+
+export const ui = { // Exporto el diccionario 'ui'
+
+  // Configuro todos los textos en ESPAÑOL
+  es: { // 'es' es la clave para el idioma español
     'header.subtitle': 'Murcia, Almería y Granada',
     'header.lang': 'ES',
     'home.title': 'Análisis de Competición MFL',
@@ -27,7 +32,9 @@ export const ui = {
     'progression.better_shape': 'El {team} llega en mejor forma tras los últimos encuentros.',
     'progression.equal_shape': 'Ambos equipos llegan con una dinámica similar en las últimas jornadas.',
   },
-  en: {
+
+  // Configuro todos los textos en INGLÉS
+  en: { // 'en' es la clave para el idioma inglés
     'header.subtitle': 'Murcia, Almeria and Granada',
     'header.lang': 'EN',
     'home.title': 'MFL Competition Analysis',
