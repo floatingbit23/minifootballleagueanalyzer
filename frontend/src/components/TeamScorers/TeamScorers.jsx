@@ -1,10 +1,12 @@
 import React from 'react';
 import './TeamScorers.css';
-import { motion } from 'framer-motion';
-import { useTranslation } from '../../hooks/useTranslation';
+import defaultTeamLogo from '../../assets/default_team_logo.png';
 
 const TeamScorers = ({ teamName, scorersData = [] }) => {
   const { t } = useTranslation();
+  
+  // Extraemos la ruta optimizada (Astro/Vite) del logo por defecto
+  const defaultLogoSrc = typeof defaultTeamLogo === 'object' ? defaultTeamLogo.src : defaultTeamLogo;
 
   // Filter scorers for this team and take top 5
   const topScorers = scorersData
@@ -28,10 +30,10 @@ const TeamScorers = ({ teamName, scorersData = [] }) => {
             >
               <div className="scorer-info">
                 <img
-                  src={player.avatar || 'https://minifootballleagues.com/static/team/default1.png'}
+                  src={player.avatar || defaultLogoSrc}
                   alt={player.nombre}
                   className="scorer-avatar"
-                  onError={(e) => { e.target.src = 'https://minifootballleagues.com/static/team/default1.png'; }}
+                  onError={(e) => { e.target.src = defaultLogoSrc; }}
                 />
                 <span className="scorer-name" title={player.nombre}>{player.nombre}</span>
               </div>

@@ -27,6 +27,15 @@ const { title } = Astro.props;
     <!-- Configuro mi Favicon y mi descripción de página para que se vea bien en Google -->
     <link rel="icon" type="image/png" href="/MyGol_favicon.png" />
     <meta name="description" content="Análisis de ELO y estadísticas de la Mini Football League" />
+
+    <!-- OPTIMIZACIÓN: Cargo la fuente Inter de forma LOCAL para eliminar DNS lookup y latencia externa -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/inter-variable.woff2"
+      crossorigin
+    />
 </head>
 
 <body>
@@ -46,7 +55,9 @@ const { title } = Astro.props;
         </main>
 
         <!-- Añado el widget de mi Chatbot de inteligencia artificial para que esté siempre disponible -->
-        <ChatbotWidget client:load />
+        <!-- OPTIMIZACIÓN: Uso client:idle para que el chatbot se hidrate solo cuando el navegador esté libre -->
+        <!-- Esto evita que compita con la carga inicial del contenido principal -->
+        <ChatbotWidget client:idle />
     </div>
 
 </body>

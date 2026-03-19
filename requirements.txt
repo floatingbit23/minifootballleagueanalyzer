@@ -4,7 +4,8 @@
 matplotlib
 numpy
 
-# Librerías necesarias para el web scraping (league_scraping.py)
+# Librerías necesarias para el web scraping y descarga de archivos
 selenium
 beautifulsoup4
+requests
 

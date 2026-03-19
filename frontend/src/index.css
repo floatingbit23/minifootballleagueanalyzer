@@ -1,4 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* OPTIMIZACIÓN: La fuente Inter se carga desde el <head> de Layout.astro de forma no bloqueante. */
+/* Eliminado el @import aquí para evitar el render-blocking que causaba un FCP de 4.69s. */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-variable.woff2') format('woff2-variations'),
+       url('/fonts/inter-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
 
 :root {
   --bg-primary: #121212;
