@@ -1,5 +1,7 @@
 import React from 'react';
 import './TeamScorers.css';
+import { motion } from 'framer-motion';
+import { useTranslation } from '../../hooks/useTranslation';
 import defaultTeamLogo from '../../assets/default_team_logo.png';
 
 const TeamScorers = ({ teamName, scorersData = [] }) => {
