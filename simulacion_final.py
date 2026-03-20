@@ -77,17 +77,11 @@ for archivo in archivos_json:
                 # Proceso cada partido de la jornada actual individualmente.
                 for partido in partidos_jornada:
 
-                    # Implemento una mini-función interna para corregir las URLs relativas de los logos.
-                    def corregir_url(url):
-                        if url and url.startswith('/'):
-                            return f"https://minifootballleagues.com{url}"
-                        return url
-
                     # Si el partido tiene escudos, capturo sus URLs y las guardo en mi diccionario global de escudos.
                     if "escudo_local" in partido and partido["escudo_local"]:
-                        escudos_equipos[partido['equipo_local']] = corregir_url(partido['escudo_local']) # Asigno la URL corregida al equipo local
+                        escudos_equipos[partido['equipo_local']] = partido['escudo_local'] # Asigno la URL al equipo local
                     if "escudo_visitante" in partido and partido["escudo_visitante"]:
-                        escudos_equipos[partido['equipo_visitante']] = corregir_url(partido['escudo_visitante']) # Asigno la URL corregida al equipo visitante
+                        escudos_equipos[partido['equipo_visitante']] = partido['escudo_visitante'] # Asigno la URL al equipo visitante
 
                     # Justo antes de superar la jornada de corte, hago una "foto" (copia) de los puntos actuales de todos los equipos para comparar después su evolución.
                     if j > jornada_corte and not ratings_antes_tendencia: # Si la jornada es mayor que la de corte y no se ha hecho la foto
