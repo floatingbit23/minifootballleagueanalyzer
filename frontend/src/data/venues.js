@@ -16,14 +16,14 @@ export const venues = [
   {
     id: 'murcia_3',
     name: 'Colegio San Jorge, Campo 2',
-    address: 'Av, Av. Picos de Europa, 30507 Molina de Segura, Murcia',
+    address: 'Av. Picos de Europa, 30507 Molina de Segura, Murcia',
     lat: 38.08831778989111,
     lng: -1.1582934882217404,
   },
   {
     id: 'murcia_4',
     name: 'Colegio San Jorge, Campo 1',
-    address: 'Av, Av. Picos de Europa, 30507 Molina de Segura, Murcia',
+    address: 'Av. Picos de Europa, 30507 Molina de Segura, Murcia',
     lat: 38.0881339172248,
     lng: -1.15812181388328,
   },

@@ -27,6 +27,7 @@ export default defineConfig({
             'framer': ['framer-motion'],
             'charts': ['chart.js', 'react-chartjs-2'],
             'supabase': ['@supabase/supabase-js'],
+            'map-vendor': ['mapbox-gl', 'react-map-gl'],
           },
         },
       },
