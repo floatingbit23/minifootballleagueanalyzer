@@ -3,6 +3,7 @@
 
 // Importo los componentes principales que siempre estarán presentes en mi web
 import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 import ChatbotWidget from '../components/ChatbotWidget/ChatbotWidget';
 
 // Traigo mi archivo de CSS centralizado para que todos los estilos básicos se carguen en el layout
@@ -53,6 +54,9 @@ const { title } = Astro.props;
             <!-- AQUÍ es donde Astro inyectará el contenido específico de cada página (como el index.astro) -->
             <slot />
         </main>
+
+        <!-- Footer interactivo con formulario de contacto -->
+        <Footer client:visible />
 
         <!-- Añado el widget de mi Chatbot de inteligencia artificial para que esté siempre disponible -->
         <!-- OPTIMIZACIÓN: Uso client:idle para que el chatbot se hidrate solo cuando el navegador esté libre -->
