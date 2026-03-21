@@ -62,7 +62,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} MiniFootball League Analyzer.</p>
           <div className="footer-badges">
-            <a href="https://github.com/minifootballleagueanalyzer/minifootballleagueanalyzer" target="_blank" rel="noopener noreferrer" className="footer-github-link" title="Ver código en GitHub">
+            <a href="https://github.com/floatingbit23/minifootballleagueanalyzer" target="_blank" rel="noopener noreferrer" className="footer-github-link" title="Ver código en GitHub">
               <Github size={20} />
             </a>
             <span className="badge">Open Source</span>
