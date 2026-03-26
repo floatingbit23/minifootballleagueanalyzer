@@ -316,6 +316,15 @@
     },
     {
         "jornada": 11,
+        "equipo_local": "Joanfran Albolote",
+        "escudo_local": "/images/teams/94c40425753b096940655d9207eb524e.jpg",
+        "equipo_visitante": "Otura",
+        "escudo_visitante": "/images/teams/df9b1ba766388066146d8e9045970673.jpg",
+        "goles_local": 3,
+        "goles_visitante": 0
+    },
+    {
+        "jornada": 11,
         "equipo_local": "Celtic Pulianas",
         "escudo_local": "/images/teams/c101d95e9bf9072a5981423ca6f7443b.jpg",
         "equipo_visitante": "Atlético La Zubia",

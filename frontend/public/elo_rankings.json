@@ -427,10 +427,10 @@
         {
             "posicion": 1,
             "equipo": "Joanfran Albolote",
-            "puntos": 1621,
-            "puntos_reales": 20,
+            "puntos": 1631,
+            "puntos_reales": 23,
             "posicion_real": 1,
-            "tendencia": 44,
+            "tendencia": 54,
             "logo": "/images/teams/94c40425753b096940655d9207eb524e.jpg",
             "evolucion": [
                 1500,
@@ -444,7 +444,7 @@
                 1577,
                 1592,
                 1621,
-                1621
+                1631
             ]
         },
         {
@@ -588,10 +588,10 @@
         {
             "posicion": 8,
             "equipo": "Otura",
-            "puntos": 1349,
+            "puntos": 1339,
             "puntos_reales": 1,
             "posicion_real": 8,
-            "tendencia": -41,
+            "tendencia": -51,
             "logo": "/images/teams/df9b1ba766388066146d8e9045970673.jpg",
             "evolucion": [
                 1500,
@@ -605,7 +605,7 @@
                 1371,
                 1371,
                 1349,
-                1349
+                1339
             ]
         }
     ],
