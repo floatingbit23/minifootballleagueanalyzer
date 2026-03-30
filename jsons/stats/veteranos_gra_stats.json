@@ -18,6 +18,12 @@
         "avatar": "/images/players/f10ab2b6e461eac1c8ce556e237e7dd5.jpg"
     },
     {
+        "nombre": "Manuel Sánchez Fernández",
+        "equipo": "Monachil",
+        "goles": 8,
+        "avatar": "/images/players/67d529177d29e0b56ab95e9e0babfd3d.jpg"
+    },
+    {
         "nombre": "Pablo Martinez  Lao",
         "equipo": "Celtic Pulianas",
         "goles": 7,
@@ -40,12 +46,6 @@
         "equipo": "Joanfran Albolote",
         "goles": 6,
         "avatar": "/images/players/1adc5acb4902f5fa7dc779be25734624.jpg"
-    },
-    {
-        "nombre": "Manuel Sánchez Fernández",
-        "equipo": "Monachil",
-        "goles": 6,
-        "avatar": "/images/players/67d529177d29e0b56ab95e9e0babfd3d.jpg"
     },
     {
         "nombre": "José Fernández Cantarero",
@@ -132,6 +132,12 @@
         "avatar": "/images/players/1c6f633da311339aef1f80c637ef0773.jpg"
     },
     {
+        "nombre": "Francisco Jesús  Huertas Pérez",
+        "equipo": "Monachil",
+        "goles": 3,
+        "avatar": "/images/players/9f9745277e1c996d520366a28c0a465e.png"
+    },
+    {
         "nombre": "Pedro Adróver Pérez",
         "equipo": "Ogijares 89 Fc",
         "goles": 3,
@@ -172,6 +178,12 @@
         "equipo": "Joanfran Albolote",
         "goles": 3,
         "avatar": "/images/players/f0128f21a6d4f8f3c1136baabf9e4156.jpg"
+    },
+    {
+        "nombre": "Dani Garcia Jiménez",
+        "equipo": "Monachil",
+        "goles": 3,
+        "avatar": "/images/players/20661e2fe6d07175865313497a51a329.jpg"
     },
     {
         "nombre": "Francisco Javier  Cardenete Garcia",
@@ -246,12 +258,6 @@
         "avatar": "/images/players/969739f7042d36be40b09d617421bac2.png"
     },
     {
-        "nombre": "Dani Garcia Jiménez",
-        "equipo": "Monachil",
-        "goles": 2,
-        "avatar": "/images/players/20661e2fe6d07175865313497a51a329.jpg"
-    },
-    {
         "nombre": "Adrián Iglesias Martínez",
         "equipo": "Joanfran Albolote",
         "goles": 2,
@@ -294,16 +300,22 @@
         "avatar": "/images/players/e51bc883abd47fca2bedaa99f7c3df02.png"
     },
     {
-        "nombre": "** Javier  Pérez Cobos",
-        "equipo": "Peña Fútbol Villanueva Mesia",
-        "goles": 1,
-        "avatar": "/images/players/b3222dc76982df501fb067a6b991c31f.jpg"
-    },
-    {
         "nombre": "** Adrián  Tenorio Rodríguez",
         "equipo": "Joanfran Albolote",
         "goles": 1,
         "avatar": "/images/players/af5c9f9f56250b482368aa83e61d117f.jpg"
+    },
+    {
+        "nombre": "Mario Calvo Amador",
+        "equipo": "Monachil",
+        "goles": 1,
+        "avatar": "/images/players/dac403002ae8c7c22f1f3ba52e65690a.png"
+    },
+    {
+        "nombre": "** Javier  Pérez Cobos",
+        "equipo": "Peña Fútbol Villanueva Mesia",
+        "goles": 1,
+        "avatar": "/images/players/b3222dc76982df501fb067a6b991c31f.jpg"
     },
     {
         "nombre": "** José Manuel  Aguilera Molina",
@@ -328,12 +340,6 @@
         "equipo": "Celtic Pulianas",
         "goles": 1,
         "avatar": "/images/players/8e252d7ff2917eddb3646a2465bd33c0.jpg"
-    },
-    {
-        "nombre": "Francisco Jesús  Huertas Pérez",
-        "equipo": "Monachil",
-        "goles": 1,
-        "avatar": "/images/players/9f9745277e1c996d520366a28c0a465e.png"
     },
     {
         "nombre": "José Antonio Serrano García",
@@ -444,12 +450,6 @@
         "avatar": "/images/players/e39f1c8539ffdbc2d9857d432fb1d622.jpg"
     },
     {
-        "nombre": "Juan Gallego Martín",
-        "equipo": "Monachil",
-        "goles": 1,
-        "avatar": "/images/players/bde4ed2a41cba62b582d75203659df67.jpg"
-    },
-    {
         "nombre": "José Francisco Quesada García",
         "equipo": "Atlético La Zubia",
         "goles": 1,
@@ -462,16 +462,16 @@
         "avatar": "/images/players/17f29546fd17b5ecb56adb50be12a41b.jpg"
     },
     {
-        "nombre": "Juan Francisco  Camacho Roldán",
-        "equipo": "Peña Fútbol Villanueva Mesia",
-        "goles": 1,
-        "avatar": "/images/players/5df680620da37612493d0b8e8e75cd96.jpg"
-    },
-    {
         "nombre": "Pablo Lorente Lavado",
         "equipo": "Ogijares 89 Fc",
         "goles": 1,
         "avatar": "/images/players/03eb87ad161bcbf837e75a9df6682a10.jpg"
+    },
+    {
+        "nombre": "Juan Gallego Martín",
+        "equipo": "Monachil",
+        "goles": 1,
+        "avatar": "/images/players/bde4ed2a41cba62b582d75203659df67.jpg"
     },
     {
         "nombre": "Juan de Dios Aguilera Sánchez",
@@ -484,5 +484,17 @@
         "equipo": "Celtic Pulianas",
         "goles": 1,
         "avatar": "/images/players/180cc9339eeefe8d659175f2c6ded282.png"
+    },
+    {
+        "nombre": "Juan Francisco  Camacho Roldán",
+        "equipo": "Peña Fútbol Villanueva Mesia",
+        "goles": 1,
+        "avatar": "/images/players/5df680620da37612493d0b8e8e75cd96.jpg"
+    },
+    {
+        "nombre": "Jesus  Vargas Dali",
+        "equipo": "Monachil",
+        "goles": 1,
+        "avatar": "/images/players/b102c51344fecabaa62fb16c74a9901a.jpg"
     }
 ]

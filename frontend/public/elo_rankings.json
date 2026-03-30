@@ -1459,7 +1459,7 @@
             "equipo": "Churriana",
             "puntos": 1512,
             "puntos_reales": 12,
-            "posicion_real": 5,
+            "posicion_real": 6,
             "tendencia": 19,
             "logo": "/images/teams/23871283e20d7d8cc0d7ea7212e3b3c3.jpg",
             "evolucion": [
@@ -1480,10 +1480,10 @@
         {
             "posicion": 6,
             "equipo": "Monachil",
-            "puntos": 1475,
-            "puntos_reales": 11,
-            "posicion_real": 6,
-            "tendencia": -23,
+            "puntos": 1505,
+            "puntos_reales": 14,
+            "posicion_real": 5,
+            "tendencia": 7,
             "logo": "/images/teams/c12cc8da728366201f567281aa2eb2c6.png",
             "evolucion": [
                 1500,
@@ -1497,16 +1497,16 @@
                 1479,
                 1504,
                 1475,
-                1475
+                1505
             ]
         },
         {
             "posicion": 7,
             "equipo": "Peña Fútbol Villanueva Mesia",
-            "puntos": 1407,
+            "puntos": 1377,
             "puntos_reales": 7,
             "posicion_real": 7,
-            "tendencia": -41,
+            "tendencia": -71,
             "logo": "/images/teams/fdcedd579e7c37e3638f1a130a62530e.png",
             "evolucion": [
                 1500,
@@ -1520,7 +1520,7 @@
                 1423,
                 1407,
                 1407,
-                1407
+                1377
             ]
         },
         {
