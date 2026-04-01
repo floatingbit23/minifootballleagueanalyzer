@@ -55,6 +55,44 @@ The platform also includes a dropdown menu to select two teams within each compe
   - **Goal Distribution**: If this value is high (closer to 100%), the team doesn't rely solely on one player to score.
   - **Goal Difference**: Overall competitiveness balance.
 
+## Installation and Configuration
+
+Follow these steps to run the project on your local machine.
+
+### 1. Prerequisites
+- **Python 3.10+**
+- **Node.js 18+**
+- **Google Chrome** (required for Selenium scraping)
+
+### 2. Environment Configuration (.env)
+This project requires several API keys and configurations to function correctly (Chatbot, Maps, Supabase).
+1. Copy the example file:
+   ```bash
+   cp .env.example .env.local
+   ```
+2. Edit `.env.local` and add your own keys (Gemini, Mapbox, Supabase).
+
+### 3. Backend (Python)
+From the project root:
+```bash
+# Create and activate virtual environment
+python -m venv .venv
+source .venv/Scripts/activate  # On Windows: .venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### 4. Frontend (Astro)
+From the `frontend/` folder:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
 ## Project Workflow
 
 ```mermaid

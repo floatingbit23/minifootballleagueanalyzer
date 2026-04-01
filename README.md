@@ -55,6 +55,49 @@ La web también dispone de un comparador cara a cara (H2H) al seleccionar dos eq
   - **Reparto del Gol**: Si el porcentaje es cercano al 100%, el equipo no depende de un solo goleador.
   - **Diferencia de Gol**: El balance general de competitividad del equipo.
 
+### Chatbot IA
+Integración de un **Chatbot con IA** (potenciado por un modelo de _Google Gemini_) que permite consultar información en tiempo real sobre los equipos y la competición. Se accede a él mediante el botón flotante en la esquina inferior derecha del frontend.
+
+![Chatbot IA](/images/chatbot.png)
+
+## Instalación y Configuración
+
+Sigue estos pasos para ejecutar el proyecto en tu máquina local.
+
+### 1. Requisitos Previos
+- **Python 3.10+**
+- **Node.js 18+**
+- **Google Chrome** (necesario para el scraping con Selenium)
+
+### 2. Configuración del Entorno (.env)
+Este proyecto requiere varias claves de API y configuraciones para funcionar correctamente (Chatbot, Mapas, Supabase).
+1. Copia el archivo de ejemplo:
+   ```bash
+   cp .env.example .env.local
+   ```
+2. Edita `.env.local` y añade tus propias claves (Gemini, Mapbox, Supabase).
+
+### 3. Backend (Python)
+Desde la raíz del proyecto:
+```bash
+# Crear y activar entorno virtual
+python -m venv .venv
+source .venv/Scripts/activate  # En Windows: .venv\Scripts\activate
+
+# Instalar dependencias
+pip install -r requirements.txt
+```
+
+### 4. Frontend (Astro)
+Desde la carpeta `frontend/`:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
 ## Workflow del Proyecto
 
 ```mermaid
@@ -93,7 +136,4 @@ Los JSONs raw (en crudo) son procesados por el algoritmo para exportar un rankin
 ### Automatización
 Todo el ciclo de recolección de datos y actualización de rankings está automatizado y se ejecuta diariamente mediante CI/CD con **GitHub Actions**.
 
-### Chatbot IA
-Integración de un **Chatbot con IA** (potenciado por un modelo de _Google Gemini_) que permite consultar información en tiempo real sobre los equipos y la competición. Se accede a él mediante el botón flotante en la esquina inferior derecha del frontend.
 
-![Chatbot IA](/images/chatbot.png)

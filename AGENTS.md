@@ -8,6 +8,7 @@ MiniFootballLeagueAnalyzer is an automated data pipeline and visualization platf
 |-------|------------|----------|
 | **Backend** | Python 3.10 | `/` (repo root) |
 | **Frontend** | Astro 5 + React 19 | `/frontend/` |
+| **Services** | Supabase (Auth/Favorites) | Cloud |
 
 The backend scrapes match data from [minifootballleagues.com](https://minifootballleagues.com/), calculates ELO rankings based on form and goal margin, and exports JSON files that the frontend consumes using Static Site Generation (SSG).
 
@@ -32,6 +33,11 @@ The backend scrapes match data from [minifootballleagues.com](https://minifootba
 
 ### 1. Python Backend
 - Always run scripts from the **repo root**.
+- **Environment Setup**:
+  ```bash
+  cp .env.example .env.local
+  # Edit .env.local with your keys
+  ```
 - **Virtual Environment**:
   ```bash
   python -m venv .venv
