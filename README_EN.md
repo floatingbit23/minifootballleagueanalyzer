@@ -9,7 +9,7 @@ MiniFootballLeagueAnalyzer is an advanced data analytics tool designed for the M
 
 It extracts competition data using web scraping and provides useful infographics, allowing teams to scout their opponents and understand their own strengths and weaknesses.
 
-These infographics are updated on a daily basis.
+These infographics are updated on a weekly basis (every Wednesday).
 
 The website features a dropdown menu to select the desired competition. Each competition includes:
 
@@ -102,7 +102,7 @@ graph TD
     C --> D(simulacion_final.py)
     D -->|ELO Ranking & Stats| E[(frontend/public/*.json)]
     
-    subgraph GitHub_Actions [GitHub Actions - 02:00 UTC]
+    subgraph GitHub_Actions [GitHub Actions - Wed 02:00 UTC]
         B
         D
         F[Git Commit & Push]
@@ -132,7 +132,7 @@ The raw JSON files are fed into the algorithm, which outputs a global ranking in
 Detailed comparison providing statistical insights to anticipate match outcomes.
 
 ### Automation
-Data is updated daily via CI/CD pipelines using GitHub Actions.
+Data is updated weekly (every Wednesday) via CI/CD pipelines using GitHub Actions.
 
 ### AI Chatbot
 An AI chatbot powered by the Gemini family models to query information about teams and competitions. It can be accessed via a button in the bottom right corner of the website.

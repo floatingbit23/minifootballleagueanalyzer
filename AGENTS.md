@@ -62,7 +62,7 @@ The backend scrapes match data from [minifootballleagues.com](https://minifootba
 ```text
 MiniFootballLeagueAnalyzer/
 ├── .github/workflows/
-│   └── scraping.yml       # Daily scraper (02:00 UTC)
+│   └── scraping.yml       # Weekly scraper (Wed 02:00 UTC)
 ├── jsons/                 # Raw data (Inputs)
 ├── frontend/              # Web application
 │   ├── public/            # Processed JSONs (Outputs)
@@ -84,7 +84,7 @@ MiniFootballLeagueAnalyzer/
 
 | Tool | Event | Responsibility |
 |------|-------|----------------|
-| **GitHub Actions** | Daily (02:00 UTC) | Runs scraping, updates ELO, and pushes commits. |
+| **GitHub Actions** | Weekly (Wed 02:00 UTC) | Runs scraping, updates ELO, and pushes commits. |
 | **Vercel** | Push to `main` | Re-builds the static site with the latest data. |
 
 > [!IMPORTANT]

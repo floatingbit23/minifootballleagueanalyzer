@@ -2,7 +2,7 @@ name: Scraping Nocturno
 
 on:
   schedule:
-    - cron: '0 2 * * *' # Se ejecuta a las 2:00 AM UTC todos los días
+    - cron: '0 2 * * 3' # Se ejecuta a las 2:00 AM UTC cada miércoles
   workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub
 
 jobs:

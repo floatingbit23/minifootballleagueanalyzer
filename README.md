@@ -9,7 +9,7 @@ MiniFootballLeagueAnalyzer es una herramienta avanzada de análisis de datos de 
 
 Extráe información de las competiciones mediante web scraping y provee infografías útiles que permiten a los equipos estudiar a sus rivales, así como conocer sus propias fortalezas y debilidades.
 
-Las infografías y rankings se actualizan **diariamente**.
+Las infografías y rankings se actualizan **semanalmente (los miércoles)**.
 
 La web cuenta con un menú desplegable para seleccionar la competición deseada. Cada competición incluye:
 
@@ -107,7 +107,7 @@ graph TD
     C --> D(simulacion_final.py)
     D -->|ELO Ranking & Stats| E[(frontend/public/*.json)]
     
-    subgraph GitHub_Actions [GitHub Actions - 02:00 UTC]
+    subgraph GitHub_Actions [GitHub Actions - Miércoles 02:00 UTC]
         B
         D
         F[Git Commit & Push]
@@ -134,6 +134,6 @@ Los JSONs raw (en crudo) son procesados por el algoritmo para exportar un rankin
 ![Goleadores](/images/scorers.png)
 
 ### Automatización
-Todo el ciclo de recolección de datos y actualización de rankings está automatizado y se ejecuta diariamente mediante CI/CD con **GitHub Actions**.
+Todo el ciclo de recolección de datos y actualización de rankings está automatizado y se ejecuta semanalmente (los miércoles) mediante CI/CD con **GitHub Actions**.
 
 
