@@ -9,3 +9,6 @@ selenium
 beautifulsoup4
 requests
 
+# Testing (Backend - Pytest)
+pytest
+

@@ -108,5 +108,18 @@ npm run build     # Generate static dist/
 npm run preview   # Preview production build
 ```
 
+### Quality Assurance (Testing)
+Professional test suite using **pytest** for backend logic and data integrity.
+```bash
+pytest          # Run all tests
+pytest -v       # Verbose mode
+```
+
+Component tests using **Vitest** + **React Testing Library** (no browser/server required).
+```bash
+# From frontend directory
+npm test
+```
+
 ---
 

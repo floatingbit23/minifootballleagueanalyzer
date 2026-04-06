@@ -96,6 +96,23 @@ npm install
 npm run dev
 ```
 
+### 5. Pruebas de Calidad (Testing)
+
+El proyecto utiliza **pytest** para asegurar la integridad de la lógica del sistema ELO y el procesamiento de datos.
+
+1. Ejecuta la suite completa de pruebas unitarias e integración:
+   ```bash
+   pytest
+   ```
+   *(Nota: Los tests se encuentran en la carpeta `tests/` e incluyen validaciones del algoritmo ELO y de la estructura de los JSONs).*
+
+2. Para ejecutar las pruebas unitarias e integración del **frontend** (componentes React):
+   ```bash
+   cd frontend
+   npm test
+   ```
+   *(Nota: Utiliza **Vitest** y **React Testing Library** para validar el Chatbot, el cálculo E2H, la matriz de Poisson y la interfaz de las tablas sin necesidad de abrir el navegador).*
+
 ---
 
 ## Workflow del Proyecto

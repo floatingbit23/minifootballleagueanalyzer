@@ -7,6 +7,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
+.coverage
+htmlcov/
 *.log
 
 # --- NODE / ASTRO ---
@@ -14,6 +16,9 @@ node_modules/
 dist/
 dist-ssr/
 .astro/
+.vitest_cache/
+coverage/
+.nyc_output/
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
@@ -30,8 +35,8 @@ pnpm-debug.log*
 *.swp
 *.swo
 
-# --- ANTIGRAVITY / AGENTIC TOOLS ---
-.agent/
+# --- ANTIGRAVITY / AGENTIC TOOLS (IMPORTANTE NO IGNORAR .agents/) ---
+# No ignorar .agents/ porque contiene skills y workflows necesarios para la persistencia de la IA
 .gemini/
 .antigravity/
 .memories/
@@ -47,5 +52,5 @@ testsprite-mcp-report.md
 .DS_Store
 Thumbs.db
 
-# --- SUPABASE ---
-.agents/
+# --- OTROS ---
+.agents-bak/

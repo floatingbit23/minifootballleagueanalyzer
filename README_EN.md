@@ -91,6 +91,23 @@ npm install
 npm run dev
 ```
 
+### 5. Quality Assurance (Testing)
+
+The project uses **pytest** to ensure the integrity of the ELO system logic and data processing.
+
+1. Run the complete suite of unit and integration tests:
+   ```bash
+   pytest
+   ```
+   *(Note: Tests are located in the `tests/` directory and include validations for the ELO algorithm and JSON structure).*
+
+2. To run **frontend** unit and integration tests (React components):
+   ```bash
+   cd frontend
+   npm test
+   ```
+   *(Note: Uses **Vitest** and **React Testing Library** to validate the Chatbot, H2H calculation, Poisson matrix, and table interfaces without needing to open a browser).*
+
 ---
 
 ## Project Workflow
