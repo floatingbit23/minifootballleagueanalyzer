@@ -6,7 +6,7 @@ MiniFootballLeagueAnalyzer is an automated data pipeline and visualization platf
 
 | Layer | Tech Stack | Location |
 |-------|------------|----------|
-| **Backend** | Python 3.10 | `/` (repo root) |
+| **Backend** | Python 3.10 | `/backend/` |
 | **Frontend** | Astro 5 + React 19 | `/frontend/` |
 | **Services** | Supabase (Auth/Favorites) | Cloud |
 
@@ -63,6 +63,13 @@ The backend scrapes match data from [minifootballleagues.com](https://minifootba
 MiniFootballLeagueAnalyzer/
 ├── .github/workflows/
 │   └── scraping.yml       # Weekly scraper (Wed 02:00 UTC)
+├── backend/               # Backend logic
+│   ├── analisis_enfrentamiento.py
+│   ├── elo_system.py      # ELO algorithm
+│   ├── grafico_puntos.py
+│   ├── league_scraping.py # Scraper logic
+│   ├── simulacion_final.py # Main execution script
+│   └── sync_logos.py
 ├── jsons/                 # Raw data (Inputs)
 ├── frontend/              # Web application
 │   ├── public/            # Processed JSONs (Outputs)
@@ -70,9 +77,6 @@ MiniFootballLeagueAnalyzer/
 │   ├── vercel.json        # Vercel deployment config
 │   ├── README.md          # Frontend docs (Spanish)
 │   └── README_EN.md       # Frontend docs (English)
-├── league_scraping.py     # Scraper logic
-├── elo_system.py          # ELO algorithm
-├── simulacion_final.py    # Main execution script
 ├── requirements.txt       # Python dependencies
 ├── README.md              # Main docs (Spanish)
 └── README_EN.md           # Main docs (English)
@@ -97,8 +101,8 @@ MiniFootballLeagueAnalyzer/
 ### Local Data Refresh
 ```bash
 # From root directory
-python league_scraping.py
-python simulacion_final.py
+python backend/league_scraping.py
+python backend/simulacion_final.py
 ```
 
 ### Frontend Build

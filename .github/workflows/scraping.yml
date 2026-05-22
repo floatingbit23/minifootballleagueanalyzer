@@ -46,17 +46,17 @@ jobs:
     - name: Ejecutar Scraping
       run: |
         # Inicia el proceso de extracción de datos de la web original
-        python league_scraping.py
+        python backend/league_scraping.py
         
     - name: Sincronizar Logos y Avatares (Local)
       run: |
         # Descarga las imágenes externas y las convierte en archivos locales con nombres MD5
-        python sync_logos.py
+        python backend/sync_logos.py
 
     - name: Ejecutar Análisis ELO
       run: |
         # Procesa los resultados obtenidos para calcular rankings ELO y generar archivos para el frontend
-        python simulacion_final.py
+        python backend/simulacion_final.py
 
     - name: Hacer commit y push de los nuevos datos e imágenes
       env:

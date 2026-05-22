@@ -121,11 +121,11 @@ El proyecto utiliza **pytest** para asegurar la integridad de la lógica del sis
 
 ```mermaid
 graph TD
-    A[Minifootballleagues.com] -->|Scraping: Selenium + BS4| B(league_scraping.py)
+    A[Minifootballleagues.com] -->|Scraping: Selenium + BS4| B(backend/league_scraping.py)
     B -->|Datos Raw| C[(jsons/*.json)]
-    C --> S(sync_logos.py)
+    C --> S(backend/sync_logos.py)
     S -->|Logos & Avatares Locales| E[(frontend/public/images/*)]
-    C --> D(simulacion_final.py)
+    C --> D(backend/simulacion_final.py)
     D -->|ELO Ranking & Stats| F[(frontend/public/*.json)]
     
     subgraph GitHub_Actions [GitHub Actions - Miércoles 02:00 UTC]

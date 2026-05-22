@@ -115,11 +115,11 @@ The project uses **pytest** to ensure the integrity of the ELO system logic and 
 
 ```mermaid
 graph TD
-    A[Minifootballleagues.com] -->|Scraping: Selenium + BS4| B(league_scraping.py)
+    A[Minifootballleagues.com] -->|Scraping: Selenium + BS4| B(backend/league_scraping.py)
     B -->|Raw Data| C[(jsons/*.json)]
-    C --> S(sync_logos.py)
+    C --> S(backend/sync_logos.py)
     S -->|Local Logos & Avatars| E[(frontend/public/images/*)]
-    C --> D(simulacion_final.py)
+    C --> D(backend/simulacion_final.py)
     D -->|ELO Ranking & Stats| F[(frontend/public/*.json)]
     
     subgraph GitHub_Actions [GitHub Actions - Wed 02:00 UTC]

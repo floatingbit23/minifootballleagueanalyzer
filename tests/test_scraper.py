@@ -1,6 +1,12 @@
 import os
 import pytest
+import sys
 from bs4 import BeautifulSoup
+
+# Añadir la raíz del proyecto y backend al path para importar módulos locales
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "backend"))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from league_scraping import extraer_partidos_de_jornada
 
 def test_extraer_partidos_de_jornada():

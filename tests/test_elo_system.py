@@ -7,7 +7,8 @@ import pytest
 import sys
 import os
 
-# Añadir la raíz del proyecto al path para importar módulos locales
+# Añadir la raíz del proyecto y backend al path para importar módulos locales
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "backend"))
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from elo_system import SistemaElo
