@@ -5,7 +5,14 @@ import Home from './Home';
 
 // Mocks para subcomponentes complejos
 vi.mock('../Leaderboard/Leaderboard', () => ({ default: () => React.createElement('div', { 'data-testid': 'mock-leaderboard' }) }));
-vi.mock('../MatrixChart/MatrixChart', () => ({ default: (props) => React.createElement('div', { 'data-testid': 'mock-matrix', ...props }) }));
+vi.mock('../MatrixChart/MatrixChart', () => ({
+  default: ({ equipoHome, equipoAway }) =>
+    React.createElement('div', {
+      'data-testid': 'mock-matrix',
+      'data-equipohome': equipoHome,
+      'data-equipoaway': equipoAway,
+    })
+}));
 vi.mock('../TeamScorers/TeamScorers', () => ({ default: () => React.createElement('div', { 'data-testid': 'mock-scorers' }) }));
 vi.mock('../PointsEvolution/PointsEvolution', () => ({ default: () => React.createElement('div', { 'data-testid': 'mock-evolution' }) }));
 
@@ -19,6 +26,12 @@ describe('Home Component', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+    global.fetch = vi.fn().mockImplementation(() =>
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve([]),
+      })
+    );
   });
 
   it('renders correctly initially', () => {
@@ -69,8 +82,8 @@ describe('Home Component', () => {
     // Team A (1600) vs Team B (1400)
     // probA = 1 / (1 + 10^((1400-1600)/400)) = 1 / (1 + 10^-0.5) = 1 / (1 + 0.316) ≈ 0.7597
     const matrix = screen.getByTestId('mock-matrix');
-    expect(matrix).toHaveAttribute('equipoHome', 'Team A');
-    expect(matrix).toHaveAttribute('equipoAway', 'Team B');
+    expect(matrix).toHaveAttribute('data-equipohome', 'Team A');
+    expect(matrix).toHaveAttribute('data-equipoaway', 'Team B');
     
     // Las props de probabilidad que se pasan deben ser números
     // No puedo usar toHaveAttribute para float exacto igual en DOM, pero puedo verificar que los componentes se renderizaron
