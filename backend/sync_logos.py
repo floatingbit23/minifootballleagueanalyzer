@@ -9,7 +9,7 @@ from pathlib import Path # Para trabajar con rutas de archivos
 
 # Definimos las rutas base del proyecto para asegurar que el script funcione correctamente tanto localmente (mi Windows) como en GitHub Actions (Ubuntu 22.04)
 # Haciendo uso de rutas relativas dinámicas:
-BASE_DIR = Path(__file__).resolve().parent # Obtiene la ruta del directorio actual del script (/)
+BASE_DIR = Path(__file__).resolve().parent.parent # Obtengo la ruta del directorio raíz del proyecto (padre de /backend)
 
 JSONS_DIR = BASE_DIR / 'jsons'
 PUBLIC_DIR = BASE_DIR / 'frontend' / 'public'
