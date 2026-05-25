@@ -66,12 +66,13 @@ Follow these steps to run the project on your local machine.
 - **Google Chrome** (required for Selenium scraping)
 
 ### 2. Environment Configuration (.env)
-This project requires several API keys and configurations to function correctly (Chatbot, Maps, Supabase).
+This project requires several API keys and configurations to function correctly (Chatbot, Maps, Supabase, CDN).
 1. Copy the example file:
    ```bash
    cp .env.example .env.local
    ```
 2. Edit `.env.local` and add your own keys (Gemini, Mapbox, Supabase).
+3. Configure `PUBLIC_CLOUDFRONT_URL=""` (empty) to work offline using local data, or set your CloudFront CDN URL to consume from AWS in development.
 
 ### 3. Backend (Python)
 From the project root:
@@ -115,44 +116,33 @@ The project uses **pytest** to ensure the integrity of the ELO system logic and 
 
 ```mermaid
 graph TD
-    A[Minifootballleagues.com] -->|Scraping: Selenium + BS4| B(backend/league_scraping.py)
-    B -->|Raw Data| C[(jsons/*.json)]
-    C --> S(backend/sync_logos.py)
-    S -->|Local Logos & Avatars| E[(frontend/public/images/*)]
-    C --> D(backend/simulacion_final.py)
-    D -->|ELO Ranking & Stats| F[(frontend/public/*.json)]
-    
-    subgraph GitHub_Actions [GitHub Actions - Wed 02:00 UTC]
-        B
-        S
-        D
-        G[Git Commit & Push]
+    subgraph GitHub_Actions [GitHub Actions - Scraper Pipeline]
+        A[minifootballleagues.com] -->|Scraping & ELO| B(Generate JSONs & Images)
+        B -->|AWS OIDC| C[Upload to AWS S3 & Invalidate CloudFront]
     end
+
+    C -->|CDN Storage| D[AWS S3 + CloudFront CDN]
     
-    F --> G
-    E --> G
-    G -->|Trigger| H[Vercel Deployment]
-    H -->|Astro SSG Build| I[Web Frontend]
-    I -->|Visualization| J[End User]
+    subgraph Vercel_App [Vercel - Frontend]
+        E[Web Frontend] -->|Dynamic Fetch| D
+        E -->|Visualization| F[End User]
+    end
 ```
 
-### Backend
+### Backend & Cloud Storage (AWS S3 + CloudFront)
 
-#### Data Collection
-Python along with Selenium and BeautifulSoup is used to scrape data from the official website. The collected data is stored as JSON files inside the `/jsons` directory for subsequent analysis.
+#### Collection and Processing
+Python along with Selenium and BeautifulSoup is used to scrape data from the official website. The collected data is stored as JSON files inside the `/jsons` directory. After scraping, `sync_logos.py` localizes and downloads the images, and `simulacion_final.py` calculates ELO Power Rankings and statistics.
 
-#### Power Ranking
-Based on the traditional ELO system, but incorporates 2 analytical multipliers:
-1. **Margin of Victory**: A "blowout" multiplier. Winning by a larger margin awards more ELO points.
-2. **Time-Decay**: Recent matches are given higher weight than those played early in the season.
-
-The raw JSON files are fed into the algorithm, which outputs a global ranking in a new JSON file (`elo_rankings.json`).
-
-### Head-to-Head (H2H)
-Detailed comparison providing statistical insights to anticipate match outcomes.
+#### Storage and CDN
+To avoid repository bloating and improve load times:
+1. All ELO rankings, goalscoring stats, and graphics (crests and player pictures) are automatically uploaded to the **AWS S3** bucket.
+2. Data and images are served to production users via the **AWS CloudFront** global CDN network.
+3. The React and Astro frontend performs direct, asynchronous `fetch` requests to CloudFront at runtime, fallbacking automatically to local assets when working offline in development.
 
 ### Automation
-Data, images, and rankings are updated weekly (every Wednesday at 02:00 UTC) via CI/CD pipelines using GitHub Actions.
+The complete scraping, ELO calculation, and AWS synchronization pipeline runs weekly (every Wednesday at 02:00 UTC) via **GitHub Actions**, authenticating with AWS using OpenID Connect (OIDC) without storing long-lived credentials in the repository.
+
 
 ### AI Chatbot
 An AI chatbot powered by the Gemini family models to query information about teams and competitions. It can be accessed via a button in the bottom right corner of the website.

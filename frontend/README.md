@@ -18,19 +18,17 @@ El frontend utiliza un modelo de **Generación de Sitios Estáticos (SSG)** con 
 
 ### 📐 Flujo de la Aplicación
 
-1.  **Renderizado en Tiempo de Build (SSG)**:
-    - Durante el proceso de construcción (`npm run build`), Astro ejecuta el código definido en `src/pages/index.astro`.
-    - Se realiza un `fetch` a los datos procesados en `elo_rankings.json` (alojados en el propio repositorio).
-    - Se genera un archivo HTML estático puro que ya contiene los datos del ranking impresos, mejorando drásticamente el SEO y eliminando los tiempos de carga (_Loading states_).
+1.  **Generación de Sitios Estáticos (SSG)**:
+    - Durante la compilación en producción, Astro genera el esqueleto base HTML optimizado para SEO sin depender de archivos de datos locales volátiles.
 
 2.  **Arquitectura de Islas**:
-    - Los componentes que requieren alta interactividad (como el Dashboard de comparativa H2H o el Chatbot IA) se cargan como "islas" independientes.
-    - Utilizamos la directiva `client:load` para que Astro únicamente descargue e hidrate el JavaScript de React estrictamente necesario para dichos componentes, manteniendo el resto de la interfaz como un HTML ultra-ligero.
+    - Los componentes interactivos (como la clasificación, el comparador H2H o el Chatbot de IA) se hidratan en el cliente mediante la directiva `client:load`.
+    - Al cargar la página, los componentes de React realizan solicitudes `fetch` de forma asíncrona directamente a la CDN de AWS CloudFront para obtener rankings y estadísticas actualizadas, evitando tiempos de carga durante la construcción y bloqueos de compilación.
 
 3.  **Flujo de Datos Automatizado**:
-    - **Backend (Python)**: Realiza el scraping semanal (los miércoles) y genera el JSON actualizado de rankings.
-    - **GitHub Actions**: Hace commit y push automático del JSON al repositorio.
-    - **Vercel Build**: Detecta el nuevo commit en el repositorio, lanza el build de Astro (que consume los últimos datos JSON) y despliega la nueva versión completamente estática.
+    - **Backend (Python)**: Realiza el scraping semanal y procesa imágenes y estadísticas.
+    - **GitHub Actions**: Ejecuta la compilación de datos y sube de forma directa y segura los archivos JSON e imágenes resultantes a **AWS S3** usando OIDC para autenticarse, e invalida la distribución de **AWS CloudFront**.
+    - **Vercel**: Hospeda y despliega el código frontend estático, que lee dinámicamente de CloudFront en producción y ofrece fallback local offline para desarrollo.
 
 ## 📁 Estructura del Proyecto
 

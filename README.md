@@ -72,12 +72,13 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local.
 - **Google Chrome** (necesario para el scraping con Selenium)
 
 ### 2. Configuración del Entorno (.env)
-Este proyecto requiere varias claves de API y configuraciones para funcionar correctamente (Chatbot, Mapas, Supabase).
+Este proyecto requiere varias claves de API y configuraciones para funcionar correctamente (Chatbot, Mapas, Supabase, CDN).
 1. Copia el archivo de ejemplo:
    ```bash
    cp .env.example .env.local
    ```
 2. Edita `.env.local` y añade tus propias claves (Gemini, Mapbox, Supabase).
+3. Configura `PUBLIC_CLOUDFRONT_URL=""` (vacía) para trabajar offline con datos locales, o añade la URL de tu CDN de CloudFront para consumir de AWS en desarrollo.
 
 ### 3. Backend (Python)
 Desde la raíz del proyecto:
@@ -121,40 +122,32 @@ El proyecto utiliza **pytest** para asegurar la integridad de la lógica del sis
 
 ```mermaid
 graph TD
-    A[Minifootballleagues.com] -->|Scraping: Selenium + BS4| B(backend/league_scraping.py)
-    B -->|Datos Raw| C[(jsons/*.json)]
-    C --> S(backend/sync_logos.py)
-    S -->|Logos & Avatares Locales| E[(frontend/public/images/*)]
-    C --> D(backend/simulacion_final.py)
-    D -->|ELO Ranking & Stats| F[(frontend/public/*.json)]
-    
-    subgraph GitHub_Actions [GitHub Actions - Miércoles 02:00 UTC]
-        B
-        S
-        D
-        G[Git Commit & Push]
+    subgraph GitHub_Actions [GitHub Actions - Scraper Pipeline]
+        A[minifootballleagues.com] -->|Scraping & ELO| B(Generar JSONs e Imágenes)
+        B -->|AWS OIDC| C[Subir a AWS S3 y Refrescar CloudFront]
     end
+
+    C -->|Almacenamiento CDN| D[AWS S3 + CloudFront CDN]
     
-    F --> G
-    E --> G
-    G -->|Trigger| H[Vercel Deployment]
-    H -->|Astro SSG Build| I[Web Frontend]
-    I -->|Visualización| J[Usuario Final]
+    subgraph Vercel_App [Vercel - Frontend]
+        E[Web Frontend] -->|Fetch Dinámico| D
+        E -->|Visualización| F[Usuario Final]
+    end
 ```
 
-### Backend
+### Backend y Almacenamiento en la Nube (AWS S3 + CloudFront)
 
-#### Recolección de Datos
-Se utiliza **Python** con **Selenium** y **BeautifulSoup** para recolectar los datos de la web oficial, almacenándolos en archivos JSON dentro de la carpeta `/jsons` para su posterior análisis.
+#### Recolección y Procesamiento
+Se utiliza **Python** con **Selenium** y **BeautifulSoup** para recolectar los datos de la web oficial, almacenándolos en la carpeta `/jsons`. Tras el scraping, el script `sync_logos.py` localiza y descarga las imágenes, y `simulacion_final.py` calcula los Power Rankings ELO y estadísticas.
 
-#### Power Ranking (Algoritmo ELO)
-Está basado en el sistema ELO tradicional, pero incorpora 2 multiplicadores analíticos específicos:
-1. **Margen de Victoria**: Multiplicador de "goleada". Cuanto mayor sea la diferencia de goles en la victoria, más puntos ELO se ganan.
-2. **Degradación Temporal (Time-Decay)**: Se otorga mayor peso e importancia a las últimas jornadas disputadas frente a las del inicio de la temporada.
-
-Los JSONs raw (en crudo) son procesados por el algoritmo para exportar un ranking global en el archivo final `elo_rankings.json`.
+#### Almacenamiento y CDN
+Para evitar la saturación del repositorio de Git y mejorar el rendimiento de carga:
+1. Todos los ránkings ELO, estadísticas de goleadores y recursos gráficos (escudos e imágenes de jugadores) se suben de forma automatizada al bucket **AWS S3**.
+2. Los datos e imágenes se sirven a los usuarios en producción a través de la red global de **AWS CloudFront** (CDN).
+3. El frontend de React y Astro realiza solicitudes `fetch` directas y asíncronas a CloudFront en tiempo de ejecución, manteniendo un fallback automático al almacenamiento local en caso de desarrollo offline.
 
 ### Automatización
-Todo el ciclo de recolección de datos, descarga de imágenes y actualización de rankings está automatizado y se ejecuta semanalmente (los miércoles a las 02:00 UTC) mediante CI/CD con **GitHub Actions**.
+El flujo completo de scraping, cálculo de ELO y sincronización de datos con AWS se ejecuta semanalmente (miércoles a las 02:00 UTC) en **GitHub Actions**, autenticándose con AWS mediante _OpenID Connect_ (OIDC) sin necesidad de almacenar credenciales fijas en el repositorio.
+
 
 

@@ -18,19 +18,17 @@ The frontend uses a **Static Site Generation (SSG)** model with **Partial Hydrat
 
 ### 📐 Application Workflow
 
-1. **Build Time Rendering (SSG)**:
-   - During the build process (`npm run build`), Astro executes the code in `src/pages/index.astro`.
-   - A `fetch` request retrieves the processed data from `elo_rankings.json` (stored within the project's public folder).
-   - A static HTML file is generated containing the pre-rendered ranking data, heavily improving SEO and eliminating "Loading" states.
+1. **Static Site Generation (SSG)**:
+   - During production compilation, Astro generates the base SEO-optimized HTML skeleton without depending on volatile local data files.
 
 2. **Islands Architecture**:
-   - Highly interactive components (such as the H2H dashboard or the AI Chatbot) are loaded as isolated "island" components.
-   - We use the `client:load` directive so Astro only downloads the essential React JavaScript for those specific components, keeping the rest of the page as lightweight HTML.
+   - Interactive components (such as the leaderboard, H2H comparison, or AI Chatbot) are hydrated on the client using the `client:load` directive.
+   - Upon page load, the React components perform asynchronous `fetch` requests directly to the AWS CloudFront CDN to obtain the latest rankings and statistics, avoiding build-time delays or compilation blockers.
 
-3. **Data Flow**:
-   - **Backend (Python)**: Executes the weekly scraping (Wednesdays) and generates the rankings JSON.
-   - **GitHub Actions**: Commits and pushes the JSON back to the repository.
-   - **Vercel Build**: Detects the changes, triggers the Astro build, consumes the updated JSON, and deploys the new static version of the site.
+3. **Automated Data Flow**:
+   - **Backend (Python)**: Executes weekly scraping and processes images and statistics.
+   - **GitHub Actions**: Runs the data compilation, then directly and securely uploads the resulting JSON files and images to **AWS S3** using OIDC authentication, and invalidates the **AWS CloudFront** distribution.
+   - **Vercel**: Hosts and deploys the static frontend code, which dynamically reads from CloudFront in production and offers local offline fallback for development.
 
 ## 📁 Project Structure
 
