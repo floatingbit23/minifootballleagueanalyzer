@@ -2,13 +2,20 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
-/** Carga los rankings ELO desde el archivo público de la propia app */
+/** Carga los rankings ELO desde el archivo público de la propia app o desde CloudFront */
 async function loadEloRankings(req) {
   try {
-    // Construye la URL base a partir del host de la request de Vercel
-    const proto = req.headers["x-forwarded-proto"] || "https";
-    const host = req.headers["x-forwarded-host"] || req.headers.host;
-    const url = `${proto}://${host}/elo_rankings.json`;
+    let url;
+    const cdnUrl = process.env.PUBLIC_CLOUDFRONT_URL;
+    if (cdnUrl) {
+      const cleanCdnUrl = cdnUrl.endsWith('/') ? cdnUrl.slice(0, -1) : cdnUrl;
+      url = `${cleanCdnUrl}/elo_rankings.json`;
+    } else {
+      // Construye la URL base a partir del host de la request de Vercel
+      const proto = req.headers["x-forwarded-proto"] || "https";
+      const host = req.headers["x-forwarded-host"] || req.headers.host;
+      url = `${proto}://${host}/elo_rankings.json`;
+    }
     const response = await fetch(url);
     if (!response.ok) return null;
     return await response.json();

@@ -100,6 +100,30 @@ const CustomSelect = ({ label, options, value, onChange, placeholder }) => {
   );
 };
 
+// Función auxiliadora para reescribir URLs locales de imágenes a través de CloudFront si está configurado
+const rewriteImageUrl = (url) => {
+  if (!url || typeof url !== 'string') return url;
+  const cdnUrl = import.meta.env.PUBLIC_CLOUDFRONT_URL;
+  if (cdnUrl && url.startsWith('/images/')) {
+    const cleanCdnUrl = cdnUrl.endsWith('/') ? cdnUrl.slice(0, -1) : cdnUrl;
+    return `${cleanCdnUrl}${url}`;
+  }
+  return url;
+};
+
+// Función para reescribir los logos de los equipos en todos los rankings
+const processRankings = (data) => {
+  if (!data) return {};
+  const rewritten = {};
+  Object.keys(data).forEach((leagueId) => {
+    rewritten[leagueId] = data[leagueId].map((team) => ({
+      ...team,
+      logo: rewriteImageUrl(team.logo),
+    }));
+  });
+  return rewritten;
+};
+
 // Este es mi componente principal que orquesta toda la lógica de la página de inicio
 const Home = ({ rankingsData: initialRankingsData }) => {
   const { t } = useTranslation();
@@ -107,13 +131,32 @@ const Home = ({ rankingsData: initialRankingsData }) => {
   const [selectedLeague, setSelectedLeague] = useState('');
   const [selectedTeamA, setSelectedTeamA] = useState('');
   const [selectedTeamB, setSelectedTeamB] = useState('');
-  const [rankingsData, setRankingsData] = useState(initialRankingsData || {});
+  const [rankingsData, setRankingsData] = useState({});
   const [statsData, setStatsData] = useState([]);
 
-  // Sincronizo los datos iniciales que vienen desde Astro (servidor) con mi estado de React
+  // Carga dinámica de los rankings ELO (desde CloudFront en prod o localmente)
   useEffect(() => {
-    if (initialRankingsData) {
-      setRankingsData(initialRankingsData);
+    const fetchRankings = async () => {
+      try {
+        const cdnUrl = import.meta.env.PUBLIC_CLOUDFRONT_URL;
+        const url = cdnUrl
+          ? `${cdnUrl.endsWith('/') ? cdnUrl.slice(0, -1) : cdnUrl}/elo_rankings.json`
+          : '/elo_rankings.json';
+
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+          setRankingsData(processRankings(data));
+        }
+      } catch (e) {
+        console.error("Error fetching rankings:", e);
+      }
+    };
+
+    if (initialRankingsData && Object.keys(initialRankingsData).length > 0) {
+      setRankingsData(processRankings(initialRankingsData));
+    } else {
+      fetchRankings();
     }
   }, [initialRankingsData]);
 
@@ -127,12 +170,20 @@ const Home = ({ rankingsData: initialRankingsData }) => {
     const fetchStats = async () => {
       try {
         const statsFile = `${selectedLeague}_stats.json`;
+        const cdnUrl = import.meta.env.PUBLIC_CLOUDFRONT_URL;
+        const url = cdnUrl
+          ? `${cdnUrl.endsWith('/') ? cdnUrl.slice(0, -1) : cdnUrl}/stats/${statsFile}`
+          : `/stats/${statsFile}`;
 
-        // Busco el archivo en la carpeta pública del servidor
-        const response = await fetch(`/stats/${statsFile}`);
+        const response = await fetch(url);
         if (response.ok) {
           const data = await response.json();
-          setStatsData(data);
+          // Reescribimos los avatares de los jugadores
+          const processedStats = data.map((player) => ({
+            ...player,
+            avatar: rewriteImageUrl(player.avatar),
+          }));
+          setStatsData(processedStats);
         } else {
           setStatsData([]);
         }

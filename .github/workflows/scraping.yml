@@ -9,14 +9,12 @@ jobs:
   scrape-and-update:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Necesario para poder hacer commit de vuelta al repositorio
+      id-token: write # Necesario para solicitar credenciales temporales vía OIDC
+      contents: read  # Solo necesitamos leer el código para ejecutarlo
 
     steps:
     - name: Checkout del código
       uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GH_PAT }}
-        persist-credentials: true
 
     - name: Configurar Python
       uses: actions/setup-python@v5
@@ -58,28 +56,21 @@ jobs:
         # Procesa los resultados obtenidos para calcular rankings ELO y generar archivos para el frontend
         python backend/simulacion_final.py
 
-    - name: Hacer commit y push de los nuevos datos e imágenes
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Configurar credenciales de AWS
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+        aws-region: ${{ secrets.AWS_REGION }}
+
+    - name: Subir archivos a AWS S3
       run: |
-        # Configura la identidad del usuario para el commit
-        git config --local user.email "javisancab2003@gmail.com"
-        git config --local user.name "floatingbit23"
-        
-        # Prepara todos los archivos JSON modificados (incluyendo subcarpetas como stats)
-        git add jsons/*.json jsons/**/*.json 2>/dev/null || echo "No se encontraron otros JSONs en jsons"
-        
-        # Prepara los archivos JSON generados para el frontend
-        git add frontend/public/*.json frontend/public/**/*.json 2>/dev/null || echo "No se encontraron otros JSONs en frontend/public"
-       
-        # Añade los nuevos logos de los equipos descargados
-        git add frontend/public/images/teams/* || echo "Sin logos de equipos nuevos"
-        
-        # Añade los nuevos avatares de los jugadores descargados
-        git add frontend/public/images/players/* || echo "Sin avatares de jugadores nuevos"
-        
-        # Crea el commit con un mensaje descriptivo
-        git commit -m "Actualización automática de datos nocturna" || echo "No hay cambios para commitear"
-       
-        # Sube los cambios al repositorio principal en GitHub usando el token como autenticación
-        git push "https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref_name }}
+        # Sincronizar rankings ELO finales y estadísticas
+        aws s3 cp frontend/public/elo_rankings.json s3://${{ secrets.AWS_S3_BUCKET }}/elo_rankings.json --cache-control "max-age=31536000"
+        aws s3 sync frontend/public/stats/ s3://${{ secrets.AWS_S3_BUCKET }}/stats/ --cache-control "max-age=31536000"
+        # Sincronizar imágenes descargadas de equipos y jugadores
+        aws s3 sync frontend/public/images/ s3://${{ secrets.AWS_S3_BUCKET }}/images/ --cache-control "max-age=31536000"
+
+    - name: Invalidar caché de CloudFront
+      run: |
+        # Crear invalidación para refrescar el contenido en la CDN
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
