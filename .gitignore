@@ -61,6 +61,7 @@ Thumbs.db
 .agents-bak/
 scratch/
 
-# GSD AI Skill
-.planning/ 
+# GSD (Get Shit Done) AI Skill files
+.planning
+.planning/*
 
