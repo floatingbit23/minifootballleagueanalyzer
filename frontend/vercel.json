@@ -3,6 +3,13 @@
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/images/:path*",
+      "destination": "https://d2j5qbs4vf6bj9.cloudfront.net/images/:path*",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
