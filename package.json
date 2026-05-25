@@ -1,6 +1,10 @@
 {
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1053.0",
+    "@aws-sdk/lib-dynamodb": "^3.1053.0",
     "@vercel/analytics": "^2.0.1",
-    "@vercel/speed-insights": "^2.0.0"
+    "@vercel/speed-insights": "^2.0.0",
+    "jsonwebtoken": "^9.0.3",
+    "stripe": "^22.1.1"
   }
 }

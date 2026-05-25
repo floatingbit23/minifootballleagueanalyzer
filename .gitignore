@@ -60,6 +60,7 @@ Thumbs.db
 # --- OTROS ---
 .agents-bak/
 scratch/
+*.zip
 
 # GSD (Get Shit Done) AI Skill files
 .planning

@@ -1,0 +1,10 @@
+{
+  "name": "mfl-ecommerce-lambdas",
+  "version": "1.0.0",
+  "description": "AWS Lambda functions for Stripe Checkout and Webhooks",
+  "type": "module",
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2",
+    "stripe": "^14.25.0"
+  }
+}

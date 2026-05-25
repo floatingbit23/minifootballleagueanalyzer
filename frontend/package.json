@@ -32,6 +32,8 @@
     "react-router-dom": "^7.13.1"
   },
   "devDependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1053.0",
+    "@aws-sdk/lib-dynamodb": "^3.1053.0",
     "@eslint/js": "^9.39.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
@@ -43,6 +45,8 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "jsdom": "^26.0.0",
+    "jsonwebtoken": "^9.0.3",
+    "stripe": "^22.1.1",
     "vitest": "^3.0.7"
   }
 }
