@@ -3,7 +3,24 @@ import Stripe from 'stripe';
 import { DynamoDBDocumentClient, PutCommand } from '@aws-sdk/lib-dynamodb';
 
 // Mock de las librerías
-vi.mock('stripe');
+vi.mock('stripe', () => {
+  const mockConstructEvent = vi.fn();
+  const mockListLineItems = vi.fn();
+
+  const StripeMock = vi.fn(() => ({
+    checkout: {
+      sessions: {
+        listLineItems: mockListLineItems
+      }
+    }
+  }));
+
+  StripeMock.webhooks = { constructEvent: mockConstructEvent };
+  StripeMock.mockConstructEvent = mockConstructEvent;
+  StripeMock.mockListLineItems = mockListLineItems;
+
+  return { default: StripeMock };
+});
 vi.mock('@aws-sdk/lib-dynamodb', () => {
   const mockSend = vi.fn();
   return {
@@ -19,20 +36,17 @@ vi.mock('@aws-sdk/lib-dynamodb', () => {
 });
 
 // Importamos el handler del webhook
-import { handler } from '../../../backend/lambda/webhook/index.js';
+import { handler } from '../../../backend/lambda/webhook/index.mjs';
 
 describe('POST /webhook Lambda Handler', () => {
-  const mockConstructEvent = vi.fn();
+  const mockConstructEvent = Stripe.mockConstructEvent;
+  const mockListLineItems = Stripe.mockListLineItems;
   let mockDocClientSend;
 
   beforeEach(() => {
     vi.clearAllMocks();
     process.env.STRIPE_WEBHOOK_SECRET = 'whsec_test';
-    
-    // Configuración del mock de Stripe
-    Stripe.webhooks = {
-      constructEvent: mockConstructEvent
-    };
+    process.env.STRIPE_SECRET_KEY = 'sk_test';
 
     // Obtener la referencia de la función mockeada de send
     const docClient = DynamoDBDocumentClient.from();
@@ -99,6 +113,12 @@ describe('POST /webhook Lambda Handler', () => {
       }
     });
 
+    mockListLineItems.mockResolvedValueOnce({
+      data: [
+        { price: { product: 'prod_mfl_ball' }, description: 'Balón MFL', amount_total: 2499, quantity: 1 }
+      ]
+    });
+
     mockDocClientSend.mockResolvedValueOnce({}); // Éxito de DynamoDB
 
     const event = {
@@ -114,6 +134,9 @@ describe('POST /webhook Lambda Handler', () => {
     
     // Verificamos que se haya ejecutado el comando Put en DynamoDB
     expect(mockDocClientSend).toHaveBeenCalled();
+    const putParams = mockDocClientSend.mock.calls[0][0].params;
+    expect(putParams.Item.items).toBeDefined();
+    expect(putParams.Item.items[0].id).toBe('prod_mfl_ball');
   });
 
   it('debería retornar 500 si la base de datos (DynamoDB) falla para forzar reintentos de Stripe', async () => {
@@ -128,6 +151,8 @@ describe('POST /webhook Lambda Handler', () => {
         }
       }
     });
+
+    mockListLineItems.mockResolvedValueOnce({ data: [] });
 
     mockDocClientSend.mockRejectedValueOnce(new Error('Fallo de conexión en DB')); // Error en DynamoDB
 

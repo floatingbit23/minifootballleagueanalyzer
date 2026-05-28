@@ -6,39 +6,7 @@ Este directorio contiene las funciones serverless de AWS Lambda expuestas públi
 
 El siguiente diagrama ilustra cómo interactúa nuestro frontend, los componentes de AWS (API Gateway, Lambda, DynamoDB) y los servicios de Stripe y Supabase durante el proceso de compra y confirmación de pedidos:
 
-```mermaid
-graph TD
-    subgraph Frontend [Aplicación Cliente]
-        Client["Cliente (Astro / React)"]
-    end
-
-    subgraph AWS [AWS Serverless Infrastructure]
-        APIGW["Amazon API Gateway"]
-        L_Checkout["Lambda: ecommerce-checkout"]
-        L_Webhook["Lambda: ecommerce-webhook"]
-        DDB[("Amazon DynamoDB (Tabla: orders)")]
-    end
-
-    subgraph Externo [Servicios Externos]
-        Stripe["Stripe (Checkout & Webhooks)"]
-        Supabase["Supabase Auth (Validación JWT)"]
-    end
-
-    %% Flujo de Checkout
-    Client -->|"1. POST /checkout (JWT + Carrito)"| APIGW
-    APIGW -->|"2. Invoca"| L_Checkout
-    L_Checkout -.->|"3. Verifica Token (Stateless)"| Supabase
-    L_Checkout -->|"4. Crea sesión de pago"| Stripe
-    Stripe -->|"5. Retorna URL de sesión"| L_Checkout
-    L_Checkout -->|"6. Retorna URL de Stripe"| Client
-    Client -->|"7. Redirección de Pago"| Stripe
-
-    %% Flujo de Confirmación (Webhook)
-    Stripe -->|"8. Webhook: checkout.session.completed"| APIGW
-    APIGW -->|"9. Invoca"| L_Webhook
-    L_Webhook -.->|"10. Valida Firma Criptográfica"| Stripe
-    L_Webhook -->|"11. Guarda pedido (PAID)"| DDB
-```
+![alt text](diagrama.png)
 
 ---
 

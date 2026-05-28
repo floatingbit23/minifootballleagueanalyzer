@@ -1,0 +1,170 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="MFL Analyzer - Pedido Completado">
+  <div class="outcome-container">
+    <div class="outcome-card success-card">
+      <div class="icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="success-icon">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h1 class="outcome-title">¡Compra Completada!</h1>
+      <p class="outcome-description">
+        Muchas gracias por apoyar a la <strong>MFL Association</strong>. Tu pedido ha sido procesado correctamente y se encuentra en fase de preparación para su envío.
+      </p>
+      <div class="details-box">
+        <span class="details-label">Método de pago seguro</span>
+        <span class="details-value">Tarjeta de crédito (Stripe Sandbox)</span>
+      </div>
+      <div class="actions">
+        <a href="/" class="primary-btn">Volver al Inicio</a>
+        <a href="/store" class="secondary-btn">Volver a la Tienda</a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .outcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+    padding: 2rem 1.5rem;
+    color: #fff;
+  }
+
+  .outcome-card {
+    background-color: #1a1e2d;
+    border: 1px solid #2a3143;
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .success-card {
+    border-top: 4px solid #10b981;
+  }
+
+  .icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    margin-bottom: 2rem;
+  }
+
+  .success-icon {
+    width: 40px;
+    height: 40px;
+    animation: drawCheck 0.5s ease-out 0.2s forwards;
+  }
+
+  .outcome-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #f8f9fa;
+  }
+
+  .outcome-description {
+    color: #a0aec0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .details-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0f121b;
+    border: 1px solid #2a3143;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.9rem;
+  }
+
+  .details-label {
+    color: #718096;
+  }
+
+  .details-value {
+    color: #10b981;
+    font-weight: 600;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .primary-btn {
+    background: linear-gradient(135deg, #1fa2ff 0%, #12d8fa 50%, #a6ffcb 100%);
+    color: #000;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.1s ease, filter 0.2s ease;
+  }
+
+  .primary-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+  }
+
+  .secondary-btn {
+    background: transparent;
+    color: #a0aec0;
+    border: 1px solid #2a3143;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .secondary-btn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes drawCheck {
+    from {
+      stroke-dashoffset: 50;
+      stroke-dasharray: 50;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+</style>

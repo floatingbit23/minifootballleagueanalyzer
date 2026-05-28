@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StoreWidget from '../components/Store/StoreWidget.jsx';
+
+const s3Url = 'https://mfl-analyzer-data.s3.eu-west-1.amazonaws.com/products/products.json';
+let products = [];
+try {
+  const response = await fetch(s3Url);
+  if (response.ok) {
+    products = await response.json();
+  } else {
+    console.error(`Error loading S3 catalogue at build-time: HTTP ${response.status}`);
+  }
+} catch (err) {
+  console.error('Error fetching products from S3:', err);
+}
+---
+
+<Layout title="MFL Analyzer - Tienda Oficial">
+  <StoreWidget products={products} client:load />
+</Layout>

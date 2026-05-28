@@ -72,6 +72,31 @@
   text-decoration: none;
 }
 
+.store-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(31, 162, 255, 0.1);
+  color: #12d8fa;
+  border: 1px solid rgba(31, 162, 255, 0.3);
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  margin-right: 0.25rem;
+}
+
+.store-nav-btn:hover {
+  background: rgba(31, 162, 255, 0.2);
+  border-color: rgba(31, 162, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(18, 216, 250, 0.2);
+  color: #ffffff;
+}
+
 .venues-open-btn {
   display: flex;
   align-items: center;
@@ -93,11 +118,6 @@
   border-color: rgba(16, 185, 129, 0.5);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
-}
-
-.social-icon:hover {
-  color: white;
-  transform: scale(1.1);
 }
 
 .lang-selector {

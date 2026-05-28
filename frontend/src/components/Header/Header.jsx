@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.css';
-import { Instagram, Youtube, MapPin } from 'lucide-react';
+import { Instagram, Youtube, MapPin, ShoppingBag } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
 import { toggleLanguage } from '../../store/languageStore';
 import AuthWidget from '../Auth/AuthWidget';
@@ -33,8 +33,18 @@ const Header = () => {
       </div>
 
       <div className="header-right">
-        {/* Enlaces a las redes sociales oficiales del torneo */}
+        {/* Enlaces a las redes sociales oficiales del torneo y utilidades */}
         <div className="social-icons">
+          {/* Enlace a la Tienda Oficial */}
+          <a
+            href="/store"
+            className="store-nav-btn"
+            title="Ir a la tienda oficial"
+          >
+            <ShoppingBag size={18} strokeWidth={2.5} />
+            <span>{t('header.store')}</span>
+          </a>
+
           {/* Botón de Sedes a la izquierda del botón de Instagram */}
           <button
             className="venues-open-btn"

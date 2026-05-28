@@ -11,6 +11,16 @@ vi.mock('lucide-react', () => ({
   Star: () => 'StarIcon',
   ChevronUp: () => 'ChevronUpIcon',
   ChevronDown: () => 'ChevronDownIcon',
+  ShoppingBag: () => 'ShoppingBagIcon',
+  AlertCircle: () => 'AlertCircleIcon',
+  Loader: () => 'LoaderIcon',
+  MapPin: () => 'MapPinIcon',
+  LogIn: () => 'LogInIcon',
+  LogOut: () => 'LogOutIcon',
+  User: () => 'UserIcon',
+  X: () => 'XIcon',
+  Instagram: () => 'InstagramIcon',
+  Youtube: () => 'YoutubeIcon',
 }));
 
 // Mock para las traducciones si usas un hook personalizado

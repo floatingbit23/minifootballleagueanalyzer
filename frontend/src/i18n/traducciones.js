@@ -7,6 +7,7 @@ export const ui = { // Exporto el diccionario 'ui'
   es: { // 'es' es la clave para el idioma español
     'header.subtitle': 'Murcia, Almería y Granada',
     'header.lang': 'ES',
+    'header.store': 'Tienda',
     'home.title': 'Análisis de Competición MFL',
     'home.select_league': 'Selecciona una Competición',
     'home.choose_league': 'Elige una liga...',
@@ -41,6 +42,7 @@ export const ui = { // Exporto el diccionario 'ui'
   en: { // 'en' es la clave para el idioma inglés
     'header.subtitle': 'Murcia, Almeria and Granada',
     'header.lang': 'EN',
+    'header.store': 'Store',
     'home.title': 'MFL Competition Analysis',
     'home.select_league': 'Select a Competition',
     'home.choose_league': 'Choose a league...',
