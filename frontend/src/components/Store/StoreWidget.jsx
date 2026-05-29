@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import { useStore } from '@nanostores/react';
 import { userStore } from '../../stores/authStore';
-import { supabase } from '../../lib/supabase';
-import { ShoppingBag, AlertCircle, Loader } from 'lucide-react';
-import { cartStore, addToCart, updateQuantity } from '../../stores/cartStore';
+import { ShoppingBag, AlertCircle } from 'lucide-react';
+import { cartStore, addToCart, updateQuantity, isCartOpen } from '../../stores/cartStore';
 import './StoreWidget.css';
 
 const StoreWidget = ({ products = [] }) => {
   const user = useStore(userStore);
   const cartItems = useStore(cartStore);
   const [error, setError] = useState(null);
-  const [loadingCheckout, setLoadingCheckout] = useState(false);
   const [warningMessage, setWarningMessage] = useState(null);
 
   const handleBuy = (product) => {
@@ -24,6 +22,8 @@ const StoreWidget = ({ products = [] }) => {
     }
 
     addToCart(product.id);
+    // OPCIONAL: Abrir el carrito inmediatamente después de añadir un producto
+    isCartOpen.set(true);
   };
 
   const handleIncrement = (productId, currentQty) => {
@@ -38,69 +38,8 @@ const StoreWidget = ({ products = [] }) => {
     }
   };
 
-  const handleCheckout = async () => {
-    setError(null);
-    setWarningMessage(null);
-
-    if (!user) {
-      setWarningMessage('Debes iniciar sesión para comprar. Por favor, usa el botón de login arriba a la derecha.');
-      return;
-    }
-
-    if (cartItems.length === 0) {
-      setError('El carrito está vacío.');
-      return;
-    }
-
-    setLoadingCheckout(true);
-
-    try {
-      // Obtener la sesión activa de Supabase para conseguir el token JWT actualizado
-      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-
-      if (sessionError || !session) {
-        throw new Error('No se pudo verificar la sesión activa de Supabase.');
-      }
-
-      const apiGatewayUrl = import.meta.env.PUBLIC_API_GATEWAY_URL;
-      if (!apiGatewayUrl) {
-        throw new Error('La URL del API Gateway no está configurada.');
-      }
-
-      // Realizar la llamada POST al endpoint /checkout de API Gateway
-      const response = await fetch(`${apiGatewayUrl}/checkout`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${session.access_token}`
-        },
-        body: JSON.stringify({
-          items: cartItems.map(item => ({ id: item.id, quantity: item.quantity })),
-          success_url: `${window.location.origin}/checkout/success`,
-          cancel_url: `${window.location.origin}/checkout/cancel`
-        })
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      if (!data.url) {
-        throw new Error('La respuesta del servidor no contiene la URL de Stripe Checkout.');
-      }
-
-      // Redirigir al portal seguro de Stripe Checkout
-      window.location.assign(data.url);
-
-    } catch (err) {
-      console.error('Error al iniciar checkout:', err);
-      setError('Error al procesar el pago. Inténtalo de nuevo.');
-    } finally {
-      setLoadingCheckout(false);
-    }
+  const handleOpenCart = () => {
+    isCartOpen.set(true);
   };
 
   return (
@@ -123,18 +62,10 @@ const StoreWidget = ({ products = [] }) => {
             </span>
           </div>
           <button
-            onClick={handleCheckout}
+            onClick={handleOpenCart}
             className="checkout-button"
-            disabled={loadingCheckout}
           >
-            {loadingCheckout ? (
-              <>
-                <Loader className="spinner" size={16} />
-                Procesando...
-              </>
-            ) : (
-              'Proceder al Pago'
-            )}
+            Ver Carrito / Pagar
           </button>
         </div>
       )}
@@ -178,7 +109,7 @@ const StoreWidget = ({ products = [] }) => {
                       <button
                         onClick={() => handleDecrement(product.id, cartItem.quantity)}
                         className="quantity-btn decrement-btn"
-                        disabled={cartItem.quantity <= 1 || loadingCheckout}
+                        disabled={cartItem.quantity <= 1}
                       >
                         -
                       </button>
@@ -186,7 +117,7 @@ const StoreWidget = ({ products = [] }) => {
                       <button
                         onClick={() => handleIncrement(product.id, cartItem.quantity)}
                         className="quantity-btn increment-btn"
-                        disabled={cartItem.quantity >= 9 || loadingCheckout}
+                        disabled={cartItem.quantity >= 9}
                       >
                         +
                       </button>
@@ -195,7 +126,6 @@ const StoreWidget = ({ products = [] }) => {
                     <button
                       onClick={() => handleBuy(product)}
                       className="buy-button"
-                      disabled={loadingCheckout}
                     >
                       Comprar
                     </button>

@@ -21,6 +21,7 @@ vi.mock('lucide-react', () => ({
   X: () => 'XIcon',
   Instagram: () => 'InstagramIcon',
   Youtube: () => 'YoutubeIcon',
+  Trash2: () => 'Trash2Icon',
 }));
 
 // Mock para las traducciones si usas un hook personalizado

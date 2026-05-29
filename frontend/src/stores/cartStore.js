@@ -5,6 +5,9 @@ import { userStore } from './authStore';
 // Estructura de cada elemento: { id: string, quantity: number }
 export const cartStore = atom([]);
 
+// Almacén global para gestionar la visibilidad del Drawer lateral del carrito
+export const isCartOpen = atom(false);
+
 /**
  * Helper para generar la clave de localStorage específica del usuario autenticado.
  * @param {object} user - Objeto de usuario de Supabase.
@@ -95,4 +98,14 @@ export function clearCart() {
       localStorage.removeItem(key);
     }
   }
+}
+
+/**
+ * Elimina un producto por completo del carrito.
+ * @param {string} productId - ID del producto a eliminar.
+ */
+export function removeFromCart(productId) {
+  const current = cartStore.get();
+  const updated = current.filter(item => item.id !== productId);
+  cartStore.set(updated);
 }

@@ -136,6 +136,54 @@
   background-color: rgba(255, 255, 255, 0.05);
 }
 
+.header-cart-btn {
+  background: transparent;
+  border: none;
+  color: #b3b3b3;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  margin-right: 0.25rem;
+}
+
+.header-cart-btn:hover {
+  color: #12d8fa;
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
+}
+
+.header-cart-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: linear-gradient(135deg, #1fa2ff 0%, #12d8fa 100%);
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 800;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(18, 216, 250, 0.6);
+  animation: badgePulse 2s infinite alternate;
+}
+
+@keyframes badgePulse {
+  0% {
+    box-shadow: 0 0 4px rgba(18, 216, 250, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(18, 216, 250, 0.8);
+  }
+}
+
 @media (max-width: 768px) {
   .header {
     flex-direction: column;

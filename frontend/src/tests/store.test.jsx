@@ -3,7 +3,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { userStore } from '../stores/authStore';
 import { supabase } from '../lib/supabase';
-import { clearCart, cartStore } from '../stores/cartStore';
+import { clearCart, cartStore, isCartOpen } from '../stores/cartStore';
 import StoreWidget from '../components/Store/StoreWidget';
 
 // Mock de Supabase
@@ -88,90 +88,23 @@ describe('Componente StoreWidget', () => {
     expect(await screen.findByText(/Debes iniciar sesión para comprar/i)).toBeInTheDocument();
   });
 
-  it('debería realizar el POST a API Gateway y redirigir a Stripe si el usuario está autenticado y hace checkout del carrito', async () => {
-    // Simulamos un usuario autenticado en la Store
+  it('debería abrir el CartDrawer (establecer isCartOpen a true) al hacer clic en "Ver Carrito / Pagar"', async () => {
     userStore.set({ email: 'test@example.com', id: 'user-123' });
-    
-    // Simulamos que supabase.auth.getSession() devuelve un token JWT válido
-    supabase.auth.getSession.mockResolvedValueOnce({
-      data: {
-        session: {
-          access_token: 'fake-jwt-token-123'
-        }
-      },
-      error: null
-    });
-
-    // Simulamos la respuesta exitosa de API Gateway con la URL de redirección de Stripe
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({ url: 'https://checkout.stripe.com/pay/cs_test_abc123' })
-    });
-
     render(<StoreWidget products={mockProducts} />);
 
-    // Añadir al carrito
+    // Añadir al carrito para que aparezca la barra resumen
     const buyButtons = screen.getAllByRole('button', { name: /Comprar/i });
     fireEvent.click(buyButtons[0]);
 
-    // Hacer click en proceder al pago
-    const checkoutButton = screen.getByRole('button', { name: /Proceder al Pago/i });
-    fireEvent.click(checkoutButton);
+    // Debería aparecer el botón "Ver Carrito / Pagar"
+    const cartSummaryButton = screen.getByRole('button', { name: /Ver Carrito \/ Pagar/i });
+    expect(cartSummaryButton).toBeInTheDocument();
 
-    // Esperamos a que se llame a fetch y se redirija al usuario
-    await waitFor(() => {
-      expect(mockFetch).toHaveBeenCalledWith(
-        expect.stringContaining('/checkout'),
-        expect.objectContaining({
-          method: 'POST',
-          headers: expect.objectContaining({
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer fake-jwt-token-123'
-          }),
-          body: JSON.stringify({
-            items: [{ id: 'prod_mfl_bag', quantity: 1 }],
-            success_url: 'http://localhost:3000/checkout/success',
-            cancel_url: 'http://localhost:3000/checkout/cancel'
-          })
-        })
-      );
-    });
+    // Hacemos clic en el botón
+    fireEvent.click(cartSummaryButton);
 
-    await waitFor(() => {
-      expect(mockAssign).toHaveBeenCalledWith('https://checkout.stripe.com/pay/cs_test_abc123');
-    });
-  });
-
-  it('debería manejar errores en la llamada a la API Gateway de forma amigable', async () => {
-    userStore.set({ email: 'test@example.com', id: 'user-123' });
-    supabase.auth.getSession.mockResolvedValueOnce({
-      data: {
-        session: {
-          access_token: 'fake-jwt-token-123'
-        }
-      },
-      error: null
-    });
-
-    // Simulamos un error del servidor (500)
-    mockFetch.mockResolvedValueOnce({
-      ok: false,
-      status: 500,
-      json: async () => ({ error: 'Error interno de Stripe' })
-    });
-
-    render(<StoreWidget products={mockProducts} />);
-
-    // Añadir al carrito
-    const buyButtons = screen.getAllByRole('button', { name: /Comprar/i });
-    fireEvent.click(buyButtons[0]);
-
-    // Hacer click en proceder al pago
-    const checkoutButton = screen.getByRole('button', { name: /Proceder al Pago/i });
-    fireEvent.click(checkoutButton);
-
-    // Debería mostrar un mensaje de error en la UI
-    expect(await screen.findByText(/Error al procesar el pago. Inténtalo de nuevo./i)).toBeInTheDocument();
+    // El átomo isCartOpen debería estar en true
+    expect(isCartOpen.get()).toBe(true);
   });
 
   it('debería transformar el botón "Comprar" a un selector de cantidad al añadir un producto', async () => {

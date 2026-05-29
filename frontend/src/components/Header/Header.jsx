@@ -1,11 +1,14 @@
 import React from 'react';
 import './Header.css';
 import { Instagram, Youtube, MapPin, ShoppingBag } from 'lucide-react';
+import { useStore } from '@nanostores/react';
 import { useTranslation } from '../../hooks/useTranslation';
 import { toggleLanguage } from '../../store/languageStore';
+import { cartStore, isCartOpen } from '../../stores/cartStore';
 import AuthWidget from '../Auth/AuthWidget';
 import FavoritesDashboard from '../FavoritesDashboard/FavoritesDashboard';
 import VenuesModal from '../VenuesMap/VenuesModal';
+import CartDrawer from '../Store/CartDrawer';
 
 import logoImage from '../../assets/main_logo.jpg';
 
@@ -17,6 +20,10 @@ const Header = () => {
   const logoSrc = typeof logoImage === 'object' ? logoImage.src : logoImage;
   // Traigo mis herramientas de traducción y el idioma actual (es/en)
   const { t, language } = useTranslation();
+
+  // Suscribirse al almacén de carrito para calcular la cantidad de productos
+  const cartItems = useStore(cartStore);
+  const totalCartItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <header className="header">
@@ -74,12 +81,28 @@ const Header = () => {
         {/* Muestro el acceso a mis equipos favoritos (panel lateral) */}
         <FavoritesDashboard />
 
+        {/* Botón del carrito con badge circular brillante */}
+        <button
+          className="header-cart-btn"
+          onClick={() => isCartOpen.set(true)}
+          title="Ver carrito de compras"
+          aria-label="Ver carrito"
+        >
+          <ShoppingBag size={20} strokeWidth={2.5} />
+          {totalCartItems > 0 && (
+            <span className="header-cart-badge">{totalCartItems}</span>
+          )}
+        </button>
+
         {/* Muestro el widget de Login / Perfil de usuario para gestionar la cuenta de Supabase */}
         <AuthWidget />
       </div>
 
       {/* Modal flotante del mapa de sedes */}
       <VenuesModal isOpen={isVenuesOpen} onClose={() => setIsVenuesOpen(false)} />
+
+      {/* Drawer lateral del carrito */}
+      <CartDrawer />
     </header>
   );
 };
