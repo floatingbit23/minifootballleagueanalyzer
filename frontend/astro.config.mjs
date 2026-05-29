@@ -19,6 +19,23 @@ export default defineConfig({
   compressHTML: true,
   // OPTIMIZACIÓN: Configuro Vite para minificación y code splitting óptimos
   vite: {
+    server: {
+      proxy: {
+        '/s3-cdn': {
+          target: 'https://d2j5qbs4vf6bj9.cloudfront.net',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/s3-cdn/, '')
+        },
+        '/checkout-api': {
+          target: 'https://7ipt0cwr2h.execute-api.eu-west-1.amazonaws.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/checkout-api/, '')
+        }
+      }
+    },
+    preview: {
+      allowedHosts: true
+    },
     build: {
       // Uso el minificador más agresivo disponible
       minify: 'esbuild',

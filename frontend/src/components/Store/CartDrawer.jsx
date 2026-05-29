@@ -23,7 +23,13 @@ const CartDrawer = () => {
     const fetchCatalog = async () => {
       setLoadingCatalog(true);
       try {
-        const s3Url = 'https://mfl-analyzer-data.s3.eu-west-1.amazonaws.com/products/products.json';
+        const isLocal = typeof window !== 'undefined' && window.location && (
+          window.location.hostname === 'localhost' ||
+          window.location.hostname === '127.0.0.1' ||
+          (window.location.hostname && window.location.hostname.endsWith('.ngrok-free.app'))
+        );
+        const cdnUrl = (import.meta.env.DEV || isLocal) ? '/s3-cdn' : (import.meta.env.PUBLIC_CLOUDFRONT_URL || 'https://d2j5qbs4vf6bj9.cloudfront.net');
+        const s3Url = `${cdnUrl.endsWith('/') ? cdnUrl.slice(0, -1) : cdnUrl}/products/products.json`;
         const response = await fetch(s3Url);
         if (response.ok) {
           const data = await response.json();
@@ -126,12 +132,17 @@ const CartDrawer = () => {
         throw new Error('No se pudo verificar la sesión activa de Supabase.');
       }
 
-      const apiGatewayUrl = import.meta.env.PUBLIC_API_GATEWAY_URL;
+      const isLocal = typeof window !== 'undefined' && window.location && (
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1' ||
+        (window.location.hostname && window.location.hostname.endsWith('.ngrok-free.app'))
+      );
+      const apiGatewayUrl = (import.meta.env.DEV || isLocal) ? '/checkout-api' : import.meta.env.PUBLIC_API_GATEWAY_URL;
       if (!apiGatewayUrl) {
         throw new Error('La URL del API Gateway no está configurada.');
       }
 
-      const response = await fetch(`${apiGatewayUrl}/checkout`, {
+      const response = await fetch(`${apiGatewayUrl.endsWith('/') ? apiGatewayUrl.slice(0, -1) : apiGatewayUrl}/checkout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

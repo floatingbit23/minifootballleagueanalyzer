@@ -168,3 +168,9 @@ import Layout from '../../layouts/Layout.astro';
     }
   }
 </style>
+
+<script>
+  import { clearCart } from '../../stores/cartStore';
+  // Vaciar el carrito de compras tras completarse el pago exitosamente
+  clearCart();
+</script>

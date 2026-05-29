@@ -1,6 +1,11 @@
 import React, { useState, useRef } from 'react';
 import Map, { Marker, Popup, NavigationControl } from 'react-map-gl/mapbox';
+import mapboxgl from 'mapbox-gl';
+import MapboxWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker?worker';
 import 'mapbox-gl/dist/mapbox-gl.css';
+
+// Configuración obligatoria para que Vite/Astro rendericen los mapas en producción (npm run build)
+mapboxgl.workerClass = MapboxWorker;
 import { X, MapPin, Layers, Moon } from 'lucide-react';
 import { venues } from '../../data/venues';
 import './VenuesModal.css';

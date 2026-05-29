@@ -13,6 +13,17 @@
   gap: clamp(0.75rem, 2vw, 1.25rem);
 }
 
+.logo-link {
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.logo-link:hover {
+  transform: scale(1.03);
+  opacity: 0.95;
+}
+
 .logo-container {
   width: 64px;
   height: 64px;

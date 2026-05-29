@@ -10,14 +10,10 @@ import FavoritesDashboard from '../FavoritesDashboard/FavoritesDashboard';
 import VenuesModal from '../VenuesMap/VenuesModal';
 import CartDrawer from '../Store/CartDrawer';
 
-import logoImage from '../../assets/main_logo.jpg';
-
 // Este componente es la parte superior de mi web, donde gestiono la marca y la navegación
 const Header = () => {
   const [isVenuesOpen, setIsVenuesOpen] = React.useState(false);
-
-  // Manejo el logo central de la liga, asegurándome de sacar la URL correcta del objeto de Astro
-  const logoSrc = typeof logoImage === 'object' ? logoImage.src : logoImage;
+  const logoSrc = '/main_logo.jpg';
   // Traigo mis herramientas de traducción y el idioma actual (es/en)
   const { t, language } = useTranslation();
 
@@ -29,9 +25,11 @@ const Header = () => {
     <header className="header">
       <div className="header-left">
         {/* Contenedor para el logo principal de la Mini Football Leagues */}
-        <div className="logo-container">
-          <img src={logoSrc} alt="MFL Logo" className="main-logo" />
-        </div>
+        <a href="/" className="logo-link" title="Volver a la página principal">
+          <div className="logo-container">
+            <img src={logoSrc} alt="MFL Logo" className="main-logo" />
+          </div>
+        </a>
         <div className="header-titles">
           <h1 className="title-main">MINI FOOTBALL LEAGUES</h1>
           {/* Muestro el subtítulo dinámico según el idioma seleccionado */}

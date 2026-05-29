@@ -138,7 +138,12 @@ const Home = ({ rankingsData: initialRankingsData }) => {
   useEffect(() => {
     const fetchRankings = async () => {
       try {
-        const cdnUrl = import.meta.env.PUBLIC_CLOUDFRONT_URL;
+        const isLocal = typeof window !== 'undefined' && window.location && (
+          window.location.hostname === 'localhost' ||
+          window.location.hostname === '127.0.0.1' ||
+          (window.location.hostname && window.location.hostname.endsWith('.ngrok-free.app'))
+        );
+        const cdnUrl = (import.meta.env.DEV || isLocal) ? '/s3-cdn' : import.meta.env.PUBLIC_CLOUDFRONT_URL;
         const url = cdnUrl
           ? `${cdnUrl.endsWith('/') ? cdnUrl.slice(0, -1) : cdnUrl}/elo_rankings.json`
           : '/elo_rankings.json';
@@ -170,7 +175,12 @@ const Home = ({ rankingsData: initialRankingsData }) => {
     const fetchStats = async () => {
       try {
         const statsFile = `${selectedLeague}_stats.json`;
-        const cdnUrl = import.meta.env.PUBLIC_CLOUDFRONT_URL;
+        const isLocal = typeof window !== 'undefined' && window.location && (
+          window.location.hostname === 'localhost' ||
+          window.location.hostname === '127.0.0.1' ||
+          (window.location.hostname && window.location.hostname.endsWith('.ngrok-free.app'))
+        );
+        const cdnUrl = (import.meta.env.DEV || isLocal) ? '/s3-cdn' : import.meta.env.PUBLIC_CLOUDFRONT_URL;
         const url = cdnUrl
           ? `${cdnUrl.endsWith('/') ? cdnUrl.slice(0, -1) : cdnUrl}/stats/${statsFile}`
           : `/stats/${statsFile}`;
