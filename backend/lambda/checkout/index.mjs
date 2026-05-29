@@ -99,9 +99,9 @@ export const handler = async (event) => {
     const body = JSON.parse(event.body || '{}');
     const items = body.items || [];
 
-    // Compruebo que el carrito contenga al menos un artículo, 
+    // Compruebo que el carrito contenga al menos un artículo y sea un array válido, 
     // en caso contrario, lanzo un error HTTP 400: Bad Request
-    if (!items || items.length === 0) {
+    if (!Array.isArray(items) || items.length === 0) {
       return {
         statusCode: 400,
         headers: {

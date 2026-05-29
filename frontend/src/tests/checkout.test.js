@@ -193,4 +193,93 @@ describe('POST /checkout Lambda Handler', () => {
       })
     );
   });
+
+  it('debería retornar 200 y la URL de Stripe al comprar múltiples artículos válidos', async () => {
+    mockStripeSessionCreate.mockResolvedValueOnce({
+      url: 'https://checkout.stripe.com/pay/cs_test_999'
+    });
+
+    const event = {
+      headers: {
+        Authorization: 'Bearer token-valido'
+      },
+      body: JSON.stringify({
+        items: [
+          { id: 'prod_mfl_bag', quantity: 2 },
+          { id: 'prod_mfl_ball', quantity: 1 }
+        ]
+      })
+    };
+
+    const response = await handler(event);
+    expect(response.statusCode).toBe(200);
+    
+    const body = JSON.parse(response.body);
+    expect(body.url).toBe('https://checkout.stripe.com/pay/cs_test_999');
+    
+    expect(mockStripeSessionCreate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        mode: 'payment',
+        line_items: [
+          {
+            price_data: {
+              currency: 'eur',
+              product_data: { name: 'Bolsa de Deporte MFL' },
+              unit_amount: 2999
+            },
+            quantity: 2
+          },
+          {
+            price_data: {
+              currency: 'eur',
+              product_data: { name: 'Balón Oficial MFL' },
+              unit_amount: 2499
+            },
+            quantity: 1
+          }
+        ],
+        shipping_address_collection: {
+          allowed_countries: ['ES']
+        },
+        metadata: {
+          user_id: 'user-123'
+        }
+      })
+    );
+  });
+
+  it('debería retornar 400 (fail-fast) si uno de los múltiples artículos tiene una cantidad inválida', async () => {
+    const event = {
+      headers: {
+        Authorization: 'Bearer token-valido'
+      },
+      body: JSON.stringify({
+        items: [
+          { id: 'prod_mfl_bag', quantity: 2 },
+          { id: 'prod_mfl_ball', quantity: 15 } // Cantidad >= 10
+        ]
+      })
+    };
+
+    const response = await handler(event);
+    expect(response.statusCode).toBe(400);
+    expect(JSON.parse(response.body).error).toContain('debe ser un entero positivo menor que 10');
+    expect(mockStripeSessionCreate).not.toHaveBeenCalled();
+  });
+
+  it('debería retornar 400 si el payload de items no es un array', async () => {
+    const event = {
+      headers: {
+        Authorization: 'Bearer token-valido'
+      },
+      body: JSON.stringify({
+        items: 'esto-no-es-un-array'
+      })
+    };
+
+    const response = await handler(event);
+    expect(response.statusCode).toBe(400);
+    expect(JSON.parse(response.body).error).toContain('El carrito está vacío');
+    expect(mockStripeSessionCreate).not.toHaveBeenCalled();
+  });
 });
