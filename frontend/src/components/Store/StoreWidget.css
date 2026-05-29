@@ -184,6 +184,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -194,6 +195,7 @@
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -204,8 +206,113 @@
   .store-title {
     font-size: 2rem;
   }
+
   .products-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
   }
+}
+
+/* Barra de resumen del carrito */
+.cart-summary-bar {
+  background: rgba(26, 30, 45, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(18, 216, 250, 0.3);
+  padding: 1.25rem 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  animation: fadeIn 0.4s ease-out;
+}
+
+.cart-summary-info {
+  font-size: 1.1rem;
+  color: #f8f9fa;
+}
+
+.cart-summary-count strong {
+  color: #12d8fa;
+  font-size: 1.2rem;
+}
+
+.checkout-button {
+  background: linear-gradient(135deg, #1fa2ff 0%, #12d8fa 50%, #a6ffcb 100%);
+  color: #000;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(18, 216, 250, 0.3);
+}
+
+.checkout-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 20px rgba(18, 216, 250, 0.4);
+}
+
+.checkout-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.checkout-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Selector de cantidad */
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  background-color: #0f121b;
+  border: 1px solid #2a3143;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.quantity-btn {
+  background: transparent;
+  border: none;
+  color: #12d8fa;
+  font-size: 1.2rem;
+  font-weight: 700;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  border-radius: 4px;
+}
+
+.quantity-btn:hover:not(:disabled) {
+  background-color: #2a3143;
+  color: #fff;
+}
+
+.quantity-btn:disabled {
+  color: #4a5568;
+  cursor: not-allowed;
+}
+
+.quantity-value {
+  padding: 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  min-width: 20px;
+  text-align: center;
+  color: #fff;
 }
