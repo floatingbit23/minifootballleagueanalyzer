@@ -177,8 +177,8 @@ const CartDrawer = () => {
 
   return (
     <div className="cart-drawer-overlay" onClick={() => isCartOpen.set(false)}>
-      <div 
-        className="cart-drawer" 
+      <div
+        className="cart-drawer"
         ref={drawerRef}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
@@ -191,8 +191,8 @@ const CartDrawer = () => {
             <h2>Tu Carrito</h2>
             {totalQuantity > 0 && <span className="cart-drawer-badge">{totalQuantity}</span>}
           </div>
-          <button 
-            className="cart-drawer-close-btn" 
+          <button
+            className="cart-drawer-close-btn"
             onClick={() => isCartOpen.set(false)}
             aria-label="Cerrar carrito"
           >
@@ -224,8 +224,8 @@ const CartDrawer = () => {
             <div className="cart-drawer-empty">
               <ShoppingBag size={48} className="empty-icon" />
               <p>Tu carrito está vacío</p>
-              <button 
-                className="continue-shopping-btn" 
+              <button
+                className="continue-shopping-btn"
                 onClick={() => isCartOpen.set(false)}
               >
                 Continuar comprando
@@ -251,7 +251,7 @@ const CartDrawer = () => {
                     </p>
                     <div className="cart-drawer-item-actions">
                       <div className="cart-drawer-qty-selector">
-                        <button 
+                        <button
                           onClick={() => handleDecrement(item.id, item.quantity)}
                           className="qty-btn"
                           disabled={item.quantity <= 1 || loadingCheckout}
@@ -260,7 +260,7 @@ const CartDrawer = () => {
                           -
                         </button>
                         <span className="qty-value">{item.quantity}</span>
-                        <button 
+                        <button
                           onClick={() => handleIncrement(item.id, item.quantity)}
                           className="qty-btn"
                           disabled={item.quantity >= 9 || loadingCheckout}
@@ -269,7 +269,7 @@ const CartDrawer = () => {
                           +
                         </button>
                       </div>
-                      <button 
+                      <button
                         onClick={() => handleRemove(item.id)}
                         className="cart-drawer-remove-btn"
                         disabled={loadingCheckout}
@@ -299,8 +299,8 @@ const CartDrawer = () => {
               </div>
             </div>
 
-            <button 
-              className="cart-drawer-checkout-btn" 
+            <button
+              className="cart-drawer-checkout-btn"
               onClick={handleCheckout}
               disabled={loadingCheckout}
             >

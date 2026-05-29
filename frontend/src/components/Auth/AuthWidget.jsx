@@ -73,6 +73,9 @@ const AuthWidget = () => {
     try {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
+        options: {
+          redirectTo: window.location.origin,
+        },
       });
       if (error) throw error;
       // No cierro el modal aquí porque Supabase redirigirá la página a Google
