@@ -25,20 +25,26 @@ const CartDrawer = () => {
       try {
         const isLocal = typeof window !== 'undefined' && window.location && (
           window.location.hostname === 'localhost' ||
-          window.location.hostname === '127.0.0.1' ||
-          (window.location.hostname && window.location.hostname.endsWith('.ngrok-free.app'))
+          window.location.hostname === '127.0.0.1'
         );
-        const cdnUrl = (import.meta.env.DEV || isLocal) ? '/s3-cdn' : (import.meta.env.PUBLIC_CLOUDFRONT_URL || 'https://d2j5qbs4vf6bj9.cloudfront.net');
+        const cdnUrl = (import.meta.env.DEV || isLocal) ? '/s3-cdn' : import.meta.env.PUBLIC_CLOUDFRONT_URL;
+        if (!cdnUrl && !import.meta.env.DEV && !isLocal) {
+          throw new Error('PUBLIC_CLOUDFRONT_URL is not set');
+        }
         const s3Url = `${cdnUrl.endsWith('/') ? cdnUrl.slice(0, -1) : cdnUrl}/products/products.json`;
         const response = await fetch(s3Url);
         if (response.ok) {
           const data = await response.json();
           setCatalog(data);
         } else {
-          console.error(`Error loading S3 catalogue: HTTP ${response.status}`);
+          if (import.meta.env.DEV) {
+            console.error(`Error loading S3 catalogue: HTTP ${response.status}`);
+          }
         }
       } catch (err) {
-        console.error('Error fetching products from S3:', err);
+        if (import.meta.env.DEV) {
+          console.error('Error fetching products from S3:', err);
+        }
       } finally {
         setLoadingCatalog(false);
       }
@@ -134,8 +140,7 @@ const CartDrawer = () => {
 
       const isLocal = typeof window !== 'undefined' && window.location && (
         window.location.hostname === 'localhost' ||
-        window.location.hostname === '127.0.0.1' ||
-        (window.location.hostname && window.location.hostname.endsWith('.ngrok-free.app'))
+        window.location.hostname === '127.0.0.1'
       );
       const apiGatewayUrl = (import.meta.env.DEV || isLocal) ? '/checkout-api' : import.meta.env.PUBLIC_API_GATEWAY_URL;
       if (!apiGatewayUrl) {
@@ -168,7 +173,9 @@ const CartDrawer = () => {
       // Redirigir al checkout de Stripe
       window.location.assign(data.url);
     } catch (err) {
-      console.error('Error al iniciar checkout desde el Drawer:', err);
+      if (import.meta.env.DEV) {
+        console.error('Error al iniciar checkout desde el Drawer:', err);
+      }
       setError('Error al procesar el pago. Inténtalo de nuevo.');
     } finally {
       setLoadingCheckout(false);

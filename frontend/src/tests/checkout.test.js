@@ -168,7 +168,6 @@ describe('POST /checkout Lambda Handler', () => {
     const body = JSON.parse(response.body);
     expect(body.url).toBe('https://checkout.stripe.com/pay/cs_test_123');
     
-    // Verificamos que se haya llamado a Stripe con los parámetros oficiales (29.99 * 100 = 2999 céntimos)
     expect(mockStripeSessionCreate).toHaveBeenCalledWith(
       expect.objectContaining({
         mode: 'payment',
@@ -190,6 +189,9 @@ describe('POST /checkout Lambda Handler', () => {
         metadata: {
           user_id: 'user-123'
         }
+      }),
+      expect.objectContaining({
+        idempotencyKey: expect.any(String)
       })
     );
   });
@@ -244,6 +246,9 @@ describe('POST /checkout Lambda Handler', () => {
         metadata: {
           user_id: 'user-123'
         }
+      }),
+      expect.objectContaining({
+        idempotencyKey: expect.any(String)
       })
     );
   });

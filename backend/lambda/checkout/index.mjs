@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+import crypto from 'node:crypto';
 
 let cachedProducts = null;
 let lastFetchTime = 0;
@@ -181,6 +182,16 @@ export const handler = async (event) => {
       });
     }
 
+    // Ordenamos el carrito para asegurar que el hash sea el mismo sin importar el orden en que se enviaron los items
+    const sortedItems = [...items].sort((a, b) => a.id.localeCompare(b.id));
+    const cartRepresentation = sortedItems.map(item => `${item.id}:${item.quantity}`).join(',');
+
+    // Generamos un hash SHA-256 único basado en el ID del usuario y el contenido del carrito
+    const idempotencyKey = crypto
+      .createHash('sha256')
+      .update(`${userId}:${cartRepresentation}`)
+      .digest('hex');
+
     // 6. Inicializo el cliente de Stripe con la clave secreta de la API
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -193,13 +204,15 @@ export const handler = async (event) => {
       shipping_address_collection: {
         allowed_countries: ['ES']
       },
-      // Adjunto el UUID de Supabase en los metadatos para recuperarlo en el webhook posterior
+      // Adjunto el UUID (Unique Universal Identifier) de Supabase en los metadatos para recuperarlo en el webhook posterior
       metadata: {
         user_id: userId
       },
       // URLs de redirección al finalizar o cancelar el pago (1 fallback URL)
       success_url: body.success_url || process.env.SUCCESS_URL || 'https://example.com/success',
       cancel_url: body.cancel_url || process.env.CANCEL_URL || 'https://example.com/cancel',
+    }, {
+      idempotencyKey: idempotencyKey // Evita duplicación de cobros/sesiones
     });
 
     // 7. Retorno la URL de sesión creada para redirigir al usuario al formulario de pago de Stripe
