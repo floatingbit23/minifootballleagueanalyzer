@@ -3,7 +3,9 @@ import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, PutCommand } from '@aws-sdk/lib-dynamodb';
 
 // Inicializo el cliente de base de datos de DynamoDB fuera del handler para reutilizar conexiones (Warm Start)
-const ddbClient = new DynamoDBClient({});
+const ddbClient = new DynamoDBClient({
+  endpoint: process.env.AWS_ENDPOINT_URL || undefined
+});
 const docClient = DynamoDBDocumentClient.from(ddbClient);
 
 // Inicializo el cliente de Stripe con la clave secreta normal para poder consultar la API

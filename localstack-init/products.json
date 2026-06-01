@@ -1,0 +1,23 @@
+[
+  {
+    "id": "prod_mfl_bag",
+    "name": "Bolsa de Deporte MFL",
+    "price": 29.99,
+    "description": "Bolsa deportiva oficial con compartimento ventilado para botas y correa acolchada para el hombro.",
+    "image": "https://mfl-analyzer-data.s3.eu-west-1.amazonaws.com/products/bag.png"
+  },
+  {
+    "id": "prod_mfl_ball",
+    "name": "Balón Oficial MFL",
+    "price": 24.99,
+    "description": "Balón de fútbol talla 5 de alta resistencia con costuras reforzadas.",
+    "image": "https://mfl-analyzer-data.s3.eu-west-1.amazonaws.com/products/ball.png"
+  },
+  {
+    "id": "prod_mfl_boots",
+    "name": "Botas de Fútbol MFL Pro",
+    "price": 69.99,
+    "description": "Botas de fútbol para césped artificial.",
+    "image": "https://mfl-analyzer-data.s3.eu-west-1.amazonaws.com/products/boots.png"
+  }
+]

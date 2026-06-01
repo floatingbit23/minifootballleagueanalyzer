@@ -1,0 +1,13 @@
+
+services:
+  localstack:
+    container_name: mfl_localstack
+    image: localstack/localstack:latest
+    ports:
+      - "127.0.0.1:4566:4566"            # LocalStack Gateway
+    environment:
+      - SERVICES=s3,dynamodb             # Habilitamos únicamente S3 y DynamoDB
+      - AWS_DEFAULT_REGION=eu-west-1
+      - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN}
+    volumes:
+      - "./localstack-init:/etc/localstack/init/ready.d" # Volumen para ejecutar scripts al iniciar
