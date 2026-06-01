@@ -50,6 +50,9 @@ jobs:
         npm ci
 
     - name: Ejecutar Vitest (Unitarios e Integración)
+      env:
+        PUBLIC_SUPABASE_URL: https://placeholder.supabase.co
+        PUBLIC_SUPABASE_ANON_KEY: placeholder-anon-key
       run: |
         cd frontend
         npx vitest run
@@ -60,6 +63,9 @@ jobs:
         npx playwright install --with-deps
 
     - name: Ejecutar Playwright E2E
+      env:
+        PUBLIC_SUPABASE_URL: https://placeholder.supabase.co
+        PUBLIC_SUPABASE_ANON_KEY: placeholder-anon-key
       run: |
         cd frontend
         npx playwright test
