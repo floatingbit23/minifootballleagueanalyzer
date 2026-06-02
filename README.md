@@ -62,13 +62,16 @@ Integración de un **Chatbot con IA** (potenciado por un modelo de _Google Gemin
 
 ![Chatbot IA](/images/chatbot.png)
 
+### E-commerce Integrado
+El proyecto incluye una pasarela de pagos implementada con **Stripe**. Esta integración gestiona de forma segura el comercio electrónico de la plataforma y permite simular escenarios de pago mediante *Stripe Sandbox* durante las pruebas.
+
 ## Instalación y Configuración
 
 Sigue estos pasos para ejecutar el proyecto en tu máquina local.
 
 ### 1. Requisitos Previos
 - **Python 3.10+**
-- **Node.js 18+**
+- **Node.js 22.12.0+** (requerido por Astro 6)
 - **Google Chrome** (necesario para el scraping con Selenium)
 
 ### 2. Configuración del Entorno (.env)
@@ -115,6 +118,15 @@ El proyecto utiliza **pytest** para asegurar la integridad de la lógica del sis
    npm test
    ```
    *(Nota: Utiliza **Vitest** y **React Testing Library** para validar el Chatbot, el cálculo E2H, la matriz de Poisson y la interfaz de las tablas sin necesidad de abrir el navegador).*
+
+3. Para ejecutar las pruebas **End-to-End (E2E)** con **Playwright** (incluyendo redirecciones de pago simuladas con Stripe Sandbox):
+   ```bash
+   cd frontend
+   npx playwright install --with-deps # Instala los navegadores necesarios la primera vez
+   npx playwright test                # Ejecuta los tests en segundo plano (Chromium)
+   npx playwright test --ui           # Abre la interfaz visual interactiva de Playwright
+   ```
+   *(Nota: Las pruebas E2E levantan automáticamente el servidor de desarrollo local y simulan de manera segura tanto el inicio de sesión con Supabase como la pasarela de Stripe Sandbox).*
 
 ---
 

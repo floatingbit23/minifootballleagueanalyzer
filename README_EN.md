@@ -62,7 +62,7 @@ Follow these steps to run the project on your local machine.
 
 ### 1. Prerequisites
 - **Python 3.10+**
-- **Node.js 18+**
+- **Node.js 22.12.0+** (required by Astro 6)
 - **Google Chrome** (required for Selenium scraping)
 
 ### 2. Environment Configuration (.env)
@@ -110,6 +110,15 @@ The project uses **pytest** to ensure the integrity of the ELO system logic and 
    ```
    *(Note: Uses **Vitest** and **React Testing Library** to validate the Chatbot, H2H calculation, Poisson matrix, and table interfaces without needing to open a browser).*
 
+3. To run **End-to-End (E2E)** tests with **Playwright** (including payment redirection scenarios using Stripe Sandbox):
+   ```bash
+   cd frontend
+   npx playwright install --with-deps # Installs required browser binaries the first time
+   npx playwright test                # Runs all E2E tests in headless mode (Chromium)
+   npx playwright test --ui           # Opens the interactive visual UI for Playwright
+   ```
+   *(Note: The E2E tests automatically spin up the local development server and safely intercept/mock Supabase authentication and Stripe Sandbox checkout processes).*
+
 ---
 
 ## Project Workflow
@@ -148,3 +157,6 @@ The complete scraping, ELO calculation, and AWS synchronization pipeline runs we
 An AI chatbot powered by the Gemini family models to query information about teams and competitions. It can be accessed via a button in the bottom right corner of the website.
 
 ![AI Chatbot](/images/chatbot.png)
+
+### Integrated E-commerce
+The project includes a payment gateway implemented with **Stripe**. This integration securely manages the platform's e-commerce and allows simulating payment scenarios using *Stripe Sandbox* during testing.

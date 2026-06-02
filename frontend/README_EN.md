@@ -10,7 +10,7 @@ This is the data visualization layer for the Mini Football League Analyzer.
 The frontend uses a **Static Site Generation (SSG)** model with **Partial Hydration**. This architecture allows the page to load almost instantly while maintaining the complex interactivity required for statistical analysis.
 
 ### 🛠️ Core Technologies
-- **Framework**: [Astro 5](https://astro.build/)
+- **Framework**: [Astro 6](https://astro.build/)
 - **UI Library**: [React 19](https://react.dev/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Charts**: [Chart.js](https://www.chartjs.org/) with `react-chartjs-2`
@@ -54,6 +54,10 @@ From the `frontend/` directory, you can run:
 | `npm run dev` | Starts the local development server (Astro). |
 | `npm run build` | Builds the static production site into `dist/`. |
 | `npm run preview` | Previews the production build locally. |
+| `npm test` | Runs unit and integration tests using Vitest. |
+| `npx playwright install --with-deps` | Installs browser binaries required for Playwright. |
+| `npx playwright test` | Runs all end-to-end (E2E) tests with Playwright in headless mode. |
+| `npx playwright test --ui` | Runs E2E tests opening the interactive visual runner. |
 
 ## 🌐 Deployment
 

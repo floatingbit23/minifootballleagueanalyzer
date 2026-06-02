@@ -7,7 +7,7 @@ MiniFootballLeagueAnalyzer is an automated data pipeline and visualization platf
 | Layer | Tech Stack | Location |
 |-------|------------|----------|
 | **Backend** | Python 3.10 | `/backend/` |
-| **Frontend** | Astro 5 + React 19 | `/frontend/` |
+| **Frontend** | Astro 6 + React 19 | `/frontend/` |
 | **Services** | Supabase (Auth/Favorites) | Cloud |
 
 The backend scrapes match data from [minifootballleagues.com](https://minifootballleagues.com/), calculates ELO rankings based on form and goal margin, and exports JSON files that the frontend consumes using Static Site Generation (SSG).
@@ -22,7 +22,7 @@ The backend scrapes match data from [minifootballleagues.com](https://minifootba
 3. **Storage**: Raw data in `jsons/`, processed results in `frontend/public/` for Astro build consumption.
 
 ### Frontend Architecture
-- **Framework**: Astro 5 (Islands Architecture).
+- **Framework**: Astro 6 (Islands Architecture).
 - **Interactivity**: React 19 components (H2H comparisons, Leaderboards).
 - **Intelligence**: Integrated Gemini AI Chatbot for querying league stats.
 - **Multilingual**: Documentation follows a bilingual structure (`README.md` for Spanish, `README_EN.md` for English).
@@ -47,6 +47,7 @@ The backend scrapes match data from [minifootballleagues.com](https://minifootba
 - **Requirements**: Google Chrome must be installed for Selenium (Headless mode).
 
 ### 2. Astro Frontend
+- **Prerequisites**: Node.js >= 22.12.0 is required by Astro 6.
 - All commands must be run from the `frontend/` directory:
   ```bash
   cd frontend
@@ -119,10 +120,18 @@ pytest          # Run all tests
 pytest -v       # Verbose mode
 ```
 
-Component tests using **Vitest** + **React Testing Library** (no browser/server required).
+Component and integration tests using **Vitest** + **React Testing Library** (no browser/server required).
 ```bash
 # From frontend directory
 npm test
+```
+
+End-to-End browser tests using **Playwright** (spins up local dev server automatically):
+```bash
+# From frontend directory
+npx playwright install --with-deps # Installs browser binaries first time
+npx playwright test                # Runs all E2E tests (Chromium)
+npx playwright test --ui           # Opens interactive UI mode
 ```
 
 ---
