@@ -56,6 +56,24 @@ The platform also includes a dropdown menu to select two teams within each compe
   - **Goal Distribution**: If this value is high (closer to 100%), the team doesn't rely solely on one player to score.
   - **Goal Difference**: Overall competitiveness balance.
 
+### AI Chatbot
+An AI chatbot powered by the Gemini family models to query information about teams and competitions. It can be accessed via a button in the bottom right corner of the website.
+
+![AI Chatbot](/images/chatbot.png)
+
+### Serverless E-Commerce (Merchandising)
+The project includes a complete and secure serverless e-commerce system for purchasing official merchandise:
+- **Payment Gateway (Stripe)**: Safe transaction processing using *Stripe Checkout* and asynchronous real-time validation via cryptographically signed Webhooks.
+- **Serverless Architecture (AWS)**:
+  - **Amazon API Gateway**: Exposes public store endpoints securely.
+  - **AWS Lambda (`checkout`)**: Validates cart item prices against the official catalog securely stored in a JSON on **Amazon S3** before initializing the Stripe session, preventing client-side price tampering.
+  - **AWS Lambda (`webhook`)**: Listener microservice that processes payment confirmation events from Stripe and registers transactions.
+  - **Amazon DynamoDB**: Stores completed orders permanently and enforces purchase idempotency using conditional write expressions to prevent duplicate webhook processing.
+- **Authentication (Supabase)**: Manages user login sessions and allows users to save favorite products and teams.
+
+![alt text](images/ecommerce-graph.png)
+
+
 ## Installation and Configuration
 
 Follow these steps to run the project on your local machine.
@@ -153,10 +171,3 @@ To avoid repository bloating and improve load times:
 The complete scraping, ELO calculation, and AWS synchronization pipeline runs weekly (every Wednesday at 02:00 UTC) via **GitHub Actions**, authenticating with AWS using OpenID Connect (OIDC) without storing long-lived credentials in the repository.
 
 
-### AI Chatbot
-An AI chatbot powered by the Gemini family models to query information about teams and competitions. It can be accessed via a button in the bottom right corner of the website.
-
-![AI Chatbot](/images/chatbot.png)
-
-### Integrated E-commerce
-The project includes a payment gateway implemented with **Stripe**. This integration securely manages the platform's e-commerce and allows simulating payment scenarios using *Stripe Sandbox* during testing.

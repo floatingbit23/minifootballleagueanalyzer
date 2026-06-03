@@ -62,8 +62,18 @@ Integración de un **Chatbot con IA** (potenciado por un modelo de _Google Gemin
 
 ![Chatbot IA](/images/chatbot.png)
 
-### E-commerce Integrado
-El proyecto incluye una pasarela de pagos implementada con **Stripe**. Esta integración gestiona de forma segura el comercio electrónico de la plataforma y permite simular escenarios de pago mediante *Stripe Sandbox* durante las pruebas.
+### E-Commerce Serverless
+El proyecto incluye un sistema de comercio electrónico completo y seguro para la compra de merchandising oficial:
+- **Pasarela de Pago (Stripe)**: Procesamiento de transacciones mediante _Stripe Checkout_ y validación asíncrona de pagos mediante _Webhooks_ con firmas criptográficas.
+- **Arquitectura Serverless (AWS)**:
+  - **Amazon API Gateway**: Expone de manera pública los endpoints de la tienda (`/checkout`, `/webhook`).
+  - **AWS Lambda (`checkout`)**: Valida los precios del carrito comparándolos contra el catálogo oficial almacenado de forma segura en un JSON en **Amazon S3** antes de crear la sesión en Stripe, evitando manipulaciones de precios desde el cliente.
+  - **AWS Lambda (`webhook`)**: Listener que procesa las confirmaciones de pago de Stripe y registra la transacción.
+  - **Amazon DynamoDB**: Almacena las órdenes confirmadas de forma permanente y garantiza la idempotencia.
+- **Autenticación (Supabase)**: Controla el inicio de sesión y permite a los usuarios guardar sus productos o equipos favoritos.
+
+![alt text](images/ecommerce-graph.png)
+
 
 ## Instalación y Configuración
 
