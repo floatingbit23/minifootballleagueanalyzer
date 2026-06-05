@@ -149,7 +149,7 @@ for archivo in archivos_json:
         # Almaceno la lista terminada en el diccionario global bajo el ID de su liga
         rankings_globales[liga_id] = RANKING_LISTA
 
-        print(f"✅ Calculado ELO y tendencia para: {liga_id}")
+        print(f"[OK] Calculado ELO y tendencia para: {liga_id}")
 
     except Exception as e:
         # Si algo falla al procesar el archivo JSON, muestro un error informativo para poder depurarlo
@@ -191,7 +191,7 @@ if os.path.exists(ruta_stats_source):
             with open(os.path.join(ruta_stats_dest, nombre_archivo), 'w', encoding='utf-8') as f_dest: # Abro el archivo de goleadores en modo escritura
                 json.dump(data, f_dest, ensure_ascii=False, indent=4) # Guardo los datos del archivo
 
-    print(f"✅ Copiados {len(archivos_stats)} archivos de estadísticas a {ruta_stats_dest}") # Muestro un mensaje indicando que se han copiado correctamente los archivos de estadísticas
+    print(f"[OK] Copiados {len(archivos_stats)} archivos de estadísticas a {ruta_stats_dest}") # Muestro un mensaje indicando que se han copiado correctamente los archivos de estadísticas
 
 
 # Muestro un mensaje final indicando al usuario que todo el proceso ha terminado con éxito

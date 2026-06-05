@@ -1,17 +1,17 @@
 # Instalar dependencias de Python
 
 # Librerías necesarias para el análisis y visualización de datos
-matplotlib
-numpy
+matplotlib==3.10.9
+numpy==2.4.6
 
 # Librerías necesarias para el web scraping y descarga de archivos
-selenium
-beautifulsoup4
-requests
+selenium==4.44.0
+beautifulsoup4==4.14.3
+requests==2.34.2
 
 # Optimización de imágenes (redimensionar y convertir a WebP)
-Pillow
+Pillow==12.2.0
 
 # Testing (Backend - Pytest)
-pytest
+pytest==9.0.3
 
