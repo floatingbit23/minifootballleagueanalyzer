@@ -1,8 +1,7 @@
 import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import { userStore } from '../stores/authStore';
-import { supabase } from '../lib/supabase';
 import { clearCart, cartStore, isCartOpen } from '../stores/cartStore';
 import StoreWidget from '../components/Store/StoreWidget';
 
@@ -19,7 +18,7 @@ vi.mock('../lib/supabase', () => {
 
 // Mock de window.location
 const mockAssign = vi.fn();
-Object.defineProperty(window, 'location', {
+Object.defineProperty(globalThis, 'location', {
   value: {
     assign: mockAssign,
     origin: 'http://localhost:3000'
@@ -29,7 +28,7 @@ Object.defineProperty(window, 'location', {
 
 // Mock de fetch global
 const mockFetch = vi.fn();
-global.fetch = mockFetch;
+globalThis.fetch = mockFetch;
 
 // Configurar URL de API Gateway para el entorno de test
 import.meta.env.PUBLIC_API_GATEWAY_URL = 'https://api-gateway-test.com';
@@ -70,7 +69,7 @@ describe('Componente StoreWidget', () => {
 
   it('debería renderizar la rejilla de productos correctamente', () => {
     render(<StoreWidget products={mockProducts} />);
-    
+
     // Comprobar que algunos de los productos clave del JSON de datos se renderizan
     expect(screen.getByText('Bolsa de Deporte MFL')).toBeInTheDocument();
     expect(screen.getByText('Balón Oficial MFL')).toBeInTheDocument();
@@ -79,7 +78,7 @@ describe('Componente StoreWidget', () => {
 
   it('debería mostrar un mensaje de error/advertencia si un usuario no autenticado intenta comprar', async () => {
     render(<StoreWidget products={mockProducts} />);
-    
+
     // Hacemos clic en el botón de comprar de la "Bolsa de Deporte MFL"
     const buyButtons = screen.getAllByRole('button', { name: /Comprar/i });
     fireEvent.click(buyButtons[0]);

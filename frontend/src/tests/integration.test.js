@@ -66,8 +66,8 @@ describe.runIf(hasKeys)('Prueba de Integración E-Commerce Real (LocalStack + St
     };
 
     // Mockeamos localmente solo la llamada fetch a Supabase en el test de integración
-    const originalFetch = global.fetch;
-    global.fetch = async (url, options) => {
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = async (url, options) => {
       if (url.includes('supabase.co/auth/v1/user')) {
         return {
           ok: true,
@@ -80,7 +80,7 @@ describe.runIf(hasKeys)('Prueba de Integración E-Commerce Real (LocalStack + St
 
     const checkoutRes = await checkoutHandler(checkoutEvent);
 
-    global.fetch = originalFetch;
+    globalThis.fetch = originalFetch;
 
     expect(checkoutRes.statusCode).toBe(200);
     const checkoutBody = JSON.parse(checkoutRes.body);

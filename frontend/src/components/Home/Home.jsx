@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Home.css';
 import { ChevronDown } from 'lucide-react';
@@ -56,7 +57,13 @@ const CustomSelect = ({ label, options, value, onChange, placeholder }) => {
 
     <div className="custom-select-container">
       <label className="select-label">{label}</label>
-      <div className="custom-select-box" onClick={() => setIsOpen(!isOpen)}>
+      <button
+        type="button"
+        className="custom-select-box"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+      >
         {/* Muestro el valor seleccionado (bandera + nombre) o el placeholder si no hay nada seleccionado */}
         {displayValue}
 
@@ -64,24 +71,27 @@ const CustomSelect = ({ label, options, value, onChange, placeholder }) => {
         <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
           <ChevronDown size={20} className="chevron-icon" />
         </motion.div>
-      </div>
+      </button>
 
       {/* Uso AnimatePresence para manejar la entrada y salida del desplegable */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             className="select-dropdown"
+            role="listbox"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
           >
-            {options.map((opt) => ( // Mapeo cada opción para crear un div con su bandera y nombre
+            {options.map((opt) => ( // Mapeo cada opción para crear un botón con su bandera y nombre
 
-              <div
+              <button
+                type="button"
                 key={opt.id} // Clave única para cada opción
                 className={`select-option ${value === opt.id ? 'selected' : ''}`} // Clase para marcar la opción seleccionada
-
+                role="option"
+                aria-selected={value === opt.id}
                 onClick={() => { // Función que se ejecuta cuando el usuario hace clic en una opción
                   onChange(opt.id); // Actualizo el valor seleccionado
                   setIsOpen(false); // Cierro el desplegable
@@ -91,7 +101,7 @@ const CustomSelect = ({ label, options, value, onChange, placeholder }) => {
                 {opt.flag && <img src={getAssetSrc(opt.flag)} alt="" className="select-flag" />} {/* Muestro la bandera si existe */}
                 {opt.logo && <img src={getAssetSrc(opt.logo)} alt="" className="select-logo" />} {/* Muestro el logo si existe */}
                 <span>{opt.name}</span> {/* Muestro el nombre de la opción */}
-              </div>
+              </button>
             ))}
           </motion.div>
         )}
@@ -131,22 +141,34 @@ const Home = ({ rankingsData: initialRankingsData }) => {
   const [selectedLeague, setSelectedLeague] = useState('');
   const [selectedTeamA, setSelectedTeamA] = useState('');
   const [selectedTeamB, setSelectedTeamB] = useState('');
-  const [rankingsData, setRankingsData] = useState({});
+  const [rankingsData, setRankingsData] = useState(() => {
+    if (initialRankingsData && Object.keys(initialRankingsData).length > 0) {
+      return processRankings(initialRankingsData);
+    }
+    return {};
+  });
   const [statsData, setStatsData] = useState([]);
 
   // Carga dinámica de los rankings ELO (desde CloudFront en prod o localmente)
   useEffect(() => {
+    if (initialRankingsData && Object.keys(initialRankingsData).length > 0) {
+      return;
+    }
+
     const fetchRankings = async () => {
       try {
-        const isLocal = typeof window !== 'undefined' && window.location && (
-          window.location.hostname === 'localhost' ||
-          window.location.hostname === '127.0.0.1' ||
-          (window.location.hostname && window.location.hostname.endsWith('.ngrok-free.app'))
+        const isLocal = !import.meta.env.SSR && (
+          globalThis.location.hostname === 'localhost' ||
+          globalThis.location.hostname === '127.0.0.1' ||
+          globalThis.location.hostname?.endsWith('.ngrok-free.app')
         );
         const cdnUrl = (import.meta.env.DEV || isLocal) ? '/s3-cdn' : import.meta.env.PUBLIC_CLOUDFRONT_URL;
-        const url = cdnUrl
-          ? `${cdnUrl.endsWith('/') ? cdnUrl.slice(0, -1) : cdnUrl}/elo_rankings.json`
-          : '/elo_rankings.json';
+        let url = '/elo_rankings.json';
+
+        if (cdnUrl) {
+          const cleanCdnUrl = cdnUrl.endsWith('/') ? cdnUrl.slice(0, -1) : cdnUrl;
+          url = `${cleanCdnUrl}/elo_rankings.json`;
+        }
 
         const response = await fetch(url);
         if (response.ok) {
@@ -158,32 +180,27 @@ const Home = ({ rankingsData: initialRankingsData }) => {
       }
     };
 
-    if (initialRankingsData && Object.keys(initialRankingsData).length > 0) {
-      setRankingsData(processRankings(initialRankingsData));
-    } else {
-      fetchRankings();
-    }
+    fetchRankings();
   }, [initialRankingsData]);
 
   // Lanzo una petición fetch cada vez que el usuario cambia de liga para traer los goleadores (Pichichi)
   useEffect(() => {
-    if (!selectedLeague) {
-      setStatsData([]);
-      return;
-    }
+    if (!selectedLeague) return;
 
     const fetchStats = async () => {
       try {
         const statsFile = `${selectedLeague}_stats.json`;
-        const isLocal = typeof window !== 'undefined' && window.location && (
-          window.location.hostname === 'localhost' ||
-          window.location.hostname === '127.0.0.1' ||
-          (window.location.hostname && window.location.hostname.endsWith('.ngrok-free.app'))
+        const isLocal = !import.meta.env.SSR && (
+          globalThis.location.hostname === 'localhost' ||
+          globalThis.location.hostname === '127.0.0.1' ||
+          globalThis.location.hostname?.endsWith('.ngrok-free.app')
         );
         const cdnUrl = (import.meta.env.DEV || isLocal) ? '/s3-cdn' : import.meta.env.PUBLIC_CLOUDFRONT_URL;
-        const url = cdnUrl
-          ? `${cdnUrl.endsWith('/') ? cdnUrl.slice(0, -1) : cdnUrl}/stats/${statsFile}`
-          : `/stats/${statsFile}`;
+        let url = `/stats/${statsFile}`;
+        if (cdnUrl) {
+          const cleanCdnUrl = cdnUrl.endsWith('/') ? cdnUrl.slice(0, -1) : cdnUrl;
+          url = `${cleanCdnUrl}/stats/${statsFile}`;
+        }
 
         const response = await fetch(url);
         if (response.ok) {
@@ -204,9 +221,6 @@ const Home = ({ rankingsData: initialRankingsData }) => {
     };
 
     fetchStats();
-    // Reseteo los equipos seleccionados al cambiar de liga para evitar errores
-    setSelectedTeamA('');
-    setSelectedTeamB('');
   }, [selectedLeague]);
 
   // Filtro y preparo la lista de equipos de la liga seleccionada para rellenar los desplegables
@@ -262,7 +276,12 @@ const Home = ({ rankingsData: initialRankingsData }) => {
             label={t('home.select_league')}
             options={LEAGUES}
             value={selectedLeague}
-            onChange={setSelectedLeague}
+            onChange={(value) => {
+              setSelectedLeague(value);
+              setSelectedTeamA('');
+              setSelectedTeamB('');
+              setStatsData([]);
+            }}
             placeholder={t('home.choose_league')}
           />
         </div>
@@ -365,9 +384,9 @@ const Home = ({ rankingsData: initialRankingsData }) => {
           >
             {/* Finalmente, renderizo el Leaderboard (Clasificación ELO) de la liga seleccionada */}
             {/* Paso los equipos seleccionados para que el Leaderboard pueda resaltarlos y filtrarlos */}
-            <Leaderboard 
-              rankings={rankingsData[selectedLeague]} 
-              leagueId={selectedLeague} 
+            <Leaderboard
+              rankings={rankingsData[selectedLeague]}
+              leagueId={selectedLeague}
               selectedTeamA={selectedTeamA}
               selectedTeamB={selectedTeamB}
             />
@@ -376,6 +395,25 @@ const Home = ({ rankingsData: initialRankingsData }) => {
       </AnimatePresence>
     </motion.div>
   );
+};
+
+CustomSelect.propTypes = {
+  label: PropTypes.string,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      flag: PropTypes.any,
+      logo: PropTypes.any,
+    })
+  ).isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+};
+
+Home.propTypes = {
+  rankingsData: PropTypes.object,
 };
 
 export default Home;

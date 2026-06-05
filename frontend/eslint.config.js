@@ -26,8 +26,21 @@ export default defineConfig([
         sourceType: 'module', // Permito módulos
       },
     },
-    rules: { // Personalizo las reglas: permito variables no usadas si empiezan por mayúscula (como Componentes o constantes)
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }], // No muestro errores de variables no usadas si empiezan por mayúscula
+    rules: { // Personalizo las reglas: permito variables no usadas si empiezan por mayúscula (como Componentes o constantes) o si son 'motion' (Framer Motion)
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]|motion' }], // No muestro errores de variables no usadas si empiezan por mayúscula o es 'motion'
+    },
+  },
+  {
+    files: [
+      'api/**/*.js',
+      'src/tests/**/*.{js,jsx}',
+      'src/**/*.test.{js,jsx}',
+      'src/components/**/*.test.{js,jsx}'
+    ],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
     },
   },
 ])

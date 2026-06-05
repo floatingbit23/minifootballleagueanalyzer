@@ -67,6 +67,8 @@
   align-items: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  width: 100%;
+  font-family: inherit;
 }
 
 .custom-select-box:hover {
@@ -118,6 +120,12 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  font-size: 1rem;
 }
 
 .select-option:hover {

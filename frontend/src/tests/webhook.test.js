@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import Stripe from 'stripe';
-import { DynamoDBDocumentClient, PutCommand } from '@aws-sdk/lib-dynamodb';
+import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 
 // Mock de las librerías
 vi.mock('stripe', () => {
@@ -29,7 +29,7 @@ vi.mock('@aws-sdk/lib-dynamodb', () => {
         send: mockSend
       }))
     },
-    PutCommand: vi.fn(function(params) {
+    PutCommand: vi.fn(function (params) {
       this.params = params;
     })
   };
@@ -131,7 +131,7 @@ describe('POST /webhook Lambda Handler', () => {
     const response = await handler(event);
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.body).status).toBe('PAID');
-    
+
     // Verificamos que se haya ejecutado el comando Put en DynamoDB
     expect(mockDocClientSend).toHaveBeenCalled();
     const putParams = mockDocClientSend.mock.calls[0][0].params;

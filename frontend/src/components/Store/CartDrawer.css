@@ -1,26 +1,45 @@
-/* Contenedor Overlay del Drawer */
-.cart-drawer-overlay {
+/* Contenedor principal del Drawer */
+.cart-drawer-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(10, 12, 18, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   z-index: 1000;
   display: flex;
   justify-content: flex-end;
+}
+
+/* Fondo oscuro translúcido (Overlay interactivo como botón nativo) */
+.cart-drawer-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 12, 18, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
   animation: fadeInOverlay 0.25s ease-out forwards;
 }
 
 /* El panel del Drawer deslizable */
 .cart-drawer {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 440px;
   height: 100%;
   background-color: #161a26;
+  border: none;
   border-left: 1px solid #2a3143;
+  padding: 0;
+  margin: 0;
+  inset: auto;
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;

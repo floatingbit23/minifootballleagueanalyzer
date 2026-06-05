@@ -1,9 +1,11 @@
 import json # Para trabajar con archivos JSON
 import os # Para interactuar con el sistema de archivos
 import hashlib # Para generar hashes MD5 de las imágenes
+import io # Para manejar bytes en memoria sin necesidad de archivos temporales
 import requests # Para las peticiones HTTP
 import re # Para buscar patrones en las URLs
 from pathlib import Path # Para trabajar con rutas de archivos
+from PIL import Image # Para redimensionar y convertir imágenes a WebP (Pillow)
 
 # --- CONFIGURACIÓN DE RUTAS ---
 
@@ -22,6 +24,10 @@ LOGOS_PLAYERS_DIR = PUBLIC_DIR / 'images' / 'players'
 # Aseguramos que existan las carpetas de destino; si no, las creamos recursivamente
 LOGOS_TEAMS_DIR.mkdir(parents=True, exist_ok=True)
 LOGOS_PLAYERS_DIR.mkdir(parents=True, exist_ok=True)
+
+# Dimensión máxima para redimensionar las imágenes descargadas.
+# Los escudos se muestran a 32-48px en el frontend, así que 128px es más que suficiente.
+MAX_DIMENSION = 128
 
 # Función para obtener la extensión del archivo:
 def get_extension(url, content_type):
@@ -59,7 +65,7 @@ def print_progress_bar(iteration, total, prefix='', suffix='', decimals=1, lengt
     if iteration == total:  
         print()
 
-# Función para descargar la imagen externa:
+# Función para descargar, redimensionar y convertir la imagen externa a WebP:
 def download_image(url, target_dir, stats=None): # parámetros: URL de la imagen, directorio donde guardarla (target_dir), estadísticas (stats) para progreso
 
     if not url or not url.startswith('http'): # Si la URL no es válida, la devolvemos 
@@ -75,7 +81,7 @@ def download_image(url, target_dir, stats=None): # parámetros: URL de la imagen
         print_progress_bar(stats['current'], stats['total'], prefix='Progreso:', suffix='Procesando', length=50) # Actualizamos la barra de progreso
 
     # Comprueba si la imagen ya existe con alguna extensión
-    for ext in ['.jpg', '.png', '.webp', '.svg']: 
+    for ext in ['.webp', '.jpg', '.png', '.svg']: 
 
         potential_path = target_dir / f"{url_hash}{ext}" # Construye la ruta potencial
 
@@ -85,21 +91,53 @@ def download_image(url, target_dir, stats=None): # parámetros: URL de la imagen
     # Si la imagen no existe, la intento descargar:
     try: 
 
-        response = requests.get(url, timeout=10, stream=True) # Realiza la petición HTTPGET a la URL, timeout de 10 segundos, stream=True para descargar en trozos
+        response = requests.get(url, timeout=10) # Realiza la petición HTTP GET a la URL con timeout de 10 segundos
         response.raise_for_status() # Lanza una excepción si hay un error en la petición
         
-        ext = get_extension(url, response.headers.get('Content-Type')) # Obtiene la extensión de la imagen
-        filename = f"{url_hash}{ext}" # Nombre del archivo (hash + extensión)
-        local_path = target_dir / filename # Ruta local (directorio + nombre del archivo)
-        
-        with open(local_path, 'wb') as f: # Abre el archivo en modo escritura binaria (write binary)
-            for chunk in response.iter_content(chunk_size=8192): # Descarga la imagen en trozos (chunks) de 8192 bytes (ocupando permanentemente solo 8KB de RAM)
-                f.write(chunk) # Escribe el chunk en el archivo
-            
-        return f"/images/{target_dir.name}/{filename}" # Devuelve la ruta relativa (/images/teams/hash.jpg o /images/players/hash.jpg)
+        ext = get_extension(url, response.headers.get('Content-Type')) # Obtiene la extensión de la imagen original
 
-    except Exception: # Si hay algún error al descargar la imagen
-        return url # Devuelve la URL original
+        # CASO ESPECIAL: Los SVG son vectoriales y Pillow no puede procesarlos, entonces los guardamos tal cual
+        if ext == '.svg':
+
+            svg_filename = f"{url_hash}.svg" # Nombre del archivo SVG
+            svg_path = target_dir / svg_filename # Ruta local
+
+            with open(svg_path, 'wb') as f: # Escritura binaria directa
+                f.write(response.content) # Guardamos el contenido SVG sin procesar
+
+            return f"/images/{target_dir.name}/{svg_filename}" # Devuelve la ruta relativa
+
+        # Para imágenes JPG, PNG, etc. las redimensionamos y las convertimos a WebP por eficiencia
+        raw_bytes = response.content # Descargamos todos los bytes de la imagen en memoria
+
+        with Image.open(io.BytesIO(raw_bytes)) as img: # Abrimos la imagen desde los bytes en memoria (sin archivo temporal)
+
+            # Convertimos a RGBA para manejar transparencia de forma uniforme (WebP soporta canal alfa)
+            if img.mode == 'P': # Imágenes con paleta de colores (GIF, PNG indexados)
+
+                # Si tiene transparencia en la paleta, la preservamos; si no, convertimos a RGB
+                img = img.convert('RGBA') if 'transparency' in img.info else img.convert('RGB')
+
+            elif img.mode not in ('RGB', 'RGBA'): # Otros modos (L, LA, CMYK, etc.)
+                img = img.convert('RGB') # Convertimos a RGB estándar
+            
+            # Redimensionamos manteniendo el aspect-ratio con el filtro Lanczos (máxima calidad)
+            # thumbnail() modifica la imagen IN-PLACE y nunca agranda, solo encoge si excede MAX_DIMENSION
+            # En Pillow 10+ se usa Image.Resampling.LANCZOS; en versiones anteriores, Image.LANCZOS
+            # pyrefly: ignore [missing-attribute]
+            resampling_filter = getattr(Image, 'Resampling', Image).LANCZOS
+            img.thumbnail((MAX_DIMENSION, MAX_DIMENSION), resampling_filter)
+            
+            # Guardamos como WebP optimizado: quality=80 es un buen equilibrio calidad/tamaño,
+            # method=6 usa la compresión más lenta pero con mejor ratio (ideal para assets estáticos)
+            webp_filename = f"{url_hash}.webp"
+            webp_path = target_dir / webp_filename
+            img.save(webp_path, 'WEBP', quality=80, method=6)
+        
+        return f"/images/{target_dir.name}/{webp_filename}" # Devuelve la ruta relativa al archivo WebP optimizado
+
+    except Exception: # Si hay algún error al descargar o procesar la imagen
+        return url # Devuelve la URL original como fallback
 
 # Función recursiva para encontrar URLs de imágenes
 

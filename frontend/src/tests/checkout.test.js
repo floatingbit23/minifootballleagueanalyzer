@@ -6,7 +6,7 @@ vi.mock('stripe');
 
 // Mock de fetch global
 const mockFetch = vi.fn();
-global.fetch = mockFetch;
+globalThis.fetch = mockFetch;
 
 // Importamos el handler de checkout
 import { handler } from '../../../backend/lambda/checkout/index.mjs';
@@ -18,7 +18,7 @@ describe('POST /checkout Lambda Handler', () => {
     vi.clearAllMocks();
     process.env.SUPABASE_URL = 'https://supabase-test.com';
     process.env.SUPABASE_ANON_KEY = 'anon-key-test';
-    
+
     // Configuración del mock de Stripe
     Stripe.prototype.checkout = {
       sessions: {
@@ -164,10 +164,10 @@ describe('POST /checkout Lambda Handler', () => {
 
     const response = await handler(event);
     expect(response.statusCode).toBe(200);
-    
+
     const body = JSON.parse(response.body);
     expect(body.url).toBe('https://checkout.stripe.com/pay/cs_test_123');
-    
+
     expect(mockStripeSessionCreate).toHaveBeenCalledWith(
       expect.objectContaining({
         mode: 'payment',
@@ -215,10 +215,10 @@ describe('POST /checkout Lambda Handler', () => {
 
     const response = await handler(event);
     expect(response.statusCode).toBe(200);
-    
+
     const body = JSON.parse(response.body);
     expect(body.url).toBe('https://checkout.stripe.com/pay/cs_test_999');
-    
+
     expect(mockStripeSessionCreate).toHaveBeenCalledWith(
       expect.objectContaining({
         mode: 'payment',

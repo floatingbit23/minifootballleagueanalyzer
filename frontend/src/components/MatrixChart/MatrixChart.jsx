@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import './MatrixChart.css';
 import { motion } from 'framer-motion';
 import murciaFlag from '../../assets/murcia_flag.jpeg';
@@ -26,8 +27,8 @@ const MatrixChart = ({ equipoHome, logoHome, equipoAway, logoAway, probHome, pro
 
   // Calculo los Goles Esperados (xG) multiplicando la probabilidad de victoria por la media de 5 goles
   // Esta es la misma lógica que utilizaba en mis simulaciones de Python
-  const xgHome = 5.0 * probHome;
-  const xgAway = 5.0 * probAway;
+  const xgHome = 5 * probHome;
+  const xgAway = 5 * probAway;
   const maxGoles = 7; // Genero una matriz de resultados posibles desde el 0-0 hasta el 6-6
 
   // Calculo toda la matriz de probabilidades conjuntas y la normalizo para que sume 100%
@@ -127,7 +128,8 @@ const MatrixChart = ({ equipoHome, logoHome, equipoAway, logoAway, probHome, pro
           <div className="panel-box panel-home">
             <span className="panel-prob">{matrixData.homeWinProb.toFixed(1)}%</span>
             <span className="panel-title">{t('matrix.win_home')}</span>
-            {logoHome && <img src={logoHome} alt={equipoHome} className="panel-logo" onError={(e) => { e.target.src = flagSrc; }} />}
+            {/*loading="lazy" y dimensiones explícitas para evitar CLS y cargas innecesarias */}
+            {logoHome && <img src={logoHome} alt={equipoHome} className="panel-logo" loading="lazy" width={48} height={48} onError={(e) => { e.target.src = flagSrc; }} />}
             <span className="panel-team">{equipoHome?.substring(0, 15)}</span>
             <span className="panel-xg">{matrixData.xgHome.toFixed(2)} xG</span>
           </div>
@@ -140,7 +142,8 @@ const MatrixChart = ({ equipoHome, logoHome, equipoAway, logoAway, probHome, pro
           <div className="panel-box panel-away">
             <span className="panel-prob">{matrixData.awayWinProb.toFixed(1)}%</span>
             <span className="panel-title">{t('matrix.win_away')}</span>
-            {logoAway && <img src={logoAway} alt={equipoAway} className="panel-logo" onError={(e) => { e.target.src = flagSrc; }} />}
+            {/* loading="lazy" y dimensiones explícitas para evitar CLS y cargas innecesarias */}
+            {logoAway && <img src={logoAway} alt={equipoAway} className="panel-logo" loading="lazy" width={48} height={48} onError={(e) => { e.target.src = flagSrc; }} />}
             <span className="panel-team">{equipoAway?.substring(0, 15)}</span>
             <span className="panel-xg">{matrixData.xgAway.toFixed(2)} xG</span>
           </div>
@@ -148,6 +151,16 @@ const MatrixChart = ({ equipoHome, logoHome, equipoAway, logoAway, probHome, pro
       </div>
     </div>
   );
+};
+
+MatrixChart.propTypes = {
+  equipoHome: PropTypes.string.isRequired,
+  logoHome: PropTypes.string,
+  equipoAway: PropTypes.string.isRequired,
+  logoAway: PropTypes.string,
+  probHome: PropTypes.number.isRequired,
+  probAway: PropTypes.number.isRequired,
+  leagueId: PropTypes.string,
 };
 
 export default MatrixChart;

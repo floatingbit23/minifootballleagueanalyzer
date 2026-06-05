@@ -37,6 +37,14 @@ const { title } = Astro.props;
       href="/fonts/inter-variable.woff2"
       crossorigin
     />
+
+    <!-- OPTIMIZACIÓN: Pre-conexión al CDN de CloudFront para eliminar la latencia en la primera petición de imagen. -->
+    {import.meta.env.PUBLIC_CLOUDFRONT_URL && (
+      <>
+        <link rel="preconnect" href={import.meta.env.PUBLIC_CLOUDFRONT_URL} crossorigin />
+        <link rel="dns-prefetch" href={import.meta.env.PUBLIC_CLOUDFRONT_URL} />
+      </>
+    )}
 </head>
 
 <body>

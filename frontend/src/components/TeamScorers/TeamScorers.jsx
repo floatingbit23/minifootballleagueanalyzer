@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './TeamScorers.css';
 import { motion } from 'framer-motion';
 import { useTranslation } from '../../hooks/useTranslation';
@@ -6,7 +7,7 @@ import defaultTeamLogo from '../../assets/default_team_logo.png';
 
 const TeamScorers = ({ teamName, scorersData = [] }) => {
   const { t } = useTranslation();
-  
+
   // Extraemos la ruta optimizada (Astro/Vite) del logo por defecto
   const defaultLogoSrc = typeof defaultTeamLogo === 'object' ? defaultTeamLogo.src : defaultTeamLogo;
 
@@ -35,6 +36,11 @@ const TeamScorers = ({ teamName, scorersData = [] }) => {
                   src={player.avatar || defaultLogoSrc}
                   alt={player.nombre}
                   className="scorer-avatar"
+                  // Lazy loading para no descargar avatares fuera de pantalla
+                  loading="lazy"
+                  // Dimensiones explícitas para evitar layout shift
+                  width={40}
+                  height={40}
                   onError={(e) => { e.target.src = defaultLogoSrc; }}
                 />
                 <span className="scorer-name" title={player.nombre}>{player.nombre}</span>
@@ -54,6 +60,11 @@ const TeamScorers = ({ teamName, scorersData = [] }) => {
       </div>
     </div>
   );
+};
+
+TeamScorers.propTypes = {
+  teamName: PropTypes.string.isRequired,
+  scorersData: PropTypes.array,
 };
 
 export default TeamScorers;

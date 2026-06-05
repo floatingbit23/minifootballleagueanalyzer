@@ -72,5 +72,6 @@ jobs:
 
     - name: Invalidar caché de CloudFront
       run: |
-        # Crear invalidación para refrescar el contenido en la CDN
-        aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+        # Invalidación SELECTIVA: solo refrescamos los JSONs de datos que cambian semanalmente
+        # Las imágenes (logos y avatares) NO se invalidan porque rara vez cambian, lo que permite que la caché de CloudFront (max-age=31536000) funcione durante todo el año
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/elo_rankings.json" "/stats/*"

@@ -23,9 +23,9 @@ const CartDrawer = () => {
     const fetchCatalog = async () => {
       setLoadingCatalog(true);
       try {
-        const isLocal = typeof window !== 'undefined' && window.location && (
-          window.location.hostname === 'localhost' ||
-          window.location.hostname === '127.0.0.1'
+        const isLocal = !import.meta.env.SSR && (
+          globalThis.location.hostname === 'localhost' ||
+          globalThis.location.hostname === '127.0.0.1'
         );
         const cdnUrl = (import.meta.env.DEV || isLocal) ? '/s3-cdn' : import.meta.env.PUBLIC_CLOUDFRONT_URL;
         if (!cdnUrl && !import.meta.env.DEV && !isLocal) {
@@ -36,10 +36,8 @@ const CartDrawer = () => {
         if (response.ok) {
           const data = await response.json();
           setCatalog(data);
-        } else {
-          if (import.meta.env.DEV) {
-            console.error(`Error loading S3 catalogue: HTTP ${response.status}`);
-          }
+        } else if (import.meta.env.DEV) {
+          console.error(`Error loading S3 catalogue: HTTP ${response.status}`);
         }
       } catch (err) {
         if (import.meta.env.DEV) {
@@ -60,13 +58,13 @@ const CartDrawer = () => {
         isCartOpen.set(false);
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    globalThis.addEventListener('keydown', handleKeyDown);
+    return () => globalThis.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
   // Bloquear el scroll de la página principal al abrir el drawer
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.document) {
+    if (!import.meta.env.SSR) {
       if (isOpen) {
         document.body.style.overflow = 'hidden';
       } else {
@@ -74,7 +72,7 @@ const CartDrawer = () => {
       }
     }
     return () => {
-      if (typeof window !== 'undefined' && window.document) {
+      if (!import.meta.env.SSR) {
         document.body.style.overflow = '';
       }
     };
@@ -138,9 +136,9 @@ const CartDrawer = () => {
         throw new Error('No se pudo verificar la sesión activa de Supabase.');
       }
 
-      const isLocal = typeof window !== 'undefined' && window.location && (
-        window.location.hostname === 'localhost' ||
-        window.location.hostname === '127.0.0.1'
+      const isLocal = !import.meta.env.SSR && (
+        globalThis.location.hostname === 'localhost' ||
+        globalThis.location.hostname === '127.0.0.1'
       );
       const apiGatewayUrl = (import.meta.env.DEV || isLocal) ? '/checkout-api' : import.meta.env.PUBLIC_API_GATEWAY_URL;
       if (!apiGatewayUrl) {
@@ -155,8 +153,8 @@ const CartDrawer = () => {
         },
         body: JSON.stringify({
           items: cartItems.map(item => ({ id: item.id, quantity: item.quantity })),
-          success_url: `${window.location.origin}/checkout/success`,
-          cancel_url: `${window.location.origin}/checkout/cancel`
+          success_url: `${globalThis.location.origin}/checkout/success`,
+          cancel_url: `${globalThis.location.origin}/checkout/cancel`
         })
       });
 
@@ -171,7 +169,7 @@ const CartDrawer = () => {
       }
 
       // Redirigir al checkout de Stripe
-      window.location.assign(data.url);
+      globalThis.location.assign(data.url);
     } catch (err) {
       if (import.meta.env.DEV) {
         console.error('Error al iniciar checkout desde el Drawer:', err);
@@ -182,14 +180,94 @@ const CartDrawer = () => {
     }
   };
 
+  let drawerContent;
+  if (loadingCatalog && detailedCartItems.length === 0) {
+    drawerContent = (
+      <div className="cart-drawer-loading">
+        <Loader className="spinner" size={32} />
+        <p>Cargando productos...</p>
+      </div>
+    );
+  } else if (detailedCartItems.length === 0) {
+    drawerContent = (
+      <div className="cart-drawer-empty">
+        <ShoppingBag size={48} className="empty-icon" />
+        <p>Tu carrito está vacío</p>
+        <button
+          className="continue-shopping-btn"
+          onClick={() => isCartOpen.set(false)}
+        >
+          Continuar comprando
+        </button>
+      </div>
+    );
+  } else {
+    drawerContent = (
+      <div className="cart-drawer-items-list">
+        {detailedCartItems.map((item) => (
+          <div key={item.id} className="cart-drawer-item">
+            <div className="cart-drawer-item-image-wrapper">
+              {item.image ? (
+                <img src={item.image} alt={item.name} className="cart-drawer-item-image" loading="lazy" width={64} height={64} />
+              ) : (
+                <div className="cart-drawer-item-image-placeholder">
+                  <ShoppingBag size={20} />
+                </div>
+              )}
+            </div>
+            <div className="cart-drawer-item-details">
+              <h4 className="cart-drawer-item-name">{item.name}</h4>
+              <p className="cart-drawer-item-price">
+                {item.price.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}
+              </p>
+              <div className="cart-drawer-item-actions">
+                <div className="cart-drawer-qty-selector">
+                  <button
+                    onClick={() => handleDecrement(item.id, item.quantity)}
+                    className="qty-btn"
+                    disabled={item.quantity <= 1 || loadingCheckout}
+                    aria-label="Disminuir cantidad"
+                  >
+                    -
+                  </button>
+                  <span className="qty-value">{item.quantity}</span>
+                  <button
+                    onClick={() => handleIncrement(item.id, item.quantity)}
+                    className="qty-btn"
+                    disabled={item.quantity >= 9 || loadingCheckout}
+                    aria-label="Aumentar cantidad"
+                  >
+                    +
+                  </button>
+                </div>
+                <button
+                  onClick={() => handleRemove(item.id)}
+                  className="cart-drawer-remove-btn"
+                  disabled={loadingCheckout}
+                  aria-label="Eliminar producto"
+                  title="Eliminar del carrito"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
-    <div className="cart-drawer-overlay" onClick={() => isCartOpen.set(false)}>
-      <div
+    <div className="cart-drawer-wrapper">
+      <button
+        className="cart-drawer-overlay"
+        onClick={() => isCartOpen.set(false)}
+        aria-label="Cerrar al hacer clic fuera"
+      />
+      <dialog
         className="cart-drawer"
         ref={drawerRef}
-        onClick={(e) => e.stopPropagation()}
-        role="dialog"
-        aria-modal="true"
+        open
         aria-label="Carrito de compras"
       >
         <div className="cart-drawer-header">
@@ -222,75 +300,7 @@ const CartDrawer = () => {
             </div>
           )}
 
-          {loadingCatalog && detailedCartItems.length === 0 ? (
-            <div className="cart-drawer-loading">
-              <Loader className="spinner" size={32} />
-              <p>Cargando productos...</p>
-            </div>
-          ) : detailedCartItems.length === 0 ? (
-            <div className="cart-drawer-empty">
-              <ShoppingBag size={48} className="empty-icon" />
-              <p>Tu carrito está vacío</p>
-              <button
-                className="continue-shopping-btn"
-                onClick={() => isCartOpen.set(false)}
-              >
-                Continuar comprando
-              </button>
-            </div>
-          ) : (
-            <div className="cart-drawer-items-list">
-              {detailedCartItems.map((item) => (
-                <div key={item.id} className="cart-drawer-item">
-                  <div className="cart-drawer-item-image-wrapper">
-                    {item.image ? (
-                      <img src={item.image} alt={item.name} className="cart-drawer-item-image" />
-                    ) : (
-                      <div className="cart-drawer-item-image-placeholder">
-                        <ShoppingBag size={20} />
-                      </div>
-                    )}
-                  </div>
-                  <div className="cart-drawer-item-details">
-                    <h4 className="cart-drawer-item-name">{item.name}</h4>
-                    <p className="cart-drawer-item-price">
-                      {item.price.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}
-                    </p>
-                    <div className="cart-drawer-item-actions">
-                      <div className="cart-drawer-qty-selector">
-                        <button
-                          onClick={() => handleDecrement(item.id, item.quantity)}
-                          className="qty-btn"
-                          disabled={item.quantity <= 1 || loadingCheckout}
-                          aria-label="Disminuir cantidad"
-                        >
-                          -
-                        </button>
-                        <span className="qty-value">{item.quantity}</span>
-                        <button
-                          onClick={() => handleIncrement(item.id, item.quantity)}
-                          className="qty-btn"
-                          disabled={item.quantity >= 9 || loadingCheckout}
-                          aria-label="Aumentar cantidad"
-                        >
-                          +
-                        </button>
-                      </div>
-                      <button
-                        onClick={() => handleRemove(item.id)}
-                        className="cart-drawer-remove-btn"
-                        disabled={loadingCheckout}
-                        aria-label="Eliminar producto"
-                        title="Eliminar del carrito"
-                      >
-                        <Trash2 size={16} />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+          {drawerContent}
         </div>
 
         {detailedCartItems.length > 0 && (
@@ -322,7 +332,7 @@ const CartDrawer = () => {
             </button>
           </div>
         )}
-      </div>
+      </dialog>
     </div>
   );
 };

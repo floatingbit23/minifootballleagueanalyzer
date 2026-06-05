@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Leaderboard.css';
 import murciaFlag from '../../assets/murcia_flag.jpeg';
 import granadaFlag from '../../assets/granada_flag.png';
@@ -14,7 +15,7 @@ const Leaderboard = ({ rankings = [], leagueId = '', selectedTeamA = '', selecte
   // Uso Nanostores para acceder al estado de mis equipos favoritos de forma global y reactiva
   const favorites = useStore(favoritesStore);
   const isLoading = useStore(isFavoritesLoading);
-  
+
   // Determino qué bandera usar como imagen por defecto si el equipo no tiene logo propio
   const defaultFlag = leagueId.includes('_gra') || leagueId.includes('veteranos_gra') ? granadaFlag : murciaFlag;
   const flagSrc = typeof defaultFlag === 'object' ? defaultFlag.src : defaultFlag;
@@ -34,7 +35,7 @@ const Leaderboard = ({ rankings = [], leagueId = '', selectedTeamA = '', selecte
   return (
     <div className="leaderboard-container">
       <h2 className="leaderboard-title">{t('leaderboard.title')}</h2>
-      
+
       {/* Contenedor con scroll horizontal para móviles */}
       <div className="leaderboard-scroll-area">
         <div className="leaderboard-content">
@@ -51,60 +52,77 @@ const Leaderboard = ({ rankings = [], leagueId = '', selectedTeamA = '', selecte
               // Solo lo resalto si AMBOS están seleccionados para que tenga sentido visualmente
               const isH2H = (team.equipo === selectedTeamA || team.equipo === selectedTeamB) && selectedTeamA && selectedTeamB;
 
+              // Obtener la clase de medalla según la posición en la tabla
+              let rankClass = '';
+              if (index === 0) {
+                rankClass = 'rank-first';
+              } else if (index === 1) {
+                rankClass = 'rank-second';
+              } else if (index === 2) {
+                rankClass = 'rank-third';
+              }
+
               return (
-                <div 
-                  key={team.equipo} 
+                <div
+                  key={team.equipo}
                   className={`leaderboard-row ${isH2H ? 'h2h-highlight' : ''}`}
                 >
                   {/* Columna de Posición con medallas visuales para el Top 3 */}
                   <div className="col-rank">
-                    <div className={`rank-badge ${index === 0 ? 'rank-first' : index === 1 ? 'rank-second' : index === 2 ? 'rank-third' : ''}`}>
+                    <div className={`rank-badge ${rankClass}`}>
                       #{team.posicion}
                     </div>
                   </div>
 
                   {/* Columna de Equipo con nombre, logo y botón de favoritos */}
                   <div className="col-team">
-                    <span 
+                    <button
+                      type="button"
                       className={`favorite-star ${isFav(team.equipo) ? 'active' : ''}`}
                       // Al hacer clic, guardo o quito el equipo de mis favoritos (Supabase + Nanostores)
                       onClick={() => !isLoading && toggleFavorite(team.equipo, leagueId)}
                       title={isFav(team.equipo) ? "Quitar de Mis favoritos" : "Añadir a Mis favoritos"}
+                      aria-label={isFav(team.equipo) ? "Quitar de Mis favoritos" : "Añadir a Mis favoritos"}
                     >
-                      <Star 
-                        size={18} 
-                        fill={isFav(team.equipo) ? "#000" : "transparent"} 
-                        stroke={isFav(team.equipo) ? "#eab308" : "#9ca3af"} 
+                      <Star
+                        size={18}
+                        fill={isFav(team.equipo) ? "#000" : "transparent"}
+                        stroke={isFav(team.equipo) ? "#eab308" : "#9ca3af"}
                         strokeWidth={2}
                       />
-                    </span>
+                    </button>
                     <img
                       // Si el equipo no tiene logo, "pinto" la bandera de su provincia por defecto
                       src={team.logo || flagSrc}
                       alt={team.equipo}
                       className="team-logo-image"
+                      // Lazy Loading para no descargar logos fuera de la pantalla visible
+                      loading="lazy"
+                      // Dimensiones explícitas para evitar layout shift (CLS)
+                      width={32}
+                      height={32}
                       onError={(e) => { e.target.src = flagSrc; }}
                     />
                     <span className="team-name">
                       {team.equipo}
                       {/* Comparo mi Power Ranking (ELO) con la clasificación real */}
                       {team.posicion < team.posicion_real && (
-                        <ChevronUp 
-                          size={18} 
-                          className="rank-icon better" 
+                        <ChevronUp
+                          size={18}
+                          className="rank-icon better"
                           title={`Mejor en ELO que en liga: #${team.posicion_real} real`}
                         />
                       )}
                       {team.posicion > team.posicion_real && (
-                        <ChevronDown 
-                          size={18} 
-                          className="rank-icon worse" 
+                        <ChevronDown
+                          size={18}
+                          className="rank-icon worse"
                           title={`Peor en ELO que en liga: #${team.posicion_real} real`}
                         />
                       )}
                       {team.posicion === team.posicion_real && (
-                        <span 
-                          className="rank-icon equal" 
+                        <span
+                          className="rank-icon equal"
                           title="Misma posición en ELO y liga"
                         >
                           🟰
@@ -145,6 +163,13 @@ const Leaderboard = ({ rankings = [], leagueId = '', selectedTeamA = '', selecte
       </div>
     </div>
   );
+};
+
+Leaderboard.propTypes = {
+  rankings: PropTypes.array,
+  leagueId: PropTypes.string,
+  selectedTeamA: PropTypes.string,
+  selectedTeamB: PropTypes.string,
 };
 
 export default Leaderboard;

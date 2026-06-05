@@ -30,7 +30,7 @@ vi.mock('../lib/supabase', () => {
 
 // Mock de window.location
 const mockAssign = vi.fn();
-Object.defineProperty(window, 'location', {
+Object.defineProperty(globalThis, 'location', {
   value: {
     assign: mockAssign,
     origin: 'http://localhost:3000'
@@ -56,7 +56,7 @@ const mockProducts = [
 ];
 
 // Mock de fetch global con soporte para catálogo S3 y Checkout
-const mockFetch = vi.fn().mockImplementation((url, options) => {
+const mockFetch = vi.fn().mockImplementation((url) => {
   if (url.includes('amazonaws.com') || url.includes('/products.json')) {
     return Promise.resolve({
       ok: true,
@@ -73,7 +73,7 @@ const mockFetch = vi.fn().mockImplementation((url, options) => {
   }
   return Promise.reject(new Error(`Fetch no mockeado para: ${url}`));
 });
-global.fetch = mockFetch;
+globalThis.fetch = mockFetch;
 
 // Configurar URL de API Gateway para el entorno de test
 import.meta.env.PUBLIC_API_GATEWAY_URL = 'https://api-gateway-test.com';
@@ -143,7 +143,7 @@ describe('Integración de CartDrawer y Header', () => {
 
     // Presionar la tecla Escape
     act(() => {
-      fireEvent.keyDown(window, { key: 'Escape', code: 'Escape' });
+      fireEvent.keyDown(globalThis, { key: 'Escape', code: 'Escape' });
     });
     expect(screen.queryByRole('dialog', { name: /Carrito de compras/i })).not.toBeInTheDocument();
 
@@ -261,7 +261,7 @@ describe('Integración de CartDrawer y Header', () => {
 
   it('debería llamar a API /checkout y redirigir a Stripe si el usuario está autenticado', async () => {
     userStore.set({ email: 'test@example.com', id: 'user-123' });
-    
+
     supabase.auth.getSession.mockResolvedValue({
       data: {
         session: {
